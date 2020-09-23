@@ -153,6 +153,7 @@ input[type="file"] {
 .smallIcon {
     border: solid 2px #b8bef9;
     border-radius: 50%;
+    width: 150% !important;
 }
 
 .leaderboardsBottom {
@@ -214,8 +215,8 @@ th {
 }
 
 .leaderboardsTop {
-    background: rgb(51,51,148);
-    background: linear-gradient(180deg, rgba(51,51,148,1) 0%, rgba(66,92,184,1) 53%, rgba(72,100,201,1) 100%);
+    background: rgb(117,197,255);
+    background: linear-gradient(180deg, rgba(117,197,255,1) 0%, rgba(72,100,201,1) 95%);
     padding-bottom: 15%;
     padding-top: 25%;
     color: white;
@@ -453,6 +454,13 @@ table {
     }
 }
 
+@media (min-width: 425px) {
+    
+    .smallIcon {
+        width: 120% !important;
+    }
+}
+
 
 @media (min-width: 560px) {
     .divider {
@@ -521,6 +529,10 @@ table {
     .navbar  {
         background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(2,2,22,0.9) 48%, rgba(0,0,0,0.9) 100%);
     }
+
+    .smallIcon {
+        width: 100% !important;
+    }
 }
 
 @media (max-width: 850px) {
@@ -557,6 +569,22 @@ table {
 
     .contests, .date, .currentContest {
         font-size: 120% !important;
+    }
+
+    .smallIcon {
+        width: 90% !important;
+    }
+
+    .leaderboards {
+        font-size: 130% !important;    
+    }
+
+    .leaderboardsTitle, .first h3 {
+        font-size: 200% !important;
+    }
+
+    .score {
+        line-height: 50%;
     }
 }
 
@@ -637,6 +665,9 @@ table {
         background: linear-gradient(90deg, rgba(0,214,255,1) 0%, rgba(0,169,255,1) 48%, rgba(0,108,255,1) 100%);
         border-radius: 50%;
         display: inline-block;
+    }
+    .leaderboards {
+        font-size: 150% !important;    
     }
 }
 
@@ -719,12 +750,13 @@ table {
     }
 
     .placeHolder p {
-        font-size: 405%;
+        font-size: 250%;
         color: white;
         border-radius: 50%;
-        width: 110px;
-        height: 110px; 
+        width: 75px;
+        height: 75px; 
         background-color: #007CFF;
+        padding-top: 2% !important;
     }
 
     .contests, .date, .currentContest {
@@ -760,5 +792,21 @@ table {
         background: linear-gradient(90deg, rgba(0,214,255,1) 0%, rgba(0,169,255,1) 48%, rgba(0,108,255,1) 100%);
         border-radius: 50%;
         display: inline-block;
+    }
+
+    .smallIcon {
+        width: 80% !important;
+    }
+
+    .leaderboards {
+        font-size: 150% !important;    
+    }
+
+    .leaderboardsTitle, .first h3 {
+        font-size: 400% !important;
+    }
+
+    .score {
+        line-height: 80%;
     }
 }
