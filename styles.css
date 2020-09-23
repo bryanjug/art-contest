@@ -1,3 +1,48 @@
+#submitButton:hover {
+    background: linear-gradient(0deg, rgba(0,124,255,1) 0%, rgba(0,84,172,1) 48%, rgba(0,67,138,1) 100%);
+}
+
+.custom-file-upload:hover {
+    background: linear-gradient(0deg, rgba(0,124,255,1) 0%, rgba(0,84,172,1) 48%, rgba(0,67,138,1) 100%);
+}
+
+#submitButton {
+    border: 1px solid #ccc !important;
+    display: inline-block !important;
+    padding: 2% 10% !important;
+    cursor: pointer !important;
+    background: linear-gradient(0deg, rgba(0,67,138,1) 0%, rgba(0,84,172,1) 48%, rgba(0,124,255,1) 100%);
+    color: white !important;
+    border-radius: 5px;
+
+}
+
+.user {
+    width: 50% !important;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 2% 10% !important;
+    cursor: pointer;
+    background: linear-gradient(0deg, rgba(0,67,138,1) 0%, rgba(0,84,172,1) 48%, rgba(0,124,255,1) 100%);
+    color: white !important;
+    border-radius: 5px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.contestPhoto {
+    width: 100% !important;
+}
+
+.welcome h1 {
+    padding-left: 10% !important;
+}
+
 .forgotLink {
     text-align: left;
     margin-left: 2%;
@@ -86,7 +131,7 @@
     margin-top: -8%;
 }
 
-.placeHolder p{
+.placeHolder p {
     font-size: 75%;
     color: white;
     border-radius: 50%;
@@ -138,11 +183,12 @@
     margin: auto;
 }
 
-.uploadUser {
-    margin: auto !important;
-    padding: auto !important;
-    align-items: center;
-    display: block;
+.uploadButtons {
+    margin-top: 5% !important;
+}
+
+.upload {
+    text-align: center !important;
 }
 
 .leaderboardIcon {
@@ -207,8 +253,8 @@ th {
 }
 
 .curved {
-    background: rgb(0,200,255);
-    background: linear-gradient(205deg, rgba(0,200,255,1) 0%, rgba(76,0,154,1) 100%);
+    background: rgb(117,197,255);
+background: linear-gradient(185deg, rgba(117,197,255,1) 0%, rgba(82,198,222,1) 27%, rgba(111,190,255,1) 54%, rgba(64,120,255,1) 87%, rgba(0,139,255,1) 100%);
     color: white;
     padding-top: 25%;
 }
@@ -488,7 +534,6 @@ table {
     h1, p, h3, h2, h4, td, tr {
         font-size: 110%;
     }
-
         
     .heart {
         width: 27px;
@@ -498,6 +543,21 @@ table {
         width: 29px;
     }
 
+}
+
+@media (min-width: 1024px) {
+    .placeHolder p {
+        font-size: 115%;
+        color: white;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px; 
+        background-color: #007CFF;
+    }
+
+    .contests, .date, .currentContest {
+        font-size: 120% !important;
+    }
 }
 
 @media (min-width: 1128px) {
@@ -523,6 +583,60 @@ table {
 @media (min-width: 1350px) {
     .about {
         padding-top: 10%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .welcome, .jumbotron, .tryItNow {
+        font-size: 150% !important;
+    }
+
+    .welcome h1 {
+        font-size: 200% !important;
+    }
+
+    .navbar, button, .footer {
+        font-size: 120% !important;
+    }
+
+    .placeHolder p {
+        font-size: 155%;
+        color: white;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px; 
+        background-color: #007CFF;
+    }
+
+    .contests, .date, .currentContest {
+        font-size: 140% !important;
+    }
+
+    .currentContest {
+        margin-top: 5% !important;
+    }
+
+    .heart, .comment {
+        margin-top: 20% !important;
+    }
+
+    .dotSmall {
+        height: 100px;
+        width: 100px;
+        margin-top: 10%;
+        margin-left: 90%;
+        background: linear-gradient(90deg, rgba(0,214,255,1) 0%, rgba(0,169,255,1) 48%, rgba(0,108,255,1) 100%);
+        border-radius: 50%;
+        display: inline-block;
+    }
+    
+    .dotMedium {
+        height: 200px;
+        width: 200px;
+        margin-left: 60%;
+        background: linear-gradient(90deg, rgba(0,214,255,1) 0%, rgba(0,169,255,1) 48%, rgba(0,108,255,1) 100%);
+        border-radius: 50%;
+        display: inline-block;
     }
 }
 
@@ -580,5 +694,71 @@ table {
     .comment {
         width: 60px;
         margin-top: 3%;
+    }
+}
+
+@media (min-width: 2560px) {
+    .jumbotron h3 {
+        font-size: 280% !important;
+    }
+
+    .welcome h1 {
+        font-size: 500% !important;
+    }
+
+    .navbar, button {
+        font-size: 220% !important;
+    }
+
+    .footer {
+        font-size: 140% !important;
+    }
+
+    .footer li, .footer ul{
+        font-size: 150% !important;
+    }
+
+    .placeHolder p {
+        font-size: 405%;
+        color: white;
+        border-radius: 50%;
+        width: 110px;
+        height: 110px; 
+        background-color: #007CFF;
+    }
+
+    .contests, .date, .currentContest {
+        font-size: 150% !important;
+    }
+
+    .date {
+        font-size: 300% !important;
+    } 
+
+    .currentContest, .upload {
+        font-size: 220% !important;
+    }
+    .heart, .comment {
+        width: 70% !important;
+        margin-top: 15% !important;
+    }
+
+    .dotSmall {
+        height: 150px;
+        width: 150px;
+        margin-top: 10%;
+        margin-left: 90%;
+        background: linear-gradient(90deg, rgba(0,214,255,1) 0%, rgba(0,169,255,1) 48%, rgba(0,108,255,1) 100%);
+        border-radius: 50%;
+        display: inline-block;
+    }
+    
+    .dotMedium {
+        height: 300px;
+        width: 300px;
+        margin-left: 60%;
+        background: linear-gradient(90deg, rgba(0,214,255,1) 0%, rgba(0,169,255,1) 48%, rgba(0,108,255,1) 100%);
+        border-radius: 50%;
+        display: inline-block;
     }
 }

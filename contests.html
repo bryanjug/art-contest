@@ -45,19 +45,24 @@
                 </nav>
             </div>
         </div>
-        <div class='row mt-5 pt-5'>
+        <div class='row mt-5 pt-5 contests'>
             <div class='col-12'>
-                <p class='text-center pb-3'><b>... <span class='date'>5/15/2020  ||  </span><span class='date'>5/31/2020</span><span class='date'>  ||  6/15/2020 ...</span></b></p>
-                <p class='text-center pb-3'>Your goal here is to try and copy / recreate the image below in any style you choose and upload it by the date indicated at the top of the page. The current contest is the date in the center. Whoever ends up with the most votes will win the most points!</p>
-                <img src='images/contestphoto.png' class="img-fluid">
+                <h5 class='text-center pb-3 date currentContest'><b>Current Contest:</b></h5>
+                <h4 class='text-center pb-3 date'><b>5/15/2020</b></h4>
+                <p class='text-center pb-3'>Your goal here is to recreate the image below in any style you choose and upload it by the date indicated at the top of the page. <b>Whoever ends up with the most likes will win the most points!</b></p>
+                <img src='images/contestphoto.png' class="img-fluid contestPhoto">
             </div>
         </div>
-        <div class='row pt-5'>
+        <div class='row pt-5 contests'>
             <div class='col-12 col-sm-5 upload'>
-                <img src='images/user.png' class="img-fluid uploadUser">
-                <form action="#">
-                    <input type="file" id="myFile" name="filename">
+                <img src='images/user.png' class="img-fluid user">
+                <form action="#" class='uploadButtons'>
+                    <label class="custom-file-upload">
+                        <input type="file"/>
+                        Upload
+                    </label>
                     <input type="submit" id='submitButton'>
+                    
                 </form>
             </div>
             <div class='col-12 col-sm-7'>
