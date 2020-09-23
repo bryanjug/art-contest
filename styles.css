@@ -559,7 +559,7 @@ table {
 
 @media (min-width: 1024px) {
     .placeHolder p {
-        font-size: 115%;
+        font-size: 90%;
         color: white;
         border-radius: 50%;
         width: 30px;
@@ -628,7 +628,7 @@ table {
     }
 
     .placeHolder p {
-        font-size: 155%;
+        font-size: 100%;
         color: white;
         border-radius: 50%;
         width: 40px;
@@ -750,7 +750,7 @@ table {
     }
 
     .placeHolder p {
-        font-size: 250%;
+        font-size: 170%;
         color: white;
         border-radius: 50%;
         width: 75px;
