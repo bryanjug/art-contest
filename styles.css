@@ -465,6 +465,11 @@ table {
     }
 }
 
+@media (min-width: 535px) {
+    .about {
+        background-size: 520% !important;
+    }
+}
 
 @media (min-width: 560px) {
     .divider {
@@ -541,6 +546,11 @@ table {
     .shop {
         font-size: 120% !important;
     }
+
+    .about {
+        background-size: 1025% !important;
+        padding-top: 50% !important;
+    }
 }
 
 @media (max-width: 850px) {
@@ -597,6 +607,15 @@ table {
 
     .shop {
         font-size: 150% !important;
+    }
+
+    .about, .aboutBottom {
+        font-size: 110% !important;
+        background-size: 740% !important;
+    }
+
+    .about {
+        padding-top: 40% !important;
     }
 }
 
@@ -689,6 +708,31 @@ table {
 
     .shop h4 {
         font-size: 120% !important;
+    }
+
+    .about, .aboutBottom {
+        font-size: 130% !important;
+    }
+
+    .aboutBottom h4 {
+        font-size: 150% !important;
+    }
+
+    .about {
+        background-size: 650% !important;
+        padding-top: 25% !important;
+    }
+
+    .emailContainer {
+        border: solid 1px white;
+        border-radius: 50%;
+        text-align: center;
+        width: 200px;
+        height: 200px;
+        display: block;
+        margin: auto;
+        margin-bottom: 30%;
+        margin-top: 30%;
     }
 }
 
@@ -840,5 +884,26 @@ table {
 
     .shop form {
         font-size: 200% !important;
+    }
+
+    .aboutBottom h4 {
+        font-size: 300% !important;
+    }
+
+    .about {
+        background-size: 650% !important;
+        padding-top: 25% !important;
+    }
+
+    .emailContainer {
+        border: solid 1px white;
+        border-radius: 50%;
+        text-align: center;
+        width: 200px;
+        height: 200px;
+        display: block;
+        margin: auto;
+        margin-bottom: 30%;
+        margin-top: 30%;
     }
 }
