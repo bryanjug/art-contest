@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Art Contest | Leaderboards | Challenge your art skills with other artists and win special prizes</title>
+    <title>The Art Contest | Login | Challenge your art skills with other artists and win special prizes</title>
     <link rel="stylesheet" type="text/css" href="styles.css">    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@
                                 <a class="nav-link" href="about.html">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id='navbarLogin' href="login.html">Login</a>
+                                <a class="nav-link" id='navbarLogin' href="login.php">Login</a>
                             </li>
                         </ul>
                     </div>
@@ -47,28 +47,54 @@
 
         <div class='row'>
             <div class='col-12 col-sm-6 login'>
-                <form>
+                <form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
                     <div class="form-group">
-                      <label class='form-control-lg' for="exampleInputUser1">Email address</label>
-                      <input type="text" class="form-control form-control-lg" id="exampleInputUser1" aria-describedby="userHelp" placeholder="Enter username">
-                      <small id="forgotUsername" class="form-text forgotLink"><a href='#'>Forgot username?</a></small>
+                      <label class='form-control-lg' for="exampleInputUser1">Enter Your Username</label>
+                      <input type="text" name='username' class="form-control form-control-lg" id="exampleInputUser1" aria-describedby="userHelp" placeholder="Username">
                     </div>
-                    <div class="form-group">
-                      <label class='form-control-lg' for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
-                      <small id="forgotPassword" class="form-text forgotLink"><a href='#'>Forgot password?</a></small>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" id="remember" name="remember" value="remember">
-                        <label class="form-check-label" for="exampleCheck1">Keep me signed in</label>
-                    </div>
-                    <button type="submit" class="btn-lg btn-primary loginButton">Login</button>
-                    <p>Don't have an account? <b><a href='assignment_8_new_user.php'>Sign up</a></b></p>    
+                    <button type="submit" class="btn-lg btn-primary loginButton" name='signUp'>Recover</button>   
                     <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
+                    <section id='results'>
+                        <?php
+                            //**********************************************
+                            //*
+                            //*  Detect Server
+                            //*
+                            //**********************************************
+                            $server = $_SERVER['SERVER_NAME'];
+
+                            $server = 'localhost';
+
+                            //**********************************************
+                            //*
+                            //*  Connect to MySQL and Database
+                            //*  find the user's email address in the db and send a confirmation email to it
+                            //**********************************************
+
+                            $db = mysqli_connect('localhost','root','', 'artContest');
+
+                            if (!$db)
+                            {
+                                print "<h1>Unable to Connect to MySQL</h1>";
+                            }
+   
+                            if (isset($_POST['signUp'])) {
+                                $username = $_POST['username'];
+
+                                if (empty($username)) {    
+                                    print "<p>Please fill in the form box!</p>";
+
+                                } else {
+                                    $outputDisplay = doCheckLogin($db, $username);
+                                    print "<br>".$outputDisplay;
+                                }
+                            }
+                        ?>
+                    </section>
                 </form>
             </div>
             <div class='col-12 col-sm-6 loginBottom'>
-                <img src='images/login.png' class='img-fluid'> 
+                <img src='images/forgotEmail.png' class='img-fluid'> 
             </div>
         </div>
         <div class='row dotsOuter'>
@@ -123,3 +149,29 @@
     </div>
 </body>
 </html>
+
+<?php
+    function doCheckLogin($db, $username) {
+        $sql_statement = 'SELECT email FROM user WHERE username = "'.$username.'";';
+
+        $result = mysqli_query($db, $sql_statement);  // Run SELECT
+
+        if (!$result) {
+            $outputDisplay = "<p style='color: red;'>MySQL No: ".mysqli_errno($db)."<br>";
+            $outputDisplay .= "MySQL Error: ".mysqli_error($db)."<br>";
+            $outputDisplay .= "<br>SQL: ".$sql_statement."<br>";
+        } else {
+            $numresults = mysqli_num_rows($result);
+            
+            if ($numresults == 0) //if no email in user list = tell user cant find that username
+            {
+                $outputDisplay = "<p>Sorry, this username does not exist.</p>";
+            } else { //if user exists = tell user to check their email
+                $outputDisplay = "<p>That username exists! Please check your email inbox.</p>";
+                
+            }
+        }
+
+        return $outputDisplay;
+    }
+?>

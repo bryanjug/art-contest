@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Art Contest | Home | Challenge your art skills with other artists and win special prizes</title>
+    <title>The Art Contest | Login | Challenge your art skills with other artists and win special prizes</title>
     <link rel="stylesheet" type="text/css" href="styles.css">    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src='show_width.js'></script>
 </head>
 <body>
     <div class='container-fluid'>
@@ -46,83 +45,67 @@
             </div>
         </div>
 
-        <div class='row curved'>
-            <div class='col-6 welcome'>
-                <h1>Welcome to <span id='title'>The Art Contest!</span></h1>
-                <p class='welcomeMessage'>Want to earn money while showing off and practicing your skills? Compete with others now in a timed, online art competition. What are you waiting for? Sign up now below!</p>
-                <a href='contests.html'>
-                    <button type="button" class="btn btn-primary btn-md btn-block">Get Started</button>
-                </a>
-            </div>
-            <div class='col-6 world m-auto'>
-                <img src='images/sitting.png' class="img-fluid">
-            </div>
-            <div class='col-12 svg'>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="1 0 1439 319"><path fill="#ffffff" fill-opacity="1" d="M0,64L48,101.3C96,139,192,213,288,250.7C384,288,480,288,576,256C672,224,768,160,864,117.3C960,75,1056,53,1152,74.7C1248,96,1344,160,1392,192L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
-            </div>
-        </div>
-        
-        <div class='jumbotron mt-5'>
-            <div class='row'>
-                <div class='col-12 col-sm-12 col-md-6 m-auto pt-4'>
-                    <img src='images/leaderboards.png' class="img-fluid homeInfoImage1">
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <h3 class='text-center pt-3'>Find out where you rank against others!</h3>
-                    <p class='text-center'>Ever wondered where you rank in the world in terms of your artistic skills? 
-                        With the Art Contest, you'll be able to find other users who are close to your level of expertise! 
-                    </p>
-                </div>
-            </div>
-        </div>
-        
-        <div class='jumbotron mt-5'>
-            <div class='row'>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <h3 class='text-center'>Check out our current contests and user submitted images!</h3>
-                    <p class='text-center mb-5 pb-3'>Join a contest, but before you sign up for one, make sure you check the 
-                        end date for submissions! You wouldn't want to start working on your art piece to 
-                        find out later that you could've been participating for a chance at some points.
-                    </p>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6 m-auto'>
-                    <img src='images/contests.png' class="img-fluid homeInfoImage2">
-                </div>
-            </div>
-        </div>
-        <div class='jumbotron mt-5'>
-            <div class='row'>
-                <div class='col-12 col-sm-12 col-md-6 m-auto'>
-                    <img src='images/shop.png' class="img-fluid homeInfoImage3">
-                </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <h3 class='text-center pt-3'>Use your points to purchase gift cards and currencies!</h3>
-                    <p class='text-center'>
-                        At the Art Contest, we make sure that your time here is worth while. We know it can be difficult as an up-coming artist to make ends meet, 
-                        and that's why we're here to provide our service! Finally there's a way to showcase your artistry while making money.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class='jumbotron mt-5'>
-            <div class='row'>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <h3 class='text-center'>Connect with others to get help</h3>
-                    <p class='text-center mb-5 pb-3'>
-                        If you have any specific questions or want to find the FAQ (frequently asked questions), please navigate to the 'help' tab at the top or bottom of the page.
-                    </p>
-                </div>
-                <div class='col-12 col-sm-12 col-md-6 m-auto'>
-                    <img src='images/help.png' class="img-fluid homeInfoImage4">
-                </div>
-            </div>
-        </div>
         <div class='row'>
-            <div class='col-12 tryItNow'>
-                <a href='contests.html'>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Try it out now!</button>
-                </a>
-                <p class='text-center mt-4 pb-3'>* We ensure that your information is private and secure!</p>
+            <div class='col-12 col-sm-6 login'>
+                <form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
+                    <div class="form-group">
+                      <label class='form-control-lg' for="exampleInputEmail1">Email address</label>
+                      <input type="text" name='email' class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="userHelp" placeholder="Email address">
+                      <small id="forgotEmail" class="form-text forgotLink"><a href='forgotEmail.php'>Forgot Email?</a></small>
+                    </div>
+                    <div class="form-group">
+                      <label class='form-control-lg' for="exampleInputPassword1">Password</label>
+                      <input type="password" name='password' class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                      <small id="forgotPassword" class="form-text forgotLink"><a href='forgotPassword.php'>Forgot password?</a></small>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="remember" name="remember" value="remember">
+                        <label class="form-check-label" for="exampleCheck1">Keep me signed in</label>
+                    </div>
+                    <button type="submit" class="btn-lg btn-primary loginButton" name='login'>Login</button>
+                    <p>Don't have an account? <b><a href='signUp.php'>Sign up</a></b></p>    
+                    <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
+                    <section id='results'>
+                        <?php
+                            //**********************************************
+                            //*
+                            //*  Detect Server
+                            //*
+                            //**********************************************
+                            $server = $_SERVER['SERVER_NAME'];
+
+                            $server = 'localhost';
+
+                            //**********************************************
+                            //*
+                            //*  Connect to MySQL and Database
+                            //*  userID, username, email, password, likes, posts
+                            //**********************************************
+
+                            $db = mysqli_connect('localhost','root','', 'artContest');
+
+                            if (!$db)
+                            {
+                                print "<h1>Unable to Connect to MySQL</h1>";
+                            }
+   
+                            if (isset($_POST['login'])) {
+                                $email = $_POST['email'];
+                                $password = $_POST['password'];
+
+                                if (empty($email) || empty($password)) {    
+                                    print "<p>Please fill in every form box!</p>";
+                                } else {
+                                    $outputDisplay = doCheckLogin($db, $email, $password);
+                                    print "<br>".$outputDisplay;
+                                }
+                            }
+                        ?>
+                    </section>
+                </form>
+            </div>
+            <div class='col-12 col-sm-6 loginBottom'>
+                <img src='images/login.png' class='img-fluid'> 
             </div>
         </div>
         <div class='row dotsOuter'>
@@ -177,3 +160,29 @@
     </div>
 </body>
 </html>
+
+<?php
+    function doCheckLogin($db, $email, $password) {
+        $sql_statement = 'SELECT * FROM user WHERE email = "'.$email.'" AND ';
+        $sql_statement .= 'password = "'.$password.'";';
+
+        $result = mysqli_query($db, $sql_statement);  // Run SELECT
+
+        if (!$result) {
+            $outputDisplay = "<p style='color: red;'>MySQL No: ".mysqli_errno($db)."<br>";
+            $outputDisplay .= "MySQL Error: ".mysqli_error($db)."<br>";
+            $outputDisplay .= "<br>SQL: ".$sql_statement."<br>";
+        } else {
+            $numresults = mysqli_num_rows($result);
+            
+            if ($numresults == 0)
+            {
+                $outputDisplay = "<p>Invalid Login</p>";
+            } else {
+                $outputDisplay = "<p>Valid Login</p>";
+            }
+        }
+
+        return $outputDisplay;
+    }
+?>
