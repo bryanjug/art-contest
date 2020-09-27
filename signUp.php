@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Art Contest | Login | Challenge your art skills with other artists and win special prizes</title>
+    <title>The Art Contest | Sign Up | Challenge your art skills with other artists and win special prizes</title>
     <link rel="stylesheet" type="text/css" href="styles.css">    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -48,25 +48,6 @@
         <div class='row'>
             <div class='col-12 col-sm-6 login'>
                 <form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
-                    <div class="form-group">
-                      <label class='form-control-lg' for="exampleInputEmail1">Email address</label>
-                      <input type="text" name='email' class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="userHelp" placeholder="Email address">
-                    </div>
-                    <div class="form-group">
-                      <label class='form-control-lg' for="exampleInputUser1">Username</label>
-                      <input type="text" name='username' class="form-control form-control-lg" id="exampleInputUser1" aria-describedby="userHelp" placeholder="Username">
-                    </div>
-                    <div class="form-group">
-                      <label class='form-control-lg' for="exampleInputPassword1">Password</label>
-                      <input type="password" name='password' class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <label class='form-control-lg' for="exampleInputPassword2">Confirm Password</label>
-                      <input type="password" name='password2' class="form-control form-control-lg" id="exampleInputPassword2" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn-lg btn-primary loginButton" name='signUp'>Sign Up</button>
-                    <p>Already have an account? <b><a href='login.php'>Login</a></b></p>    
-                    <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
                     <section id='results'>
                         <?php
                             //**********************************************
@@ -109,6 +90,25 @@
                             }
                         ?>
                     </section>
+                    <div class="form-group">
+                      <label class='form-control-lg' for="exampleInputEmail1">Email address</label>
+                      <input type="text" name='email' class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="userHelp" placeholder="Email address">
+                    </div>
+                    <div class="form-group">
+                      <label class='form-control-lg' for="exampleInputUser1">Username</label>
+                      <input type="text" name='username' class="form-control form-control-lg" id="exampleInputUser1" aria-describedby="userHelp" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                      <label class='form-control-lg' for="exampleInputPassword1">Password</label>
+                      <input type="password" name='password' class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <label class='form-control-lg' for="exampleInputPassword2">Confirm Password</label>
+                      <input type="password" name='password2' class="form-control form-control-lg" id="exampleInputPassword2" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn-lg btn-primary loginButton" name='signUp'>Sign Up</button>
+                    <p>Already have an account? <b><a href='login.php'>Login</a></b></p>    
+                    <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
                 </form>
             </div>
             <div class='col-12 col-sm-6 loginBottom'>
@@ -170,7 +170,7 @@
 
 <?php
     function doCheckLogin($db, $username, $email, $password) {
-        $sql_statement = 'SELECT * FROM user WHERE email = "'.$email.'" AND ';
+        $sql_statement = 'SELECT * FROM users WHERE email = "'.$email.'" AND ';
         $sql_statement .= 'password = "'.$password.'";';
 
         $result = mysqli_query($db, $sql_statement);  // Run SELECT
@@ -184,8 +184,10 @@
             
             if ($numresults == 0) //if no email in user list = insert a email, username, & password
             {
+                $hash = password_hash($password, PASSWORD_DEFAULT);
+
                 $sql_statement_INSERT = 'INSERT INTO user (username, email, password) ';
-                $sql_statement_INSERT .= 'VALUES ("'.$username.'", "'.$email.'", "'.$password.'");';
+                $sql_statement_INSERT .= 'VALUES ("'.$username.'", "'.$email.'", "'.$hash.'");';
                 
                 $result_INSERT = mysqli_query($db, $sql_statement_INSERT);
                 

@@ -48,23 +48,6 @@
         <div class='row'>
             <div class='col-12 col-sm-6 login'>
                 <form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
-                    <div class="form-group">
-                      <label class='form-control-lg' for="exampleInputEmail1">Email address</label>
-                      <input type="text" name='email' class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="userHelp" placeholder="Email address">
-                      <small id="forgotEmail" class="form-text forgotLink"><a href='forgotEmail.php'>Forgot Email?</a></small>
-                    </div>
-                    <div class="form-group">
-                      <label class='form-control-lg' for="exampleInputPassword1">Password</label>
-                      <input type="password" name='password' class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
-                      <small id="forgotPassword" class="form-text forgotLink"><a href='forgotPassword.php'>Forgot password?</a></small>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" id="remember" name="remember" value="remember">
-                        <label class="form-check-label" for="exampleCheck1">Keep me signed in</label>
-                    </div>
-                    <button type="submit" class="btn-lg btn-primary loginButton" name='login'>Login</button>
-                    <p>Don't have an account? <b><a href='signUp.php'>Sign up</a></b></p>    
-                    <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
                     <section id='results'>
                         <?php
                             //**********************************************
@@ -102,6 +85,23 @@
                             }
                         ?>
                     </section>
+                    <div class="form-group">
+                      <label class='form-control-lg' for="exampleInputEmail1">Email address</label>
+                      <input type="text" name='email' class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="userHelp" placeholder="Email address">
+                      <small id="forgotEmail" class="form-text forgotLink"><a href='forgotEmail.php'>Forgot Email?</a></small>
+                    </div>
+                    <div class="form-group">
+                      <label class='form-control-lg' for="exampleInputPassword1">Password</label>
+                      <input type="password" name='password' class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                      <small id="forgotPassword" class="form-text forgotLink"><a href='forgotPassword.php'>Forgot password?</a></small>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="remember" name="remember" value="remember">
+                        <label class="form-check-label" for="exampleCheck1">Keep me signed in</label>
+                    </div>
+                    <button type="submit" class="btn-lg btn-primary loginButton" name='login'>Login</button>
+                    <p>Don't have an account? <b><a href='signUp.php'>Sign up</a></b></p>    
+                    <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
                 </form>
             </div>
             <div class='col-12 col-sm-6 loginBottom'>
@@ -163,8 +163,7 @@
 
 <?php
     function doCheckLogin($db, $email, $password) {
-        $sql_statement = 'SELECT * FROM user WHERE email = "'.$email.'" AND ';
-        $sql_statement .= 'password = "'.$password.'";';
+        $sql_statement = 'SELECT userID, password FROM users WHERE email = "'.$email.'"';
 
         $result = mysqli_query($db, $sql_statement);  // Run SELECT
 
@@ -175,12 +174,16 @@
         } else {
             $numresults = mysqli_num_rows($result);
             
-            if ($numresults == 0)
-            {
+            $data = $result->fetch_array();
+            if ($numresults == 0) {
                 $outputDisplay = "<p>Invalid Login</p>";
-            } else {
-                $outputDisplay = "<p>Valid Login</p>";
             }
+            
+            if (password_verify($password, $data['password'])) {  
+                $outputDisplay = "<p>Valid Login</p>";
+            } else {
+                $outputDisplay = "<p>Invalid Login</p>";
+            } 
         }
 
         return $outputDisplay;

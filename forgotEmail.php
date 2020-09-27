@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Art Contest | Login | Challenge your art skills with other artists and win special prizes</title>
+    <title>The Art Contest | Forgot Email | Challenge your art skills with other artists and win special prizes</title>
     <link rel="stylesheet" type="text/css" href="styles.css">    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -48,12 +48,6 @@
         <div class='row'>
             <div class='col-12 col-sm-6 login'>
                 <form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
-                    <div class="form-group">
-                      <label class='form-control-lg' for="exampleInputUser1">Enter Your Username</label>
-                      <input type="text" name='username' class="form-control form-control-lg" id="exampleInputUser1" aria-describedby="userHelp" placeholder="Username">
-                    </div>
-                    <button type="submit" class="btn-lg btn-primary loginButton" name='signUp'>Recover</button>   
-                    <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
                     <section id='results'>
                         <?php
                             //**********************************************
@@ -91,6 +85,12 @@
                             }
                         ?>
                     </section>
+                    <div class="form-group">
+                      <label class='form-control-lg' for="exampleInputUser1">Enter Your Username</label>
+                      <input type="text" name='username' class="form-control form-control-lg" id="exampleInputUser1" aria-describedby="userHelp" placeholder="Username">
+                    </div>
+                    <button type="submit" class="btn-lg btn-primary loginButton" name='signUp'>Recover</button>   
+                    <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
                 </form>
             </div>
             <div class='col-12 col-sm-6 loginBottom'>
@@ -152,7 +152,7 @@
 
 <?php
     function doCheckLogin($db, $username) {
-        $sql_statement = 'SELECT email FROM user WHERE username = "'.$username.'";';
+        $sql_statement = 'SELECT email FROM users WHERE username = "'.$username.'";';
 
         $result = mysqli_query($db, $sql_statement);  // Run SELECT
 
@@ -168,7 +168,60 @@
                 $outputDisplay = "<p>Sorry, this username does not exist.</p>";
             } else { //if user exists = tell user to check their email
                 $outputDisplay = "<p>That username exists! Please check your email inbox.</p>";
+
+                while ($row = mysqli_fetch_array($result)) {
+                    $email = $row['email'];
+                }
+
+                $to = $email;
                 
+                $subject = 'Confirm Art Contest Email';
+                
+                $message = "
+                    <html>
+                    <head>
+                    <title>Confirm Art Contest Email</title>
+                    <style>
+                        #background {
+                            background-color: #009CFF;
+                            color: white;
+                            text-align: center;
+                            padding-top: 5%;
+                        }
+
+                        img {
+                            width: 50%;
+                        }
+
+                        h1 {
+                            font-size: 200%;
+                        }
+                    </style>
+                    </head>
+                    <body>
+                    <div id='background'>
+                    <h1>The Art Contest</h1>
+                    <img src='https://cdni.iconscout.com/illustration/premium/thumb/mail-marketing-2162027-1819863.png'> 
+                    <h4>
+                    This email was sent to you in order to confirm your email address for the username: {$username}
+                    </h4>
+                    <br>
+                    <h4>
+                    If this wasn't meant for you, someone may be trying to log into your Art Contest account.
+                    </h4>
+                    </div>
+                    </body>
+                    </html>
+                    ";
+
+                // Always set content-type when sending HTML email
+                $headers = "MIME-Version: 1.0" . "\r\n";
+                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+                // More headers
+                $headers .= 'From: BryanDJug@gmail.com' . "\r\n";
+
+                mail($to, $subject, $message, $headers);
             }
         }
 
