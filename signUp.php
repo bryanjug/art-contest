@@ -69,7 +69,7 @@
 
                             if (!$db)
                             {
-                                print "<h1>Unable to Connect to MySQL</h1>";
+                                print "<h1 style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Unable to Connect to MySQL</h1>";
                             }
    
                             if (isset($_POST['signUp'])) {
@@ -79,10 +79,10 @@
                                 $password2 = $_POST['password2'];
 
                                 if (empty($email) || empty($password) || empty($password2) || empty($username)) {    
-                                    print "<p>Please fill in every form box!</p>";
+                                    print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Please fill in every form box!</p>";
 
                                 } else if ($password != $password2) {
-                                    print "<p>Please make sure your passwords are matching!</p>";
+                                    print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Please make sure your passwords are matching!</p>";
                                 } else {
                                     $outputDisplay = doCheckLogin($db, $username, $email, $password);
                                     print "<br>".$outputDisplay;
@@ -191,9 +191,9 @@
                 
                 $result_INSERT = mysqli_query($db, $sql_statement_INSERT);
                 
-                $outputDisplay = "<p>Account created! Try logging in now.</p>";
+                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(0, 181, 0, 0.7);'>Account created! Try logging in now.</p>";
             } else { //if user exists = tell user that email already has an account
-                $outputDisplay = "<p>That Email already exists! Try a different one.</p>";
+                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>That Email already exists! Try a different one.</p>";
             }
         }
 

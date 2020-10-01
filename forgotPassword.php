@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Art Contest | Forgot Email | Challenge your art skills with other artists and win special prizes</title>
+    <title>The Art Contest | Forgot Password | Challenge your art skills with other artists and win special prizes</title>
     <link rel="stylesheet" type="text/css" href="styles.css">    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -62,7 +62,7 @@
                             //**********************************************
                             //*
                             //*  Connect to MySQL and Database
-                            //*  find the user's email address in the db and send a confirmation email to it
+                            //*  
                             //**********************************************
 
                             $db = mysqli_connect('localhost','root','', 'artContest');
@@ -73,28 +73,28 @@
                             }
    
                             if (isset($_POST['signUp'])) {
-                                $username = $_POST['username'];
+                                $email = $_POST['email'];
 
-                                if (empty($username)) {    
+                                if (empty($email)) {    
                                     print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Please fill in the form box!</p>";
 
                                 } else {
-                                    $outputDisplay = doCheckLogin($db, $username);
+                                    $outputDisplay = doCheckLogin($db, $email);
                                     print "<br>".$outputDisplay;
                                 }
                             }
                         ?>
                     </section>
                     <div class="form-group">
-                      <label class='form-control-lg' for="exampleInputUser1">Enter Your Username</label>
-                      <input type="text" name='username' class="form-control form-control-lg" id="exampleInputUser1" aria-describedby="userHelp" placeholder="Username">
+                    <label class='form-control-lg' for="exampleInputEmail1">Recover Password</label>
+                      <input type="text" name='email' class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="userHelp" placeholder="Email address">
                     </div>
                     <button type="submit" class="btn-lg btn-primary loginButton" name='signUp'>Recover</button>   
                     <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
                 </form>
             </div>
             <div class='col-12 col-sm-6 loginBottom'>
-                <img src='images/forgotEmail.png' class='img-fluid'> 
+                <img src='images/forgotPassword.png' class='img-fluid'> 
             </div>
         </div>
         <div class='row dotsOuter'>
@@ -151,8 +151,8 @@
 </html>
 
 <?php
-    function doCheckLogin($db, $username) {
-        $sql_statement = 'SELECT email FROM users WHERE username = "'.$username.'";';
+    function doCheckLogin($db, $email) {
+        $sql_statement = 'SELECT email FROM users WHERE email = "'.$email.'";';
 
         $result = mysqli_query($db, $sql_statement);  // Run SELECT
 
@@ -163,11 +163,11 @@
         } else {
             $numresults = mysqli_num_rows($result);
             
-            if ($numresults == 0) //if no email in user list = tell user cant find that username
+            if ($numresults == 0) //if no email in user list = tell user cant find that email
             {
-                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Sorry, this username does not exist.</p>";
+                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Sorry, this email does not exist.</p>";
             } else { //if user exists = tell user to check their email
-                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(0, 181, 0, 0.7);'>That username exists! Please check your email inbox.</p>";
+                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(0, 181, 0, 0.7);'>That email address exists! Please check your email inbox.</p>";
 
                 while ($row = mysqli_fetch_array($result)) {
                     $email = $row['email'];
@@ -175,12 +175,12 @@
 
                 $to = $email;
                 
-                $subject = 'Confirm Art Contest Email';
+                $subject = 'Forgot Art Contest Password';
                 
                 $message = "
                     <html>
                     <head>
-                        <title>Confirm Art Contest Email</title>
+                        <title>Forgot Art Contest Password</title>
                         <style>
                             #background {
                                 background-color: #009CFF;
@@ -241,11 +241,11 @@
                             <img src='https://cdni.iconscout.com/illustration/premium/thumb/mail-marketing-2162027-1819863.png'> 
                             <div id='content'>
                                 <h4>
-                                    This email was sent to you in order to confirm your email address for the username: {$username}
+                                    This email was sent to you because you forgot your password. Click <a href='#'>here</a> to change your password.
                                 </h4>
                                 <br>
                                 <h4>
-                                    If this wasn't meant for you, someone may be trying to log into your Art Contest account.
+                                    If this wasn't meant for you, someone may be trying to access your Art Contest account.
                                 </h4>
                             </div>
                             <div id='footer'>

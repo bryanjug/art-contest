@@ -69,7 +69,7 @@
 
                             if (!$db)
                             {
-                                print "<h1>Unable to Connect to MySQL</h1>";
+                                print "<h1 style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Unable to Connect to MySQL</h1>";
                             }
    
                             if (isset($_POST['login'])) {
@@ -77,7 +77,7 @@
                                 $password = $_POST['password'];
 
                                 if (empty($email) || empty($password)) {    
-                                    print "<p>Please fill in every form box!</p>";
+                                    print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Please fill in every form box!</p>";
                                 } else {
                                     $outputDisplay = doCheckLogin($db, $email, $password);
                                     print "<br>".$outputDisplay;
@@ -176,13 +176,13 @@
             
             $data = $result->fetch_array();
             if ($numresults == 0) {
-                $outputDisplay = "<p>Invalid Login</p>";
+                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Invalid Login</p>";
             }
             
             if (password_verify($password, $data['password'])) {  
-                $outputDisplay = "<p>Valid Login</p>";
+                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(0, 181, 0, 0.7);'>Valid Login</p>";
             } else {
-                $outputDisplay = "<p>Invalid Login</p>";
+                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Invalid Login</p>";
             } 
         }
 
