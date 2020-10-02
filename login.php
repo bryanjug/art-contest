@@ -28,7 +28,7 @@
                                 <a class="nav-link" href="leaderboards.html">Leaderboards</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id='brand' href="index.html">The Art Contest</a>
+                                <a class="nav-link" id='brand' href="index.php">The Art Contest</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="shop.html">Shop</a>
@@ -37,7 +37,19 @@
                                 <a class="nav-link" href="about.html">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id='navbarLogin' href="login.php">Login</a>
+                                <?php
+                                    session_start();
+                                    if (isset($_SESSION['user'])) {
+                                        echo '<a href="account.php" style="position: relative; bottom: 13%;"><svg width="3em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+                                            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                            <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+                                            </svg></a>';
+                                        echo '<br><a href="logout.php?logout" style="position: absolute;top: 50%;">Logout</a>';
+                                    } else {
+                                        echo '<a class="nav-link" id="navbarLogin" href="login.php">Login</a>';
+                                    }
+                                ?>
                             </li>
                         </ul>
                     </div>
@@ -47,7 +59,7 @@
 
         <div class='row'>
             <div class='col-12 col-sm-6 login'>
-                <form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
+                <form method='post' action='process.php'>
                     <section id='results'>
                         <?php
                             //**********************************************
@@ -85,6 +97,34 @@
                             }
                         ?>
                     </section>
+                    <?php
+                        if(@$_GET['Empty'] == true) {
+                    ?>
+
+                    <div style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>
+                        <?php
+                            echo $_GET['Empty']
+                        ?>
+                    </div>
+
+                    <?php
+                        }
+                    ?>
+
+                    <?php
+                        if(@$_GET['Invalid'] == true) {
+                    ?>
+
+                    <div style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>
+                        <?php
+                            echo $_GET['Invalid']
+                        ?>
+                    </div>
+
+                    <?php
+                        }
+                    ?>
+
                     <div class="form-group">
                       <label class='form-control-lg' for="exampleInputEmail1">Email address</label>
                       <input type="text" name='email' class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="userHelp" placeholder="Email address">
@@ -94,10 +134,6 @@
                       <label class='form-control-lg' for="exampleInputPassword1">Password</label>
                       <input type="password" name='password' class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
                       <small id="forgotPassword" class="form-text forgotLink"><a href='forgotPassword.php'>Forgot password?</a></small>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" id="remember" name="remember" value="remember">
-                        <label class="form-check-label" for="exampleCheck1">Keep me signed in</label>
                     </div>
                     <button type="submit" class="btn-lg btn-primary loginButton" name='login'>Login</button>
                     <p>Don't have an account? <b><a href='signUp.php'>Sign up</a></b></p>    
@@ -175,6 +211,7 @@
             $numresults = mysqli_num_rows($result);
             
             $data = $result->fetch_array();
+
             if ($numresults == 0) {
                 $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Invalid Login</p>";
             }

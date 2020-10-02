@@ -28,7 +28,7 @@
                                 <a class="nav-link" href="leaderboards.html">Leaderboards</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id='brand' href="index.html">The Art Contest</a>
+                                <a class="nav-link" id='brand' href="index.php">The Art Contest</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="shop.html">Shop</a>
@@ -84,7 +84,8 @@
                                 } else if ($password != $password2) {
                                     print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Please make sure your passwords are matching!</p>";
                                 } else {
-                                    $outputDisplay = doCheckLogin($db, $username, $email, $password);
+                                    $hash = password_hash($password, PASSWORD_DEFAULT);
+                                    $outputDisplay = doCheckLogin($db, $username, $email, $hash);
                                     print "<br>".$outputDisplay;
                                 }
                             }
@@ -169,9 +170,8 @@
 </html>
 
 <?php
-    function doCheckLogin($db, $username, $email, $password) {
-        $sql_statement = 'SELECT * FROM users WHERE email = "'.$email.'" AND ';
-        $sql_statement .= 'password = "'.$password.'";';
+    function doCheckLogin($db, $username, $email, $hash) {
+        $sql_statement = 'SELECT * FROM users WHERE email = "'.$email.'" OR username = "'.$username.'";';
 
         $result = mysqli_query($db, $sql_statement);  // Run SELECT
 
@@ -184,16 +184,13 @@
             
             if ($numresults == 0) //if no email in user list = insert a email, username, & password
             {
-                $hash = password_hash($password, PASSWORD_DEFAULT);
-
-                $sql_statement_INSERT = 'INSERT INTO user (username, email, password) ';
-                $sql_statement_INSERT .= 'VALUES ("'.$username.'", "'.$email.'", "'.$hash.'");';
+                $sql_statement_INSERT = 'INSERT INTO users (username, email, password) VALUES ("'.$username.'", "'.$email.'", "'.$hash.'");';
                 
                 $result_INSERT = mysqli_query($db, $sql_statement_INSERT);
                 
                 $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(0, 181, 0, 0.7);'>Account created! Try logging in now.</p>";
             } else { //if user exists = tell user that email already has an account
-                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>That Email already exists! Try a different one.</p>";
+                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>This email or username already exists! Try a different one.</p>";
             }
         }
 

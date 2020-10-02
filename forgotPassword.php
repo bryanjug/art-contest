@@ -28,7 +28,7 @@
                                 <a class="nav-link" href="leaderboards.html">Leaderboards</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id='brand' href="index.html">The Art Contest</a>
+                                <a class="nav-link" id='brand' href="index.php">The Art Contest</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="shop.html">Shop</a>
@@ -75,11 +75,13 @@
                             if (isset($_POST['signUp'])) {
                                 $email = $_POST['email'];
 
+                                $code = uniqid(true);
+
                                 if (empty($email)) {    
                                     print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Please fill in the form box!</p>";
 
                                 } else {
-                                    $outputDisplay = doCheckLogin($db, $email);
+                                    $outputDisplay = doCheckLogin($db, $email, $code);
                                     print "<br>".$outputDisplay;
                                 }
                             }
@@ -151,10 +153,12 @@
 </html>
 
 <?php
-    function doCheckLogin($db, $email) {
+    function doCheckLogin($db, $email, $code) {
+        $sql_statement_code = 'INSERT INTO resetPasswords(code, email) VALUES ("'.$code.'", "'.$email.'");';
         $sql_statement = 'SELECT email FROM users WHERE email = "'.$email.'";';
 
         $result = mysqli_query($db, $sql_statement);  // Run SELECT
+        $result_code = mysqli_query($db, $sql_statement_code);
 
         if (!$result) {
             $outputDisplay = "<p style='color: red;'>MySQL No: ".mysqli_errno($db)."<br>";
@@ -172,6 +176,8 @@
                 while ($row = mysqli_fetch_array($result)) {
                     $email = $row['email'];
                 }
+
+                $url = "http://" . $_SERVER["HTTP_HOST"] . dirname($_SERVER["PHP_SELF"]) . "/changePassword.php?code=$code";
 
                 $to = $email;
                 
@@ -241,7 +247,7 @@
                             <img src='https://cdni.iconscout.com/illustration/premium/thumb/mail-marketing-2162027-1819863.png'> 
                             <div id='content'>
                                 <h4>
-                                    This email was sent to you because you forgot your password. Click <a href='#'>here</a> to change your password.
+                                    This email was sent to you because you forgot your password. Click <a href='$url'>here</a> to change your password.
                                 </h4>
                                 <br>
                                 <h4>

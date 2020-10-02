@@ -28,7 +28,7 @@
                                 <a class="nav-link" href="leaderboards.html">Leaderboards</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id='brand' href="index.html">The Art Contest</a>
+                                <a class="nav-link" id='brand' href="index.php">The Art Contest</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="shop.html">Shop</a>
@@ -47,7 +47,7 @@
 
         <div class='row'>
             <div class='col-12 col-sm-6 login'>
-                <form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
+                <form method='post'>
                     <section id='results'>
                         <?php
                             //**********************************************
@@ -71,16 +71,22 @@
                             {
                                 print "<h1 style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Unable to Connect to MySQL</h1>";
                             }
-   
                             if (isset($_POST['signUp'])) {
-                                $password = $_POST['password'];
+                                if (isset($_GET['code'])) {
+                                    $password = $_POST['password'];
+                                    $password2 = $_POST['password2'];
+                                    $code = $_GET['code'];
 
-                                if (empty($password)) {    
-                                    print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Please fill in the form box!</p>";
-
+                                    if (empty($password) || empty($password2)) {    
+                                        print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Please fill in every form box!</p>";
+                                    } else if ($password != $password2) {
+                                        print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Please make sure your passwords are matching!</p>";
+                                    } else {
+                                        $hash = password_hash($password, PASSWORD_DEFAULT);
+                                        doCheckLogin($db, $code, $hash);
+                                    }
                                 } else {
-                                    $outputDisplay = doCheckLogin($db, $password);
-                                    print "<br>".$outputDisplay;
+                                    exit("Something went wrong with the code.");
                                 }
                             }
                         ?>
@@ -93,7 +99,7 @@
                       <label class='form-control-lg' for="exampleInputPassword2">Confirm Password</label>
                       <input type="password" name='password2' class="form-control form-control-lg" id="exampleInputPassword2" placeholder="Password">
                     </div>
-                    <button type="submit" class="btn-lg btn-primary loginButton" name='signUp'>Change Password</button>   
+                    <button type="submit" class="btn-lg btn-primary loginButton" name='signUp'>Reset Password</button>   
                     <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
                 </form>
             </div>
@@ -155,137 +161,38 @@
 </html>
 
 <?php
-    function doCheckLogin($db, $password) {
-        $sql_statement = 'SELECT email FROM users WHERE email = "'.$email.'";';
-
+    function doCheckLogin($db, $code, $hash) {
+        $sql_statement = 'SELECT email FROM resetPasswords WHERE code = "'.$code.'";';
         $result = mysqli_query($db, $sql_statement);  // Run SELECT
 
         if (!$result) {
-            $outputDisplay = "<p style='color: red;'>MySQL No: ".mysqli_errno($db)."<br>";
-            $outputDisplay .= "MySQL Error: ".mysqli_error($db)."<br>";
-            $outputDisplay .= "<br>SQL: ".$sql_statement."<br>";
+            print "<p style='color: red;'>MySQL No: ".mysqli_errno($db)."<br>";
+            print "MySQL Error: ".mysqli_error($db)."<br>";
+            print "<br>SQL: ".$sql_statement."<br>";
         } else {
             $numresults = mysqli_num_rows($result);
             
-            if ($numresults == 0) //if no email in user list = tell user cant find that email
+            if ($numresults == 0) //if no code in link = tell user cant find that page
             {
-                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Sorry, this email does not exist.</p>";
+                print '<p style="color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);">Click the "forgot my password" link and check your email again.</p>';
             } else { //if user exists = tell user to check their email
-                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(0, 181, 0, 0.7);'>That email address exists! Please check your email inbox.</p>";
 
                 while ($row = mysqli_fetch_array($result)) {
                     $email = $row['email'];
                 }
 
-                $to = $email;
-                
-                $subject = 'Forgot Art Contest Password';
-                
-                $message = "
-                    <html>
-                    <head>
-                        <title>Forgot Art Contest Password</title>
-                        <style>
-                            #background {
-                                background-color: #009CFF;
-                                color: white;
-                                text-align: center;
-                                padding-top: 5%;
-                            }
+                $sql_statement_password = 'UPDATE users SET password = "'.$hash.'" WHERE email = "'.$email.'";';
+                $result_password = mysqli_query($db, $sql_statement_password);
 
-                            img {
-                                width: 50%;
-                            }
+                if ($result_password) {
+                    $sql_statement = 'DELETE FROM resetPasswords WHERE code = "'.$code.'";';
+                    $result = mysqli_query($db, $sql_statement);
 
-                            h1 {
-                                font-size: 200%;
-                            }
-
-                            #content {
-                                color: black;
-                                background-color: white;
-                                border-radius: 30px 30px 0px 0px;
-                                margin-top: 5%;
-                                padding-top: 5%;
-                                padding-bottom: 5%;
-                                margin-left: 20%;
-                                margin-right: 20%;
-                                padding-left: 5%;
-                                padding-right: 5%;
-                            }
-
-                            #footer {
-                                background-color: rgb(58, 66, 232);
-                                color: white;
-                                padding-top: 5%;
-                                padding-bottom: 5%;
-                                margin-left: 20%;
-                                margin-right: 20%;
-                                padding-left: 5%;
-                                padding-right: 5%;
-                            }
-
-                            #footer a {
-                                color: white;
-                                text-decoration: none;
-                            }
-
-                            #footer a:hover {
-                                text-decoration: underline;
-                            }
-
-                            #footerParagraph {
-                                padding-bottom: 5%;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <div id='background'>
-                            <h1>The Art Contest</h1>
-                            <img src='https://cdni.iconscout.com/illustration/premium/thumb/mail-marketing-2162027-1819863.png'> 
-                            <div id='content'>
-                                <h4>
-                                    This email was sent to you because you forgot your password. Click <a href='#'>here</a> to change your password.
-                                </h4>
-                                <br>
-                                <h4>
-                                    If this wasn't meant for you, someone may be trying to access your Art Contest account.
-                                </h4>
-                            </div>
-                            <div id='footer'>
-                                <h2>
-                                    Commited To Artists Around The World
-                                </h2>
-                                <h4 id='footerParagraph'>
-                                    The Art Contest is a proud member of the art community. We strive to find talent and to collaborate with other artists to make a difference in the world of artistry. Our mission is to help those who wish to turn their hard work into a profession.
-                                </h4>
-                                <img src='https://img.pngio.com/png-divider-lines-transparent-divider-linespng-images-pluspng-line-separator-png-1400_339.png'>
-                                <h2>
-                                    Stay Connected
-                                </h2>
-                                <h4>
-                                    <a href='#'>Home</a>  |  <a href='#'>Contests</a>  |  <a href='#'>Leaderboards</a>  |  <a href='#'>Shop</a>  |  <a href='#'>About</a>
-                                </h4>
-                                <h4>
-                                &copy; 2020 All Rights Reserved  |  <a href='#'>Privacy Policy</a>  |  <a href='#'>Terms of Use</a>
-                                </h4>
-                            </div>
-                        </div>
-                    </body>
-                    </html>
-                    ";
-
-                // Always set content-type when sending HTML email
-                $headers = "MIME-Version: 1.0" . "\r\n";
-                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-                // More headers
-                $headers .= 'From: BryanDJug@gmail.com' . "\r\n";
-
-                mail($to, $subject, $message, $headers);
+                    print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(0, 181, 0, 0.7);'>Password Changed.</p>";
+                } else {
+                    exit("Something went wrong.");
+                }
             }
         }
-
-        return $outputDisplay;
     }
 ?>

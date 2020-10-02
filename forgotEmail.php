@@ -28,7 +28,7 @@
                                 <a class="nav-link" href="leaderboards.html">Leaderboards</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id='brand' href="index.html">The Art Contest</a>
+                                <a class="nav-link" id='brand' href="index.php">The Art Contest</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="shop.html">Shop</a>
