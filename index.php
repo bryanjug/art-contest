@@ -23,22 +23,34 @@
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="contests.html">Contests</a>
+                                <a class="nav-link" href="contests.php">Contests</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+                                <a class="nav-link" href="leaderboards.php">Leaderboards</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id='brand' href="index.html">The Art Contest</a>
+                                <a class="nav-link" id='brand' href="index.php">The Art Contest</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="shop.html">Shop</a>
+                                <a class="nav-link" href="shop.php">Shop</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">About</a>
+                                <a class="nav-link" href="about.php">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id='navbarLogin' href="login.php">Login</a>
+                                <?php
+                                    session_start();
+                                    if (isset($_SESSION['user'])) {
+                                        echo '<a href="account.php" style="position: relative; bottom: 13%;"><svg width="3em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+                                            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                            <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+                                            </svg></a>';
+                                        echo '<br><a href="logout.php?logout" style="position: absolute;top: 50%;">Logout</a>';
+                                    } else {
+                                        echo '<a class="nav-link" id="navbarLogin" href="login.php">Login</a>';
+                                    }
+                                ?>
                             </li>
                         </ul>
                     </div>
@@ -50,7 +62,7 @@
             <div class='col-6 welcome'>
                 <h1>Welcome to <span id='title'>The Art Contest!</span></h1>
                 <p class='welcomeMessage'>Want to earn money while showing off and practicing your skills? Compete with others now in a timed, online art competition. What are you waiting for? Sign up now below!</p>
-                <a href='contests.html'>
+                <a href='contests.php'>
                     <button type="button" class="btn btn-primary btn-md btn-block">Get Started</button>
                 </a>
             </div>
@@ -119,7 +131,7 @@
         </div>
         <div class='row'>
             <div class='col-12 tryItNow'>
-                <a href='contests.html'>
+                <a href='contests.php'>
                     <button type="button" class="btn btn-primary btn-lg btn-block">Try it out now!</button>
                 </a>
                 <p class='text-center mt-4 pb-3'>* We ensure that your information is private and secure!</p>
@@ -137,7 +149,7 @@
             </div>
             <div class='col-12 col-sm-6'>
                 <p><b>Spread your artistic skills </b>for a chance at some real prizes!</p>
-                <a href='contests.html'>
+                <a href='contests.php'>
                     <button type="button" class="btn btn-primary btn-sm btn-block">Get Started</button>
                 </a>
             </div>

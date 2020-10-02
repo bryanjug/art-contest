@@ -22,19 +22,19 @@
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="contests.html">Contests</a>
+                                <a class="nav-link" href="contests.php">Contests</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="leaderboards.html">Leaderboards</a>
+                                <a class="nav-link" href="leaderboards.php">Leaderboards</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id='brand' href="index.php">The Art Contest</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="shop.html">Shop</a>
+                                <a class="nav-link" href="shop.php">Shop</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">About</a>
+                                <a class="nav-link" href="about.php">About</a>
                             </li>
                             <li class="nav-item">
                                 <?php
@@ -82,18 +82,6 @@
                             if (!$db)
                             {
                                 print "<h1 style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Unable to Connect to MySQL</h1>";
-                            }
-   
-                            if (isset($_POST['login'])) {
-                                $email = $_POST['email'];
-                                $password = $_POST['password'];
-
-                                if (empty($email) || empty($password)) {    
-                                    print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Please fill in every form box!</p>";
-                                } else {
-                                    $outputDisplay = doCheckLogin($db, $email, $password);
-                                    print "<br>".$outputDisplay;
-                                }
                             }
                         ?>
                     </section>
@@ -156,7 +144,7 @@
             </div>
             <div class='col-12 col-sm-6'>
                 <p><b>Spread your artistic skills </b>for a chance at some real prizes!</p>
-                <a href='contests.html'>
+                <a href='contests.php'>
                     <button type="button" class="btn btn-primary btn-sm btn-block">Get Started</button>
                 </a>
             </div>
@@ -196,33 +184,3 @@
     </div>
 </body>
 </html>
-
-<?php
-    function doCheckLogin($db, $email, $password) {
-        $sql_statement = 'SELECT userID, password FROM users WHERE email = "'.$email.'"';
-
-        $result = mysqli_query($db, $sql_statement);  // Run SELECT
-
-        if (!$result) {
-            $outputDisplay = "<p style='color: red;'>MySQL No: ".mysqli_errno($db)."<br>";
-            $outputDisplay .= "MySQL Error: ".mysqli_error($db)."<br>";
-            $outputDisplay .= "<br>SQL: ".$sql_statement."<br>";
-        } else {
-            $numresults = mysqli_num_rows($result);
-            
-            $data = $result->fetch_array();
-
-            if ($numresults == 0) {
-                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Invalid Login</p>";
-            }
-            
-            if (password_verify($password, $data['password'])) {  
-                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(0, 181, 0, 0.7);'>Valid Login</p>";
-            } else {
-                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Invalid Login</p>";
-            } 
-        }
-
-        return $outputDisplay;
-    }
-?>

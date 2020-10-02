@@ -12,7 +12,7 @@
     //**********************************************
     //*
     //*  Connect to MySQL and Database
-    //*  userID, username, email, password, likes, posts
+    //* 
     //**********************************************
 
     $db = mysqli_connect('localhost','root','', 'artContest');
@@ -38,7 +38,7 @@
 
             if (password_verify($password, $data['password'])) {  
                 $_SESSION['user'] = $email;
-                header('location:login.php');
+                header('location:index.php');
             } else {
                 header('location:login.php?Empty= Please enter correct email and password');
             }
