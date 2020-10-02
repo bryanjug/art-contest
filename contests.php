@@ -143,7 +143,7 @@
             </div>
             <div class='col-12 col-sm-3'>
                 <ul>
-                    <li><b><a href='#'>Contests</a></b></li>
+                    <li><b><a href='contests.php'>Contests</a></b></li>
                     <li>5-10</li>
                     <li>5-1</li>
                     <li>4-21</li>
@@ -152,7 +152,7 @@
             </div>
             <div class='col-12 col-sm-3'>
                 <ul>
-                    <li><b><a href='#'>Leaderboards</a></b></li>
+                    <li><b><a href='leaderboards.php'>Leaderboards</a></b></li>
                     <li>User #1</li>
                     <li>User #2</li>
                     <li>User #3</li>
@@ -160,14 +160,14 @@
             </div>
             <div class='col-12 col-sm-6'>
                 <ul>
-                    <li><b><a href='#'>Shop</a></b></li>
+                    <li><b><a href='shop.php'>Shop</a></b></li>
                     <li>Shop Item #1</li>
                     <li>Shop Item #2</li>
                 </ul>
             </div>
             <div class='col-12 col-sm-6'>
                 <ul>
-                    <li><b><a href='#'>About</a></b></li>
+                    <li><b><a href='about.php'>About</a></b></li>
                 </ul>
             </div>
             <div class='col-12 privacy'>
