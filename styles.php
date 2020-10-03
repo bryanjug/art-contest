@@ -1,9 +1,19 @@
-#submitButton:hover {
-    background: linear-gradient(0deg, rgba(0,124,255,1) 0%, rgba(0,84,172,1) 48%, rgba(0,67,138,1) 100%);
+<?php header("Content-type: text/css"); ?>
+.custom-image-upload {
+    background-image: url("images/user.png");
+    width: 50px; /* Width of new image */
+    height: 50px; /* Height of new image */
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
-.custom-file-upload:hover {
-    background: linear-gradient(0deg, rgba(0,124,255,1) 0%, rgba(0,84,172,1) 48%, rgba(0,67,138,1) 100%);
+.custom-image-upload:hover {
+    background-image: url("images/userUpload.png");
+}
+
+#submitButton:hover, .custom-file-upload:hover {
+    background-color: white;
 }
 
 #submitButton {
@@ -11,10 +21,9 @@
     display: inline-block !important;
     padding: 2% 10% !important;
     cursor: pointer !important;
-    background: linear-gradient(0deg, rgba(0,67,138,1) 0%, rgba(0,84,172,1) 48%, rgba(0,124,255,1) 100%);
-    color: white !important;
+    color: black !important;
     border-radius: 5px;
-
+    background-color: rgb(244, 244, 244);
 }
 
 .user {
@@ -26,9 +35,9 @@
     display: inline-block;
     padding: 2% 10% !important;
     cursor: pointer;
-    background: linear-gradient(0deg, rgba(0,67,138,1) 0%, rgba(0,84,172,1) 48%, rgba(0,124,255,1) 100%);
-    color: white !important;
+    color: black !important;
     border-radius: 5px;
+    background-color: rgb(244, 244, 244);
 }
 
 input[type="file"] {
@@ -512,6 +521,36 @@ table {
         margin-left: 1% !important;
         margin-right: 1% !important;
     }
+
+    .account {
+        font-size: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        padding: 0 !important;
+        padding-bottom: -50% !important;
+    }
+
+    .logout {
+        background: inherit !important;
+        text-align: left !important;
+        color: rgb(160, 160, 160);
+        position: none !important;
+        top: 50% !important;
+    }
+
+    .logout:hover {
+        text-decoration: none !important;
+        color: white !important;
+    }
+
+    .navbar-collapse {
+        padding-top: 2% !important;
+        padding-bottom: 2% !important;
+    }
+
+    .account br {
+        display: none !important;
+    }
 }
 
 @media (min-width: 768px) {
@@ -549,6 +588,28 @@ table {
         background-size: 1025% !important;
         padding-top: 50% !important;
     }
+
+    .logout {
+        position: absolute !important;
+        top: 50% !important;
+        color: rgb(160, 160, 160);
+    }
+
+    .logout:hover {
+        text-decoration: none;
+        color: white;
+    }
+
+    .account {
+        position: relative !important; 
+        bottom: 13% !important; 
+        color: rgb(160, 160, 160);
+    }
+
+    .account:hover {
+        color: white;
+    }
+    
 }
 
 @media (max-width: 850px) {

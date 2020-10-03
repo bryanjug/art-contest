@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Art Contest | Sign Up | Challenge your art skills with other artists and win special prizes</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="styles.php"> 
+    <title>The Art Contest | Account | Challenge your art skills with other artists and win special prizes</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.php">    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -39,7 +39,7 @@
                             <li class="nav-item">
                                 <?php
                                     session_start();
-                                    
+
                                     if (isset($_SESSION['user'])) {
                                         echo '<a href="account.php" class="account">
                                                     <svg width="3em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -51,6 +51,7 @@
                                         echo '<a href="logout.php?logout" class="logout">Logout</a>';
                                     } else {
                                         echo '<a class="nav-link" id="navbarLogin" href="login.php">Login</a>';
+                                        header('location:index.php');
                                     }
                                 ?>
                             </li>
@@ -60,76 +61,70 @@
             </div>
         </div>
 
-        <div class='row'>
-            <div class='col-12 col-sm-6 login'>
+        <div class='row mt-5'>
+            <div class='col-12 mt-5'>
                 <form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
-                    <section id='results'>
-                        <?php
-                            //**********************************************
-                            //*
-                            //*  Detect Server
-                            //*
-                            //**********************************************
-                            $server = $_SERVER['SERVER_NAME'];
+                    <?php
+                        //**********************************************
+                        //*
+                        //*  Detect Server
+                        //*
+                        //**********************************************
+                        $server = $_SERVER['SERVER_NAME'];
 
-                            $server = 'localhost';
+                        $server = 'localhost';
 
-                            //**********************************************
-                            //*
-                            //*  Connect to MySQL and Database
-                            //*  userID, username, email, password, likes, posts
-                            //**********************************************
+                        //**********************************************
+                        //*
+                        //*  Connect to MySQL and Database
+                        //*  
+                        //**********************************************
 
-                            $db = mysqli_connect('localhost','root','', 'artContest');
+                        $db = mysqli_connect('localhost','root','', 'artContest');
 
-                            if (!$db)
-                            {
-                                print "<h1 style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Unable to Connect to MySQL</h1>";
-                            }
-   
-                            if (isset($_POST['signUp'])) {
-                                $email = $_POST['email'];
-                                $username = $_POST['username'];
-                                $password = $_POST['password'];
-                                $password2 = $_POST['password2'];
+                        if (!$db)
+                        {
+                            print "<h1 style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Unable to Connect to MySQL</h1>";
+                        }
+                    ?>
+                    <div class='row'>
+                        <div class='col-12'>
+                            <label>
+                                <input type="file"/>
+                                    <section class="custom-image-upload">
 
-                                if (empty($email) || empty($password) || empty($password2) || empty($username)) {    
-                                    print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Please fill in every form box!</p>";
+                                    </section>
+                                    <?php 
+                                        echo 'Welcome ' . $_SESSION['user'] . '!<br><br>';
+                                    ?>
+                            </label>
+                            <div class='row'>
+                                <div class='col-4'>
+                                    <?php
 
-                                } else if ($password != $password2) {
-                                    print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Please make sure your passwords are matching!</p>";
-                                } else {
-                                    $hash = password_hash($password, PASSWORD_DEFAULT);
-                                    $outputDisplay = doCheckLogin($db, $username, $email, $hash);
-                                    print "<br>".$outputDisplay;
-                                }
-                            }
-                        ?>
-                    </section>
-                    <div class="form-group">
-                      <label class='form-control-lg' for="exampleInputEmail1">Email address</label>
-                      <input type="text" name='email' class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="userHelp" placeholder="Email address">
+                                    ?>
+                                </div>
+                                <div class='col-4'>
+
+                                </div>
+                                <div class='col-4'>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-4'>   
+                            <p><b>Email</b></p>
+                            <p><b>Password</b></p>
+                            <p><b>Likes</b></p>
+                            <p><b>Posts</b></p>
+                            <p><b>Wallet</b></p>
+                        </div>
+                        <div class='col-8'>   
+                            
+                        </div>
                     </div>
-                    <div class="form-group">
-                      <label class='form-control-lg' for="exampleInputUser1">Username</label>
-                      <input type="text" name='username' class="form-control form-control-lg" id="exampleInputUser1" aria-describedby="userHelp" placeholder="Username">
-                    </div>
-                    <div class="form-group">
-                      <label class='form-control-lg' for="exampleInputPassword1">Password</label>
-                      <input type="password" name='password' class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <label class='form-control-lg' for="exampleInputPassword2">Confirm Password</label>
-                      <input type="password" name='password2' class="form-control form-control-lg" id="exampleInputPassword2" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn-lg btn-primary loginButton" name='signUp'>Sign Up</button>
-                    <p>Already have an account? <b><a href='login.php'>Login</a></b></p>    
-                    <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
                 </form>
-            </div>
-            <div class='col-12 col-sm-6 loginBottom'>
-                <img src='images/signUp.png' class='img-fluid'> 
-            </div>
+            </div>      
         </div>
         <div class='row dotsOuter'>
             <div class='col-12'>
@@ -185,30 +180,38 @@
 </html>
 
 <?php
-    function doCheckLogin($db, $username, $email, $hash) {
-        $sql_statement = 'SELECT * FROM users WHERE email = "'.$email.'" OR username = "'.$username.'";';
-
+    function doCheckLogin($db, $code, $hash) {
+        $sql_statement = 'SELECT email FROM resetPasswords WHERE code = "'.$code.'";';
         $result = mysqli_query($db, $sql_statement);  // Run SELECT
 
         if (!$result) {
-            $outputDisplay = "<p style='color: red;'>MySQL No: ".mysqli_errno($db)."<br>";
-            $outputDisplay .= "MySQL Error: ".mysqli_error($db)."<br>";
-            $outputDisplay .= "<br>SQL: ".$sql_statement."<br>";
+            print "<p style='color: red;'>MySQL No: ".mysqli_errno($db)."<br>";
+            print "MySQL Error: ".mysqli_error($db)."<br>";
+            print "<br>SQL: ".$sql_statement."<br>";
         } else {
             $numresults = mysqli_num_rows($result);
             
-            if ($numresults == 0) //if no email in user list = insert a email, username, & password
+            if ($numresults == 0) //if no code in link = tell user cant find that page
             {
-                $sql_statement_INSERT = 'INSERT INTO users (username, email, password) VALUES ("'.$username.'", "'.$email.'", "'.$hash.'");';
-                
-                $result_INSERT = mysqli_query($db, $sql_statement_INSERT);
-                
-                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(0, 181, 0, 0.7);'>Account created! Try logging in now.</p>";
-            } else { //if user exists = tell user that email already has an account
-                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>This email or username already exists! Try a different one.</p>";
+                print '<p style="color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);">Click the "forgot my password" link and check your email again.</p>';
+            } else { //if user exists = tell user to check their email
+
+                while ($row = mysqli_fetch_array($result)) {
+                    $email = $row['email'];
+                }
+
+                $sql_statement_password = 'UPDATE users SET password = "'.$hash.'" WHERE email = "'.$email.'";';
+                $result_password = mysqli_query($db, $sql_statement_password);
+
+                if ($result_password) {
+                    $sql_statement = 'DELETE FROM resetPasswords WHERE code = "'.$code.'";';
+                    $result = mysqli_query($db, $sql_statement);
+
+                    print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(0, 181, 0, 0.7);'>Password Changed.</p>";
+                } else {
+                    exit("Something went wrong.");
+                }
             }
         }
-
-        return $outputDisplay;
     }
 ?>

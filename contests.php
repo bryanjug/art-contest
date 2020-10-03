@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Art Contest | Contests | Challenge your art skills with other artists and win special prizes</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">    
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.php">   
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -42,12 +42,14 @@
                                     session_start();
                                     
                                     if (isset($_SESSION['user'])) {
-                                        echo '<a href="account.php" style="position: relative; bottom: 13%;"><svg width="3em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
-                                            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                                            <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
-                                            </svg></a>';
-                                        echo '<br><a href="logout.php?logout" style="position: absolute;top: 50%;">Logout</a>';
+                                        echo '<a href="account.php" class="account">
+                                                    <svg width="3em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+                                                        <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                        <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+                                                    </svg><br>
+                                                </a>';
+                                        echo '<a href="logout.php?logout" class="logout">Logout</a>';
                                     } else {
                                         echo '<a class="nav-link" id="navbarLogin" href="login.php">Login</a>';
                                     }
@@ -60,8 +62,8 @@
         </div>
         <div class='row mt-5 pt-5 contests'>
             <div class='col-12'>
-                <h5 class='text-center pb-3 date currentContest'><b>Current Contest:</b></h5>
-                <h4 class='text-center pb-3 date'><b>5/15/2020</b></h4>
+                <h5 class='text-center pb-3 date currentContest'><b>Current Contest Ends:</b></h5>
+                <h4 class='text-center pb-3 date'><b>11/1/2020</b></h4>
                 <p class='text-center pb-3'>Your goal here is to recreate the image below in any style you choose and upload it by the date indicated at the top of the page. <b>Whoever ends up with the most likes will win the most points!</b></p>
                 <img src='images/contestphoto.png' class="img-fluid contestPhoto">
             </div>
