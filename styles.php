@@ -1,11 +1,27 @@
 <?php header("Content-type: text/css"); ?>
-.custom-image-upload {
-    background-image: url("images/user.png");
-    width: 50px; /* Width of new image */
-    height: 50px; /* Height of new image */
+.accountHeader {
+    background-image: url("images/accountBackground.jpg");
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
+    padding-top: 20%;
+}
+
+.welcomeMessage {
+    text-align: center;
+}
+
+.custom-image-upload {
+    background-image: url("images/user.png");
+    width: 80px;
+    height: 80px;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .custom-image-upload:hover {

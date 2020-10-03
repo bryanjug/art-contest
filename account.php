@@ -60,72 +60,64 @@
                 </nav>
             </div>
         </div>
+        <form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
+            <?php
+                //**********************************************
+                //*
+                //*  Detect Server
+                //*
+                //**********************************************
+                $server = $_SERVER['SERVER_NAME'];
 
-        <div class='row mt-5'>
-            <div class='col-12 mt-5'>
-                <form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
-                    <?php
-                        //**********************************************
-                        //*
-                        //*  Detect Server
-                        //*
-                        //**********************************************
-                        $server = $_SERVER['SERVER_NAME'];
+                $server = 'localhost';
 
-                        $server = 'localhost';
+                //**********************************************
+                //*
+                //*  Connect to MySQL and Database
+                //*  
+                //**********************************************
 
-                        //**********************************************
-                        //*
-                        //*  Connect to MySQL and Database
-                        //*  
-                        //**********************************************
+                $db = mysqli_connect('localhost','root','', 'artContest');
 
-                        $db = mysqli_connect('localhost','root','', 'artContest');
-
-                        if (!$db)
-                        {
-                            print "<h1 style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Unable to Connect to MySQL</h1>";
-                        }
+                if (!$db)
+                {
+                    print "<h1 style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Unable to Connect to MySQL</h1>";
+                }
+            ?>
+            <div class='row'>
+                <div class='col-12 accountHeader'>
+                    <label class="custom-image-upload">
+                        <input type="file"/>
+                    </label>
+                    <?php 
+                        echo '<p class="welcomeMessage">Welcome <b>' . $_SESSION['user'] . '</b></p>';
                     ?>
                     <div class='row'>
-                        <div class='col-12'>
-                            <label>
-                                <input type="file"/>
-                                    <section class="custom-image-upload">
-
-                                    </section>
-                                    <?php 
-                                        echo 'Welcome ' . $_SESSION['user'] . '!<br><br>';
-                                    ?>
-                            </label>
-                            <div class='row'>
-                                <div class='col-4'>
-                                    <?php
-
-                                    ?>
-                                </div>
-                                <div class='col-4'>
-
-                                </div>
-                                <div class='col-4'>
-
-                                </div>
-                            </div>
+                        <div class='col-4'>
+                            <?php
+                                
+                            ?>
+                            <p>Likes</p>
                         </div>
-                        <div class='col-4'>   
-                            <p><b>Email</b></p>
-                            <p><b>Password</b></p>
-                            <p><b>Likes</b></p>
-                            <p><b>Posts</b></p>
-                            <p><b>Wallet</b></p>
+                        <div class='col-4'>
+                            <p>Posts</p>
                         </div>
-                        <div class='col-8'>   
-                            
+                        <div class='col-4'>
+                            <p>Comments</p>
                         </div>
                     </div>
-                </form>
-            </div>      
-        </div>
+                </div>
+                <div class='col-4'>   
+                    <p><b>Change Email</b></p>
+                    <p><b>Change Password</b></p>
+                    <p><b>Change Username</b></p>
+                    <p><b>Wallet</b></p>
+                </div>
+                <div class='col-8'>   
+                    
+                </div>
+            </div>
+        </form>
         <div class='row dotsOuter'>
             <div class='col-12'>
                 <span class='dotSmall'></span>
