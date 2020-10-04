@@ -6,7 +6,7 @@
     <title>The Art Contest | Account | Challenge your art skills with other artists and win special prizes</title>
     <link rel="stylesheet" type="text/css" media="screen" href="styles.php">    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
@@ -60,64 +60,63 @@
                 </nav>
             </div>
         </div>
-        <form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
-            <?php
-                //**********************************************
-                //*
-                //*  Detect Server
-                //*
-                //**********************************************
-                $server = $_SERVER['SERVER_NAME'];
+        <?php
+            //**********************************************
+            //*
+            //*  Detect Server
+            //*
+            //**********************************************
+            $server = $_SERVER['SERVER_NAME'];
 
-                $server = 'localhost';
+            $server = 'localhost';
 
-                //**********************************************
-                //*
-                //*  Connect to MySQL and Database
-                //*  
-                //**********************************************
+            //**********************************************
+            //*
+            //*  Connect to MySQL and Database
+            //*  
+            //**********************************************
 
-                $db = mysqli_connect('localhost','root','', 'artContest');
+            $db = mysqli_connect('localhost','root','', 'artContest');
 
-                if (!$db)
-                {
-                    print "<h1 style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Unable to Connect to MySQL</h1>";
-                }
-            ?>
-            <div class='row'>
-                <div class='col-12 accountHeader'>
+            if (!$db)
+            {
+                print "<h1 style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Unable to Connect to MySQL</h1>";
+            }
+        ?>
+        <div class='row'>
+            <div class='col-12 accountHeader'>
+                <form method='post' action="profileImages/profileImages.php" enctype="multipart/form-data">
                     <label class="custom-image-upload">
-                        <input type="file"/>
                     </label>
-                    <?php 
-                        echo '<p class="welcomeMessage">Welcome <b>' . $_SESSION['user'] . '</b></p>';
-                    ?>
-                    <div class='row'>
-                        <div class='col-4'>
-                            <?php
-                                
-                            ?>
-                            <p>Likes</p>
-                        </div>
-                        <div class='col-4'>
-                            <p>Posts</p>
-                        </div>
-                        <div class='col-4'>
-                            <p>Comments</p>
-                        </div>
+                    <input type="file" name='file'>
+                    <input class='imageUpload' type="submit" value="Upload Image" name="submit">
+                </form>
+                <?php 
+                    echo '<p class="welcomeMessage">Welcome <b>' . $_SESSION['user'] . '</b></p>';
+                ?>
+                <div class='row'>
+                    <div class='col-4'>
+                        
+                        <p>Likes</p>
+                    </div>
+                    <div class='col-4'>
+                        <p>Posts</p>
+                    </div>
+                    <div class='col-4'>
+                        <p>Comments</p>
                     </div>
                 </div>
-                <div class='col-4'>   
-                    <p><b>Change Email</b></p>
-                    <p><b>Change Password</b></p>
-                    <p><b>Change Username</b></p>
-                    <p><b>Wallet</b></p>
-                </div>
-                <div class='col-8'>   
-                    
-                </div>
             </div>
-        </form>
+            <div class='col-4'>   
+                <p><b>Change Email</b></p>
+                <p><b>Change Password</b></p>
+                <p><b>Change Username</b></p>
+                <p><b>Wallet</b></p>
+            </div>
+            <div class='col-8'>   
+                
+            </div>
+        </div>
         <div class='row dotsOuter'>
             <div class='col-12'>
                 <span class='dotSmall'></span>

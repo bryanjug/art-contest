@@ -1,4 +1,18 @@
 <?php header("Content-type: text/css"); ?>
+.imageUpload{
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ccc !important;
+    padding: 2% 10% !important;
+    cursor: pointer !important;
+    color: black !important;
+    border-radius: 5px;
+    background-color: rgb(244, 244, 244);
+    margin-bottom: 5%;
+}
+
 .accountHeader {
     background-image: url("images/accountBackground.jpg");
     background-position: center;
@@ -54,10 +68,6 @@
     color: black !important;
     border-radius: 5px;
     background-color: rgb(244, 244, 244);
-}
-
-input[type="file"] {
-    display: none;
 }
 
 .contestPhoto {
