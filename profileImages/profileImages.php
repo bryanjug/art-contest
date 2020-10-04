@@ -23,6 +23,7 @@
 
     if (isset($_POST['submit'])) {
         session_start();
+        
         $email = $_SESSION['user'];
         
         $tmp_name = $_FILES["file"]["tmp_name"];
@@ -36,7 +37,7 @@
         $sql = 'UPDATE users SET profileImage = "'.$name.'" WHERE email = ("'.$email.'");';
         
         if (mysqli_query($db, $sql)) {
-            echo "File successfully uploaded";
+            header('location:../account.php');
         } else {
             echo "error";
         }

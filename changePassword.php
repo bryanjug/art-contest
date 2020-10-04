@@ -187,10 +187,10 @@
         } else {
             $numresults = mysqli_num_rows($result);
             
-            if ($numresults == 0) //if no code in link = tell user cant find that page
+            if ($numresults == 0)
             {
                 print '<p style="color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);">Click the "forgot my password" link and check your email again.</p>';
-            } else { //if user exists = tell user to check their email
+            } else { 
 
                 while ($row = mysqli_fetch_array($result)) {
                     $email = $row['email'];

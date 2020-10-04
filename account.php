@@ -86,35 +86,183 @@
         <div class='row'>
             <div class='col-12 accountHeader'>
                 <form method='post' action="profileImages/profileImages.php" enctype="multipart/form-data">
-                    <label class="custom-image-upload">
-                    </label>
-                    <input type="file" name='file'>
+                    <img class="custom-image-upload" src="
+                        <?php 
+                            $email = $_SESSION['user'];
+
+                            $sql = 'SELECT profileImage FROM users WHERE email =  "'.$email.'";';
+                            $result = mysqli_query($db, $sql);
+                            
+                            while ($row = mysqli_fetch_array($result)) {
+                                $profileImage = $row['profileImage'];
+                            }
+
+                            if ($profileImage != '') {
+                                echo "profileImages/$email.png";
+                            } else {
+                                echo "profileImages/user.png";
+                            }
+                        ?>
+                    ">
+                    <div class='parent'>
+                        <label for="fileUpload" class="custom-file-upload">
+                            <input type="file" name='file' class="fileUpload" id="fileUpload">
+                            Change Profile Picture
+                        </label>
+                    </div>
+                    
                     <input class='imageUpload' type="submit" value="Upload Image" name="submit">
                 </form>
                 <?php 
-                    echo '<p class="welcomeMessage">Welcome <b>' . $_SESSION['user'] . '</b></p>';
+                    echo '<h3 class="welcomeMessage"><b>Account</b></h3>';
                 ?>
                 <div class='row'>
-                    <div class='col-4'>
-                        
-                        <p>Likes</p>
+                    <div class='col-4 userInfo'>
+                        <?php
+                            $email = $_SESSION['user'];
+                            
+                            $sql_likes = 'SELECT likes FROM users WHERE email =  "'.$email.'";';
+                            $result_likes = mysqli_query($db, $sql_likes);
+
+                            $data = $result_likes->fetch_array();
+
+                            echo "<p class='accountCounts counts'><b>".$data['likes']."</b></p>";
+                        ?>
+                        <p class='accountCounts'>Likes</p>
                     </div>
-                    <div class='col-4'>
-                        <p>Posts</p>
+                    <div class='col-4 userInfo'>
+                        <?php
+                            $email = $_SESSION['user'];
+                            
+                            $sql_posts = 'SELECT posts FROM users WHERE email =  "'.$email.'";';
+                            $result_posts = mysqli_query($db, $sql_posts);
+
+                            $data = $result_posts->fetch_array();
+
+                            echo "<p class='accountCounts counts'><b>".$data['posts']."</b></p>";
+                        ?>
+                        <p class='accountCounts'>Posts</p>
                     </div>
-                    <div class='col-4'>
-                        <p>Comments</p>
+                    <div class='col-4 userInfo'>
+                        <?php
+                            $email = $_SESSION['user'];
+                            
+                            $sql_comments = 'SELECT comments FROM users WHERE email =  "'.$email.'";';
+                            $result_comments = mysqli_query($db, $sql_comments);
+
+                            $data = $result_comments->fetch_array();
+
+                            echo "<p class='accountCounts counts'><b>".$data['comments']."</b></p>";
+                        ?>
+                        <p class='accountCounts'>Comments</p>
                     </div>
                 </div>
             </div>
-            <div class='col-4'>   
-                <p><b>Change Email</b></p>
+        </div>
+        <div class='row accountInfo'>
+            <div class='col-4'>
+                <p><b>Email Address</b></p>
+            </div>
+            <div class='col-8'>
+                <form method="post" action='<?php echo $_SERVER['PHP_SELF']; ?>'>
+                    <?php
+                        $email = $_SESSION['user'];
+                        print $email;
+                    ?>
+                </form>
+            </div>
+        </div>
+        <div class='row accountInfo'>
+            <div class='col-4'>
                 <p><b>Change Password</b></p>
+            </div>
+            <div class='col-8'>
+                <?php
+                    if(isset($_POST['changePasswordButton'])) {
+                        $password = $_POST['changePassword'];
+                        $password2 = $_POST['changePassword2'];
+                        
+                        if (empty($password) || empty($password2)) {
+                            print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Please fill in every form box!</p>";
+                        } else if ($password != $password2) {
+                            print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Please make sure your passwords are matching!</p>";
+                        } else {
+                            $email = $_SESSION['user'];
+                            $hash = password_hash($password, PASSWORD_DEFAULT);
+                            
+                            $sql_statement_password = 'UPDATE users SET password = "'.$hash.'" WHERE email = "'.$email.'";';
+                            $result_password = mysqli_query($db, $sql_statement_password);
+
+                            if ($result_password) {
+                                print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(0, 181, 0, 0.7);'>Password Changed.</p>";
+                            }
+                        }
+                    }
+                ?>
+                <form method="post" action='<?php echo $_SERVER['PHP_SELF']; ?>'>
+                    <input type="password" name='changePassword' class="form-control form-control-md" id="exampleInputPassword1" aria-describedby="userHelp" placeholder="New Password">
+                    <input type="password" name='changePassword2' class="form-control form-control-md" id="exampleInputPassword2" aria-describedby="userHelp" placeholder="Confirm Password">
+                    <button type="submit" class="btn-md btn-primary changeAccountButton" name='changePasswordButton'>Change Password</button>
+                </form>
+            </div>
+        </div>
+        <div class='row accountInfo'>
+            <div class='col-4'>
                 <p><b>Change Username</b></p>
+            </div>
+            <div class='col-8'>
+                <?php
+                    if(isset($_POST['changeUsernameButton'])) {
+                        $username = $_POST['changeUsername'];
+                        $username2 = $_POST['changeUsername2'];
+                        
+                        if (empty($username) || empty($username2)) {
+                            print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Please fill in every form box!</p>";
+                        } else if ($username != $username2) {
+                            print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Please make sure your usernames are matching!</p>";
+                        } else {
+                            
+                            $email = $_SESSION['user'];
+                            
+                            $sql_check_username = 'SELECT username FROM users WHERE username = "'.$username.'";';
+                            $result_check_username = mysqli_query($db, $sql_check_username);
+                            $numresults = mysqli_num_rows($result_check_username);
+
+                            if ($numresults == 0) {
+                                $sql_statement_username = 'UPDATE users SET username = "'.$username.'" WHERE email = "'.$email.'";';
+                                $result_username = mysqli_query($db, $sql_statement_username);
+
+                                if ($result_username) {
+                                    print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(0, 181, 0, 0.7);'>Username Changed.</p>";
+                                }
+                            } else {
+                                $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>This username already exists! Try a different one.</p>";
+                            }
+                        }
+                    }
+                ?>
+                <form method="post" action='<?php echo $_SERVER['PHP_SELF']; ?>'>
+                    <input type="text" name='changeUsername' class="form-control form-control-md" id="exampleInputUsername1" aria-describedby="userHelp" placeholder="New Username">
+                    <input type="text" name='changeUsername2' class="form-control form-control-md" id="exampleInputUsername2" aria-describedby="userHelp" placeholder="Confirm Username">
+                    <button type="submit" class="btn-md btn-primary changeAccountButton" name='changeUsernameButton'>Change Username</button>
+                </form>
+            </div>
+        </div>
+        <div class='row accountInfo'>
+            <div class='col-4'>
                 <p><b>Wallet</b></p>
             </div>
-            <div class='col-8'>   
-                
+            <div class='col-8'>
+                <?php
+                    $email = $_SESSION['user'];
+                            
+                    $sql_wallet = 'SELECT wallet FROM users WHERE email = "'.$email.'";';
+                    $result_wallet = mysqli_query($db, $sql_wallet);
+
+                    $data = $result_wallet->fetch_array();
+
+                    echo "<p class='wallet'><b>$".$data['wallet']."</b></p>";
+                ?>
             </div>
         </div>
         <div class='row dotsOuter'>
@@ -169,40 +317,3 @@
     </div>
 </body>
 </html>
-
-<?php
-    function doCheckLogin($db, $code, $hash) {
-        $sql_statement = 'SELECT email FROM resetPasswords WHERE code = "'.$code.'";';
-        $result = mysqli_query($db, $sql_statement);  // Run SELECT
-
-        if (!$result) {
-            print "<p style='color: red;'>MySQL No: ".mysqli_errno($db)."<br>";
-            print "MySQL Error: ".mysqli_error($db)."<br>";
-            print "<br>SQL: ".$sql_statement."<br>";
-        } else {
-            $numresults = mysqli_num_rows($result);
-            
-            if ($numresults == 0) //if no code in link = tell user cant find that page
-            {
-                print '<p style="color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);">Click the "forgot my password" link and check your email again.</p>';
-            } else { //if user exists = tell user to check their email
-
-                while ($row = mysqli_fetch_array($result)) {
-                    $email = $row['email'];
-                }
-
-                $sql_statement_password = 'UPDATE users SET password = "'.$hash.'" WHERE email = "'.$email.'";';
-                $result_password = mysqli_query($db, $sql_statement_password);
-
-                if ($result_password) {
-                    $sql_statement = 'DELETE FROM resetPasswords WHERE code = "'.$code.'";';
-                    $result = mysqli_query($db, $sql_statement);
-
-                    print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(0, 181, 0, 0.7);'>Password Changed.</p>";
-                } else {
-                    exit("Something went wrong.");
-                }
-            }
-        }
-    }
-?>

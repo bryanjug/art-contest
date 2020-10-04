@@ -1,4 +1,30 @@
 <?php header("Content-type: text/css"); ?>
+.changeAccountButton {
+    margin-top: 3%;
+}
+
+.accountInfo {
+    padding-bottom: 10%;
+}
+
+.wallet {
+    color: green;
+    text-align: right;
+}
+
+.counts {
+    font-size: 120%;
+}
+
+.userInfo {
+    line-height: 10%;
+    margin-top: 5%;
+}
+
+.accountCounts {
+    text-align: center;
+}
+
 .imageUpload{
     text-align: center;
     display: block;
@@ -15,10 +41,11 @@
 
 .accountHeader {
     background-image: url("images/accountBackground.jpg");
-    background-position: center;
+    background-position: top;
     background-size: 100%;
     background-repeat: no-repeat;
-    padding-top: 20%;
+    padding-top: 30%;
+    margin-bottom: 5%;
 }
 
 .welcomeMessage {
@@ -26,20 +53,14 @@
 }
 
 .custom-image-upload {
-    background-image: url("images/user.png");
-    width: 80px;
-    height: 80px;
-    background-position: center;
-    background-size: 100%;
-    background-repeat: no-repeat;
+    width: 120px;
+    height: 120px;
+    border-radius: 2050px;
     text-align: center;
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
-
-.custom-image-upload:hover {
-    background-image: url("images/userUpload.png");
+    margin-bottom: 5%;
 }
 
 #submitButton:hover, .custom-file-upload:hover {
@@ -60,14 +81,27 @@
     width: 50% !important;
 }
 
+.custom-file-upload input[type="file"] {
+    display: none;
+}
+
 .custom-file-upload {
     border: 1px solid #ccc;
-    display: inline-block;
-    padding: 2% 10% !important;
+    padding: 2% 6%;
     cursor: pointer;
     color: black !important;
     border-radius: 5px;
     background-color: rgb(244, 244, 244);
+    text-align: center;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .contestPhoto {
