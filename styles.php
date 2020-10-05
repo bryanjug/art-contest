@@ -12,6 +12,10 @@
     text-align: right;
 }
 
+.userEmail {
+    text-align: right;
+}
+
 .counts {
     font-size: 120%;
 }
@@ -598,6 +602,18 @@ table {
         top: 50% !important;
     }
 
+    .accountText {
+        color: rgb(160, 160, 160);
+        text-decoration: none !important;
+        display: inline-block;
+        margin-bottom: 10px !important;
+        margin-top: 5px !important;
+    }
+
+    .accountText:hover {
+        color: white;
+    }
+
     .logout:hover {
         text-decoration: none !important;
         color: white !important;
@@ -614,6 +630,13 @@ table {
 }
 
 @media (min-width: 768px) {
+    .navBreak {
+        display: none;
+    }
+    .accountText {
+        display: none;
+    }
+
     .container-fluid {
         width: 70% !important;
         background-color: white;
@@ -662,14 +685,14 @@ table {
 
     .account {
         position: relative !important; 
-        bottom: 13% !important; 
+        bottom: 10% !important; 
         color: rgb(160, 160, 160);
     }
 
     .account:hover {
         color: white;
     }
-    
+
 }
 
 @media (max-width: 850px) {
