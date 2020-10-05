@@ -65,9 +65,9 @@
         <div class='row curved'>
             <div class='col-6 welcome'>
                 <h1>Welcome to <span id='title'>The Art Contest!</span></h1>
-                <p class='welcomeMessage'>Want to earn money while showing off and practicing your skills? Compete with others now in a timed, online art competition. What are you waiting for? Sign up now below!</p>
+                <p class='homeMessage'>Want to earn money while showing off and practicing your skills? Compete with others in a timed, online art competition!</p>
                 <a href='contests.php'>
-                    <button type="button" class="btn btn-primary btn-md btn-block">Get Started</button>
+                    <button type="button" class="btn btn-primary btn-md btn-block getStarted">Get Started</button>
                 </a>
             </div>
             <div class='col-6 world m-auto'>

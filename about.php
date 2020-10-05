@@ -65,7 +65,7 @@
             <div class='col-12 col-sm-6 about'>
                 <p>Bryan Jug - Full Stack Developer</p>
                 <img src='images/bryanjug.png' class='img-fluid bryanjug'>
-                <p class='aboutInfo'>I do my best to use my skills to help others save money from their art. Programming is my passion and I hope to help the lives of others with it.</p>
+                <p class='aboutInfo'>I do my best to use my skills to help others save money with their art. Programming is my passion and I hope to help the lives of others with it.</p>
                 <section class='emailContainer'>
                     <img src='images/email.png' class='img-fluid email'>
                     <p class='emailText'>Email</p>

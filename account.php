@@ -200,7 +200,7 @@
                     }
                 ?>
                 <form method="post" action='<?php echo $_SERVER['PHP_SELF']; ?>'>
-                    <input type="password" name='changePassword' class="form-control form-control-md" id="exampleInputPassword1" aria-describedby="userHelp" placeholder="New Password">
+                    <input type="password" name='changePassword' class="form-control form-control-md mb-3" id="exampleInputPassword1" aria-describedby="userHelp" placeholder="New Password">
                     <input type="password" name='changePassword2' class="form-control form-control-md" id="exampleInputPassword2" aria-describedby="userHelp" placeholder="Confirm Password">
                     <button type="submit" class="btn-md btn-primary changeAccountButton" name='changePasswordButton'>Change Password</button>
                 </form>
@@ -242,7 +242,7 @@
                     }
                 ?>
                 <form method="post" action='<?php echo $_SERVER['PHP_SELF']; ?>'>
-                    <input type="text" name='changeUsername' class="form-control form-control-md" id="exampleInputUsername1" aria-describedby="userHelp" placeholder="New Username">
+                    <input type="text" name='changeUsername' class="form-control form-control-md mb-3" id="exampleInputUsername1" aria-describedby="userHelp" placeholder="New Username">
                     <input type="text" name='changeUsername2' class="form-control form-control-md" id="exampleInputUsername2" aria-describedby="userHelp" placeholder="Confirm Username">
                     <button type="submit" class="btn-md btn-primary changeAccountButton" name='changeUsernameButton'>Change Username</button>
                 </form>
@@ -276,7 +276,7 @@
                 <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-19.36,39.33 C129.98,-6.05 389.14,-24.80 520.73,111.35 L499.73,0.00 L0.00,0.00 Z" style="stroke: none; fill: #ffffff;"></path></svg>
             </div>
             <div class='col-12 col-sm-6'>
-                <p><b>Spread your artistic skills </b>for a chance at some real prizes!</p>
+                <p class="footerText"><b>Spread your artistic skills </b>for a chance at some real prizes!</p>
                 <a href='contests.php'>
                     <button type="button" class="btn btn-primary btn-sm btn-block">Get Started</button>
                 </a>

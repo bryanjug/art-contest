@@ -89,15 +89,13 @@
                 <p><b>Likes</b></p>
             </div>
         </div>
-
         <div class='row leaderboardsBottom leaderboards'>
             <div class='col-4'>
                 <div class='row'>
-                    <div class='col-6 placeHolder'>
-                        <p>1</p>
-                    </div>
-                    <div class='col-6 smallIconContainer'>
-                        <img src='images/first.png' class='smallIcon'>
+                    <div class='col-12'>
+                        <image src="images/first.png" class="placeHolderParent">
+                            <img src="images/1.png" class="placeHolder">
+                        </image>
                     </div>
                 </div>
             </div>
@@ -112,11 +110,10 @@
             </div>
             <div class='col-4'>
                 <div class='row'>
-                    <div class='col-6 placeHolder'>
-                        <p>2</p>
-                    </div>
-                    <div class='col-6 smallIconContainer'>
-                        <img src='images/second.png' class='smallIcon'>
+                    <div class='col-12'>
+                        <image src="images/second.png" class="placeHolderParent">
+                            <img src="images/2.png" class="placeHolder">
+                        </image>
                     </div>
                 </div>
             </div>
@@ -131,11 +128,10 @@
             </div>
             <div class='col-4'>
                 <div class='row'>
-                    <div class='col-6 placeHolder'>
-                        <p>3</p>
-                    </div>
-                    <div class='col-6 smallIconContainer'>
-                        <img src='images/third.png' class='smallIcon'>
+                    <div class='col-12'>
+                        <image src="images/third.png" class="placeHolderParent">
+                            <img src="images/3.png" class="placeHolder">
+                        </image>
                     </div>
                 </div>
             </div>
@@ -150,11 +146,10 @@
             </div>
             <div class='col-4'>
                 <div class='row'>
-                    <div class='col-6 placeHolder'>
-                        <p>4</p>
-                    </div>
-                    <div class='col-6 smallIconContainer'>
-                        <img src='images/fourth.png' class='smallIcon'>
+                    <div class='col-12'>
+                        <image src="images/fourth.png" class="placeHolderParent">
+                            <img src="images/4.png" class="placeHolder">
+                        </image>
                     </div>
                 </div>
             </div>
@@ -169,11 +164,10 @@
             </div>
             <div class='col-4'>
                 <div class='row'>
-                    <div class='col-6 placeHolder'>
-                        <p>5</p>
-                    </div>
-                    <div class='col-6 smallIconContainer'>
-                        <img src='images/fifth.png' class='smallIcon'>
+                    <div class='col-12'>
+                        <image src="images/fifth.png" class="placeHolderParent">
+                            <img src="images/5.png" class="placeHolder">
+                        </image>
                     </div>
                 </div>
             </div>
@@ -188,11 +182,10 @@
             </div>
             <div class='col-4'>
                 <div class='row'>
-                    <div class='col-6 placeHolder'>
-                        <p>6</p>
-                    </div>
-                    <div class='col-6 smallIconContainer'>
-                        <img src='images/sixth.png' class='smallIcon'>
+                    <div class='col-12'>
+                        <image src="images/sixth.png" class="placeHolderParent">
+                            <img src="images/6.png" class="placeHolder">
+                        </image>
                     </div>
                 </div>
             </div>
@@ -207,11 +200,10 @@
             </div>
             <div class='col-4'>
                 <div class='row'>
-                    <div class='col-6 placeHolder'>
-                        <p>7</p>
-                    </div>
-                    <div class='col-6 smallIconContainer'>
-                        <img src='images/seventh.png' class='smallIcon'>
+                    <div class='col-12'>
+                        <image src="images/seventh.png" class="placeHolderParent">
+                            <img src="images/7.png" class="placeHolder">
+                        </image>
                     </div>
                 </div>
             </div>
@@ -226,11 +218,10 @@
             </div>
             <div class='col-4'>
                 <div class='row'>
-                    <div class='col-6 placeHolder'>
-                        <p>8</p>
-                    </div>
-                    <div class='col-6 smallIconContainer'>
-                        <img src='images/eighth.png' class='smallIcon'>
+                    <div class='col-12'>
+                        <image src="images/eighth.png" class="placeHolderParent">
+                            <img src="images/8.png" class="placeHolder">
+                        </image>
                     </div>
                 </div>
             </div>
@@ -245,11 +236,10 @@
             </div>
             <div class='col-4'>
                 <div class='row'>
-                    <div class='col-6 placeHolder'>
-                        <p>9</p>
-                    </div>
-                    <div class='col-6 smallIconContainer'>
-                        <img src='images/nineth.png' class='smallIcon'>
+                    <div class='col-12'>
+                        <image src="images/nineth.png" class="placeHolderParent">
+                            <img src="images/9.png" class="placeHolder">
+                        </image>
                     </div>
                 </div>
             </div>
@@ -264,11 +254,10 @@
             </div>
             <div class='col-4'>
                 <div class='row'>
-                    <div class='col-6 placeHolder'>
-                        <p>10</p>
-                    </div>
-                    <div class='col-6 smallIconContainer'>
-                        <img src='images/tenth.png' class='smallIcon'>
+                    <div class='col-12'>
+                        <image src="images/tenth.png" class="placeHolderParent">
+                            <img src="images/10.png" class="placeHolder">
+                        </image>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,8 @@
 <?php header("Content-type: text/css"); ?>
+.homeMessage {
+    margin-bottom: 5% !important;
+}
+
 .changeAccountButton {
     margin-top: 3%;
 }
@@ -116,6 +120,10 @@
     padding-left: 10% !important;
 }
 
+.getStarted {
+    margin-left: 10% !important;
+}
+
 .forgotLink {
     text-align: left;
     margin-left: 2%;
@@ -179,7 +187,7 @@
 
 .bryanjug {
     border-radius: 50%;
-    box-shadow: 5px 5px 50px black;
+    box-shadow: 4px 4px 40px black;
     width: 45%;
     display: block;
     margin: auto;
@@ -198,39 +206,33 @@
     margin-top: -8%;
 }
 
-.placeHolder p {
-    font-size: 75%;
-    color: white;
+.placeHolderParent {
+    z-index: 1 !important;
+    width: 50px !important;
+    height: 50px !important;
     border-radius: 50%;
-    width: 20px;
-    height: 20px; 
-    background-color: #007CFF;
+    position: absolute !important;
 }
 
 .placeHolder {
-    left: 28%;
-    margin-top: 18%;
-    z-index: 5;
-}
-
-.smallIconContainer {
-    right: 20%;
-}
-
-.smallIcon {
-    border: solid 2px #b8bef9;
-    border-radius: 50%;
-    width: 150% !important;
+    z-index: 5 !important;
+    margin-right: 40px !important;
+    margin-top: 35px !important;
+    width: 20px !important;
+    height: 20px !important;
+    position: relative !important;
 }
 
 .leaderboardsBottom {
     text-align: center;
     color: gray;
-    padding-top: 5%;
+    padding-top: 4%;
+    
 }
 
 .leaderboardsBottom p {
-    margin-top: 12%;
+    margin-top: 10%;
+    margin-bottom: 5%;
 }
 
 .leaderboardsMiddle {
@@ -522,11 +524,6 @@ table {
 }
 
 @media (min-width: 425px) {
-    
-    .smallIcon {
-        width: 120% !important;
-    }
-
     .shop {
         font-size: 110% !important;
     }
@@ -659,10 +656,6 @@ table {
         background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(2,2,22,0.9) 48%, rgba(0,0,0,0.9) 100%);
     }
 
-    .smallIcon {
-        width: 100% !important;
-    }
-
     .shop {
         font-size: 120% !important;
     }
@@ -702,10 +695,6 @@ table {
 }
 
 @media (min-width: 991px) {
-
-    h1, p, h3, h2, h4, td, tr {
-        font-size: 110%;
-    }
         
     .heart {
         width: 27px;
@@ -718,21 +707,24 @@ table {
 }
 
 @media (min-width: 1024px) {
-    .placeHolder p {
-        font-size: 90%;
-        color: white;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px; 
-        background-color: #007CFF;
+    .placeHolderParent {
+        width: 80px !important;
+        height: 80px !important;
+    }   
+
+    .placeHolder {
+        width: 25px !important;
+        height: 25px !important;
+        margin-top: 55px !important;
+    }
+    
+    .nav-item {
+        margin-left: 10px !important;
+        margin-right: 10px !important;
     }
 
     .contests, .date, .currentContest {
         font-size: 120% !important;
-    }
-
-    .smallIcon {
-        width: 90% !important;
     }
 
     .leaderboards {
@@ -767,10 +759,6 @@ table {
     .login input, .login label, .login small, .login button, .login p {
         font-size: 130% !important;
     }
-
-    .login input[type=checkbox] {
-        zoom: 1.3;
-    }
 }
 
 @media (min-width: 1128px) {
@@ -780,9 +768,6 @@ table {
 }
 
 @media (min-width: 1200px) {
-    h1, p, h3, h2, h4, td, li, tr {
-        font-size: 120%;
-    }
 
     .heart {
         width: 35px;
@@ -800,8 +785,44 @@ table {
 }
 
 @media (min-width: 1440px) {
-    .login input[type=checkbox] {
-        zoom: 1.5;
+    
+    .placeHolderParent {
+        width: 100px !important;
+        height: 100px !important;
+    }   
+
+    .placeHolder {
+        width: 35px !important;
+        height: 35px !important;
+        margin-top: 70px !important;
+    }
+    
+    .nav-item {
+        font-size: 120% !important;
+        margin-left: 20px !important;
+        margin-right: 20px !important;
+    }
+
+    .custom-image-upload {
+        width: 250px;
+        height: 250px;
+    }
+
+    .welcomeMessage {
+        font-size: 150% !important;
+    }
+    
+    .accountHeader {
+        font-size: 150% !important;
+        padding-top: 15%;
+    }
+
+    .accountInfo, .accountInfo input {
+        font-size: 130% !important;
+    }
+
+    .accountCounts {
+        line-height: 45%;
     }
 
     .welcome, .jumbotron, .tryItNow {
@@ -816,13 +837,8 @@ table {
         font-size: 120% !important;
     }
 
-    .placeHolder p {
-        font-size: 100%;
-        color: white;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px; 
-        background-color: #007CFF;
+    .footer p {
+        font-size: 120% !important;
     }
 
     .contests, .date, .currentContest {
@@ -856,7 +872,7 @@ table {
         display: inline-block;
     }
     .leaderboards {
-        font-size: 150% !important;    
+        font-size: 180% !important;    
     }
 
     .shopItem {
@@ -903,9 +919,6 @@ table {
 }
 
 @media (min-width: 1500px) {
-    h1, p, h3, h2, h4, td {
-        font-size: 140%;
-    }
     .heart {
         width: 40px;
     }
@@ -917,9 +930,6 @@ table {
 }
 
 @media (min-width: 1800px) {
-    h1, p, h3, h2, h4, td {
-        font-size: 160%;
-    }
     .heart {
         width: 45px;
     }
@@ -931,9 +941,6 @@ table {
 }
 
 @media (min-width: 2100px) {
-    h1, p, h3, h2, h4, td {
-        font-size: 180%;
-    }
     .heart {
         width: 50px;
     }
@@ -945,10 +952,6 @@ table {
 }
 
 @media (min-width: 2500px) {
-    h1, p, h3, h2, h4, td {
-        font-size: 230%;
-    }
-
     .heart {
         width: 55px;
     }
@@ -960,16 +963,63 @@ table {
 }
 
 @media (min-width: 2560px) {
-    .login input[type=checkbox] {
-        zoom: 2.5;
+    .tryItNow p {
+        font-size: 200% !important;
+    }
+    
+    .placeHolderParent {
+        width: 150px !important;
+        height: 150px !important;
+    }   
+
+    .placeHolder {
+        width: 55px !important;
+        height: 55px !important;
+        margin-top: 100px !important;
+    }
+    
+    .nav-item {
+        font-size: 120% !important;
+        margin-left: 50px !important;
+        margin-right: 50px !important;
+    }
+    
+    .custom-image-upload {
+        width: 350px;
+        height: 350px;
+    }
+    
+    .accountHeader {
+        font-size: 250% !important;
+        padding-top: 15%;
+    }
+
+    .accountInfo, .welcomeMessage {
+        font-size: 250% !important;
+    }
+
+    .accountInfo input, .accountInfo button {
+        font-size: 120% !important;
+    }
+
+    .accountCounts {
+        line-height: 55%;
     }
 
     .jumbotron h3 {
-        font-size: 280% !important;
+        font-size: 250% !important;
+    }
+
+    .jumbotron p {
+        font-size: 180% !important;
     }
 
     .welcome h1 {
         font-size: 500% !important;
+    }
+
+    .welcome p {
+        font-size: 200% !important;
     }
 
     .navbar, button {
@@ -981,21 +1031,15 @@ table {
     }
 
     .footer li, .footer ul{
-        font-size: 150% !important;
+        font-size: 140% !important;
     }
 
-    .placeHolder p {
-        font-size: 170%;
-        color: white;
-        border-radius: 50%;
-        width: 75px;
-        height: 75px; 
-        background-color: #007CFF;
-        padding-top: 2% !important;
+    .contests p {
+        font-size: 200% !important;
     }
 
-    .contests, .date, .currentContest {
-        font-size: 150% !important;
+    .footer p {
+        font-size: 180% !important;
     }
 
     .date {
@@ -1029,40 +1073,33 @@ table {
         display: inline-block;
     }
 
-    .smallIcon {
-        width: 80% !important;
-    }
-
     .leaderboards {
-        font-size: 150% !important;    
-    }
-
-    .leaderboardsTitle, .first h3 {
-        font-size: 400% !important;
+        font-size: 300% !important;    
     }
 
     .score {
         line-height: 80%;
     }
     .shop h4 {
-        font-size: 230% !important;
+        font-size: 220% !important;
     }
 
-    .shopItem {
-        font-size: 100% !important;
+    .shop p {
+        font-size: 200% !important;
     }
 
     .shop form {
         font-size: 200% !important;
     }
 
-    .aboutBottom h4 {
-        font-size: 300% !important;
+    .aboutBottom {
+        font-size: 250% !important;
     }
 
     .about {
         background-size: 650% !important;
         padding-top: 25% !important;
+        font-size: 250% !important;
     }
 
     .emailContainer {
@@ -1084,4 +1121,10 @@ table {
     .login input, .login label, .login small, .login button, .login p {
         font-size: 280% !important;
     }
+
+    .navbar {
+        padding-top: 20px !important;
+        padding-bottom: 30px !important;
+    }
+
 }
