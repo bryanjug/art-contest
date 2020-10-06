@@ -61,19 +61,68 @@
                 </nav>
             </div>
         </div>
+        <?php
+            //**********************************************
+            //*
+            //*  Detect Server
+            //*
+            //**********************************************
+            $server = $_SERVER['SERVER_NAME'];
+
+            $server = 'localhost';
+
+            //**********************************************
+            //*
+            //*  Connect to MySQL and Database
+            //*  
+            //**********************************************
+
+            $db = mysqli_connect('localhost','root','', 'artContest');
+
+            if (!$db)
+            {
+                print "<h1 style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Unable to Connect to MySQL</h1>";
+            }
+        ?>
         <div class='row mt-5 pt-5 contests'>
             <div class='col-12'>
                 <h5 class='text-center pb-3 date currentContest'><b>Current Contest Ends:</b></h5>
-                <h4 class='text-center pb-3 date'><b>11/1/2020</b></h4>
-                <p class='text-center pb-3'>Your goal here is to recreate the image below in any style you choose and upload it by the date indicated at the top of the page. <b>Whoever ends up with the most likes will win the most points!</b></p>
+                <h4 class='text-center pb-3 date'><b>
+                    <?php
+                        print date("m/d/Y", strtotime('-1 second',strtotime('+1 month',strtotime(date('m').'/01/'.date('Y').' 00:00:00'))));
+                    ?>
+                </b></h4>
+                <p class='text-center pb-3'>Your goal here is to recreate the image below in any style you choose and upload it by the date indicated at the top of the page. At the end of each month, the contest image will change and so will the contest date. <b>Whoever ends up with the most likes will win the most points!</b></p>
                 <img src='images/contestphoto.png' class="img-fluid contestPhoto">
             </div>
         </div>
         <div class='row pt-5 contests'>
             <div class='col-12 col-sm-5 upload'>
-                <img src='images/user.png' class="img-fluid user">
+                <img src='
+                    <?php
+
+                        if (isset($_SESSION['user'])) {
+                            $email = $_SESSION['user'];
+
+                            $sql = 'SELECT profileImage FROM users WHERE email =  "'.$email.'";';
+                            $result = mysqli_query($db, $sql);
+
+                            while ($row = mysqli_fetch_array($result)) {
+                                $profileImage = $row['profileImage'];
+                            }
+
+                            if ($profileImage != '') {
+                                echo "profileImages/$email.png";
+                            } else {
+                                echo "profileImages/user.png";
+                            }
+                        } else {
+                            echo "profileImages/user.png";
+                        }
+                    ?>
+                ' class="img-fluid userImage">
                 <form action="#" class='uploadButtons'>
-                    <label class="custom-file-upload">
+                    <label class="contestUpload">
                         <input type="file"/>
                         Upload
                     </label>
@@ -84,46 +133,22 @@
             <div class='col-12 col-sm-7'>
                 <img src='images/contestphoto.png' class="img-fluid">
                 <div class='row'>
-                    <div class='col-6'>
-                        <div class='row'>
-                            <div class='col-3'>
-                                <img class='heart' src='images/unliked.png' class="img-fluid">
-                            </div>
-                            <div class='col-3 likes'>
-                                <p>263</p>
-                            </div>
-                            <div class='col-3'>
-                                <img class='comment' src='images/chat.png' class="img-fluid">
-                            </div>
-                            <div class='col-3 comments'>
-                                <p>43</p>
-                            </div>
-                        </div>
+                    <div class='col-4'>
+                        <img class='heart' src='images/unliked.png' class="img-fluid">
+                        <p class='likes'>263</p>
                     </div>
-                    <div class='col-6'>
-                        <p class='user text-right'>ManTheBob</p>
+                    <div class='col-8'>
+                        <p class='contestUser'>ManTheBob</p>
                     </div>
                 </div>
                 <img src='images/contestphoto.png' class="img-fluid mt-5">
                 <div class='row'>
-                    <div class='col-6'>
-                        <div class='row'>
-                            <div class='col-3'>
-                                <img class='heart' src='images/unliked.png' class="img-fluid">
-                            </div>
-                            <div class='col-3 likes'>
-                                <p>111</p>
-                            </div>
-                            <div class='col-3'>
-                                <img class='comment' src='images/chat.png' class="img-fluid">
-                            </div>
-                            <div class='col-3 comments'>
-                                <p>25</p>
-                            </div>
-                        </div>
+                    <div class='col-4'>
+                        <img class='heart' src='images/unliked.png' class="img-fluid">
+                        <p class='likes'>100</p>
                     </div>
-                    <div class='col-6'>
-                        <p class='user text-right'>RamenBossFloss</p>
+                    <div class='col-8'>
+                        <p class='contestUser'>RamenBoss</p>
                     </div>
                 </div>
             </div>

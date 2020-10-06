@@ -1,4 +1,8 @@
 <?php header("Content-type: text/css"); ?>
+.contestUser {
+    text-align: right;
+}
+
 .homeMessage {
     margin-bottom: 5% !important;
 }
@@ -13,7 +17,7 @@
 
 .wallet {
     color: green;
-    text-align: right;
+    text-align: center;
 }
 
 .userEmail {
@@ -75,6 +79,10 @@
     background-color: white;
 }
 
+.contestUpload {
+    background-color: white;
+}
+
 #submitButton {
     border: 1px solid #ccc !important;
     display: inline-block !important;
@@ -85,17 +93,37 @@
     background-color: rgb(244, 244, 244);
 }
 
-.user {
-    width: 50% !important;
+.userImage {
+    width: 150px !important;
+    height: 150px !important;
+    border-radius: 150px !important;
 }
 
 .custom-file-upload input[type="file"] {
     display: none;
 }
 
+.contestUpload input[type="file"] {
+    display: none;
+}
+
 .custom-file-upload {
     border: 1px solid #ccc;
     padding: 2% 6%;
+    cursor: pointer;
+    color: black !important;
+    border-radius: 5px;
+    background-color: rgb(244, 244, 244);
+    text-align: center;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.contestUpload {
+    border: 1px solid #ccc;
+    padding: 2% 9%;
     cursor: pointer;
     color: black !important;
     border-radius: 5px;
@@ -456,21 +484,13 @@ body {
 }
 
 .heart {
-    width: 21px;
+    width: 30px;
+    float: left;
 }
 
 .likes {
-    margin-left: -10%;
-    margin-top: 2%;
-}
-
-.comment {
-    width: 23px;
-}
-
-.comments {
-    margin-left: -8%;
-    margin-top: 2%;
+    display: inline;
+    margin-left: -10px;
 }
 
 td {
@@ -699,17 +719,6 @@ table {
     }
 }
 
-@media (min-width: 991px) {
-        
-    .heart {
-        width: 27px;
-    }
-
-    .comment {
-        width: 29px;
-    }
-
-}
 
 @media (min-width: 1024px) {
     .placeHolderParent {
@@ -769,17 +778,6 @@ table {
 @media (min-width: 1128px) {
     .welcome {
         margin-top: 5%;
-    }
-}
-
-@media (min-width: 1200px) {
-
-    .heart {
-        width: 35px;
-    }
-
-    .comment {
-        width: 38px;
     }
 }
 
@@ -854,10 +852,6 @@ table {
         margin-top: 5% !important;
     }
 
-    .heart, .comment {
-        margin-top: 20% !important;
-    }
-
     .dotSmall {
         height: 100px;
         width: 100px;
@@ -920,50 +914,6 @@ table {
 
     .login input, .login label, .login small, .login button, .login p {
         font-size: 150% !important;
-    }
-}
-
-@media (min-width: 1500px) {
-    .heart {
-        width: 40px;
-    }
-
-    .comment {
-        width: 45px;
-        margin-top: 3%;
-    }
-}
-
-@media (min-width: 1800px) {
-    .heart {
-        width: 45px;
-    }
-
-    .comment {
-        width: 50px;
-        margin-top: 3%;
-    }
-}
-
-@media (min-width: 2100px) {
-    .heart {
-        width: 50px;
-    }
-
-    .comment {
-        width: 55px;
-        margin-top: 3%;
-    }
-}
-
-@media (min-width: 2500px) {
-    .heart {
-        width: 55px;
-    }
-
-    .comment {
-        width: 60px;
-        margin-top: 3%;
     }
 }
 
@@ -1053,10 +1003,6 @@ table {
 
     .currentContest, .upload {
         font-size: 220% !important;
-    }
-    .heart, .comment {
-        width: 70% !important;
-        margin-top: 15% !important;
     }
 
     .dotSmall {

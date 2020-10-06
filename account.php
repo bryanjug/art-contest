@@ -146,15 +146,15 @@
                     <div class='col-4 userInfo'>
                         <?php
                             $email = $_SESSION['user'];
-                            
-                            $sql_comments = 'SELECT comments FROM users WHERE email =  "'.$email.'";';
-                            $result_comments = mysqli_query($db, $sql_comments);
+                                    
+                            $sql_wallet = 'SELECT wallet FROM users WHERE email = "'.$email.'";';
+                            $result_wallet = mysqli_query($db, $sql_wallet);
 
-                            $data = $result_comments->fetch_array();
+                            $data = $result_wallet->fetch_array();
 
-                            echo "<p class='accountCounts counts'><b>".$data['comments']."</b></p>";
+                            echo "<p class='wallet'><b>$".$data['wallet']."</b></p>";
                         ?>
-                        <p class='accountCounts'>Comments</p>
+                        <p class='accountCounts'>Wallet</p>
                     </div>
                 </div>
             </div>
@@ -246,23 +246,6 @@
                     <input type="text" name='changeUsername2' class="form-control form-control-md" id="exampleInputUsername2" aria-describedby="userHelp" placeholder="Confirm Username">
                     <button type="submit" class="btn-md btn-primary changeAccountButton" name='changeUsernameButton'>Change Username</button>
                 </form>
-            </div>
-        </div>
-        <div class='row accountInfo'>
-            <div class='col-4'>
-                <p><b>Wallet</b></p>
-            </div>
-            <div class='col-8'>
-                <?php
-                    $email = $_SESSION['user'];
-                            
-                    $sql_wallet = 'SELECT wallet FROM users WHERE email = "'.$email.'";';
-                    $result_wallet = mysqli_query($db, $sql_wallet);
-
-                    $data = $result_wallet->fetch_array();
-
-                    echo "<p class='wallet'><b>$".$data['wallet']."</b></p>";
-                ?>
             </div>
         </div>
         <div class='row dotsOuter'>
