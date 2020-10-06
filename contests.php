@@ -121,13 +121,12 @@
                         }
                     ?>
                 ' class="img-fluid userImage">
-                <form action="#" class='uploadButtons'>
+                <form method="post" action="contestImages/contestImages.php" class='uploadButtons' enctype="multipart/form-data">
                     <label class="contestUpload">
                         <input type="file"/>
                         Upload
                     </label>
                     <input type="submit" id='submitButton'>
-                    
                 </form>
             </div>
             <div class='col-12 col-sm-7'>
