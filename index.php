@@ -123,9 +123,9 @@
         <div class='jumbotron mt-5'>
             <div class='row'>
                 <div class='col-12 col-sm-12 col-md-6'>
-                    <h3 class='text-center'>Connect with others to get help</h3>
+                    <h3 class='text-center'>Connect with our team to get help</h3>
                     <p class='text-center mb-5 pb-3'>
-                        If you have any specific questions or want to find the FAQ (frequently asked questions), please navigate to the 'help' tab at the top or bottom of the page.
+                        If you have any specific questions or need technical help, please navigate to the 'about' tab at the top or bottom of the page in order to email us directly.
                     </p>
                 </div>
                 <div class='col-12 col-sm-12 col-md-6 m-auto'>

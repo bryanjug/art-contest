@@ -294,7 +294,12 @@ th {
 .firstImage {
     border: solid 4px #293b7c;
     border-radius: 100%;
-    width: 150% !important;
+    width: 100px !important;
+    height: 100px !important;
+    text-align: center !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .score {
@@ -323,8 +328,8 @@ th {
 }
 
 .curved {
-    background: rgb(117,197,255);
-background: linear-gradient(185deg, rgba(117,197,255,1) 0%, rgba(82,198,222,1) 27%, rgba(111,190,255,1) 54%, rgba(64,120,255,1) 87%, rgba(0,139,255,1) 100%);
+    background: rgb(0,95,205);
+background: linear-gradient(0deg, rgba(0,95,205,1) 0%, rgba(6,121,251,1) 8%, rgba(54,144,218,1) 35%, rgba(0,181,228,1) 66%, rgba(141,236,255,1) 100%);
     color: white;
     padding-top: 25%;
 }
@@ -419,7 +424,7 @@ body {
 }
 
 .homeInfoImage4 {
-    box-shadow: 16px -35px rgb(0, 19, 38);
+    box-shadow: 16px -35px rgb(35, 0, 142);
 }
 
 .dotSmall {

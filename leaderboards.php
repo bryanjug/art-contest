@@ -61,19 +61,67 @@
                 </nav>
             </div>
         </div>
+        <?php
+            //**********************************************
+            //*
+            //*  Detect Server
+            //*
+            //**********************************************
+            $server = $_SERVER['SERVER_NAME'];
 
+            $server = 'localhost';
+
+            //**********************************************
+            //*
+            //*  Connect to MySQL and Database
+            //*  
+            //**********************************************
+
+            $db = mysqli_connect('localhost','root','', 'artContest');
+
+            if (!$db)
+            {
+                print "<h1 style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Unable to Connect to MySQL</h1>";
+            }
+        ?>
         <div class='row leaderboardsTop leaderboards'>
             <div class='col-12'>
                 <h4 class='text-center mb-3 leaderboardsTitle'>Leaderboards</h4>
             </div>
-            <div class='col-4 topInfo first'>
+            <div class='col-3 topInfo first'>
                 <h3>1<span id='st'>st</span></h3>
             </div>
-            <div class='col-4'>
-                <img class='img-fluid firstImage' src='images/first.png'>
+            <div class='col-6'>
+                <img class='img-fluid firstImage' src='
+                    <?php
+                        $sql_first = 'SELECT profileImage FROM users ORDER BY likes DESC LIMIT 1;';
+                        $result_first = mysqli_query($db, $sql_first);
+
+                        while ($row = mysqli_fetch_array($result_first)) {
+                            $profileImage = $row['profileImage'];
+                        }
+
+                        if ($profileImage != '') {
+                            echo "profileImages/$profileImage";
+                        } else {
+                            echo "profileImages/user.png";
+                        }
+                    ?>
+                '>
             </div>
-            <div class='col-4 topInfo total'>
-                <p class='score'><b>1255</b></p>
+            <div class='col-3 topInfo total'>
+                <p class='score'><b>
+                    <?php
+                        $sql_top_likes = 'SELECT likes FROM users ORDER BY likes DESC LIMIT 1;';
+                        $result_top_likes = mysqli_query($db, $sql_top_likes);
+
+                        while ($row = mysqli_fetch_array($result_top_likes)) {
+                            $likes = $row['likes'];
+                        }
+
+                        echo $likes;
+                    ?>
+                </b></p>
                 <p class='score'>Likes</p>
             </div>
         </div>
@@ -93,17 +141,47 @@
             <div class='col-4'>
                 <div class='row'>
                     <div class='col-12'>
-                        <image src="images/first.png" class="placeHolderParent">
+                        <image src="
+                            <?php
+                                $sql_1 = 'SELECT profileImage FROM users ORDER BY likes DESC LIMIT 1;';
+                                $result_1 = mysqli_query($db, $sql_1);
+
+                                while ($row = mysqli_fetch_array($result_1)) {
+                                    $profileImage_1 = $row['profileImage'];
+                                }
+
+                                if ($profileImage_1 != '') {
+                                    echo "profileImages/$profileImage_1";
+                                } else {
+                                    echo "profileImages/user.png";
+                                }
+                            ?>
+                        " class="placeHolderParent">
                             <img src="images/1.png" class="placeHolder">
                         </image>
                     </div>
                 </div>
             </div>
             <div class='col-4'>
-                <p>MaryLovely</p>
+                <p>
+                    <?php
+                        $username_1_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 1;';
+                        $username_1_result = mysqli_query($db, $username_1_sql);
+
+                        while ($row = mysqli_fetch_array($username_1_result)) {
+                            $username_1 = $row['username'];
+                        }
+
+                        echo $username_1;
+                    ?>
+                </p>
             </div>
             <div class='col-4'>
-                <p>1255</p>
+                <p>
+                    <?php
+                        echo $likes;
+                    ?>
+                </p>
             </div>
             <div class='col-12'>
                 <img src='images/divider.png' class='img-fluid divider'>
@@ -111,17 +189,54 @@
             <div class='col-4'>
                 <div class='row'>
                     <div class='col-12'>
-                        <image src="images/second.png" class="placeHolderParent">
+                        <image src="
+                            <?php
+                                $sql_2 = 'SELECT profileImage FROM users ORDER BY likes DESC LIMIT 2;';
+                                $result_2 = mysqli_query($db, $sql_2);
+
+                                while ($row = mysqli_fetch_array($result_2)) {
+                                    $profileImage_2 = $row['profileImage'];
+                                }
+
+                                if ($profileImage_2 != '') {
+                                    echo "profileImages/$profileImage_2";
+                                } else {
+                                    echo "profileImages/user.png";
+                                }
+                            ?>
+                        " class="placeHolderParent">
                             <img src="images/2.png" class="placeHolder">
                         </image>
                     </div>
                 </div>
             </div>
             <div class='col-4'>
-                <p>ChelseaArts</p>
+                <p>
+                    <?php
+                        $username_2_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 2;';
+                        $username_2_result = mysqli_query($db, $username_2_sql);
+
+                        while ($row = mysqli_fetch_array($username_2_result)) {
+                            $username_2 = $row['username'];
+                        }
+
+                        echo $username_2;
+                    ?>
+                </p>
             </div>
             <div class='col-4'>
-                <p>1102</p>
+                <p>
+                    <?php
+                        $sql_likes_2 = 'SELECT likes FROM users ORDER BY likes DESC LIMIT 2;';
+                        $result_likes_2 = mysqli_query($db, $sql_likes_2);
+
+                        while ($row = mysqli_fetch_array($result_likes_2)) {
+                            $likes_2 = $row['likes'];
+                        }
+
+                        echo $likes_2;
+                    ?>
+                </p>
             </div>
             <div class='col-12'>
                 <img src='images/divider.png' class='img-fluid divider'>
@@ -129,17 +244,54 @@
             <div class='col-4'>
                 <div class='row'>
                     <div class='col-12'>
-                        <image src="images/third.png" class="placeHolderParent">
+                        <image src="
+                            <?php
+                                $sql_3 = 'SELECT profileImage FROM users ORDER BY likes DESC LIMIT 3;';
+                                $result_3 = mysqli_query($db, $sql_3);
+
+                                while ($row = mysqli_fetch_array($result_3)) {
+                                    $profileImage_3 = $row['profileImage'];
+                                }
+
+                                if ($profileImage_3 != '') {
+                                    echo "profileImages/$profileImage_3";
+                                } else {
+                                    echo "profileImages/user.png";
+                                }
+                            ?>
+                        " class="placeHolderParent">
                             <img src="images/3.png" class="placeHolder">
                         </image>
                     </div>
                 </div>
             </div>
             <div class='col-4'>
-                <p>BobRoss</p>
+                <p>
+                    <?php
+                        $username_3_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 3;';
+                        $username_3_result = mysqli_query($db, $username_3_sql);
+
+                        while ($row = mysqli_fetch_array($username_3_result)) {
+                            $username_3 = $row['username'];
+                        }
+
+                        echo $username_3;
+                    ?>
+                </p>
             </div>
             <div class='col-4'>
-                <p>1007</p>
+                <p>
+                    <?php
+                        $sql_likes_3 = 'SELECT likes FROM users ORDER BY likes DESC LIMIT 3;';
+                        $result_likes_3 = mysqli_query($db, $sql_likes_3);
+
+                        while ($row = mysqli_fetch_array($result_likes_3)) {
+                            $likes_3 = $row['likes'];
+                        }
+
+                        echo $likes_3;
+                    ?>
+                </p>
             </div>
             <div class='col-12'>
                 <img src='images/divider.png' class='img-fluid divider'>
@@ -147,17 +299,54 @@
             <div class='col-4'>
                 <div class='row'>
                     <div class='col-12'>
-                        <image src="images/fourth.png" class="placeHolderParent">
+                        <image src="
+                            <?php
+                                $sql_4 = 'SELECT profileImage FROM users ORDER BY likes DESC LIMIT 4;';
+                                $result_4 = mysqli_query($db, $sql_4);
+
+                                while ($row = mysqli_fetch_array($result_4)) {
+                                    $profileImage_4 = $row['profileImage'];
+                                }
+
+                                if ($profileImage_4 != '') {
+                                    echo "profileImages/$profileImage_4";
+                                } else {
+                                    echo "profileImages/user.png";
+                                }
+                            ?>
+                        " class="placeHolderParent">
                             <img src="images/4.png" class="placeHolder">
                         </image>
                     </div>
                 </div>
             </div>
             <div class='col-4'>
-                <p>ApostrophePe</p>
+                <p>
+                    <?php
+                        $username_4_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 4;';
+                        $username_4_result = mysqli_query($db, $username_4_sql);
+
+                        while ($row = mysqli_fetch_array($username_4_result)) {
+                            $username_4 = $row['username'];
+                        }
+
+                        echo $username_4;
+                    ?>
+                </p>
             </div>
             <div class='col-4'>
-                <p>994</p>
+                <p>
+                    <?php
+                        $sql_likes_4 = 'SELECT likes FROM users ORDER BY likes DESC LIMIT 4;';
+                        $result_likes_4 = mysqli_query($db, $sql_likes_4);
+
+                        while ($row = mysqli_fetch_array($result_likes_4)) {
+                            $likes_4 = $row['likes'];
+                        }
+
+                        echo $likes_4;
+                    ?>
+                </p>
             </div>
             <div class='col-12'>
                 <img src='images/divider.png' class='img-fluid divider'>
@@ -165,17 +354,54 @@
             <div class='col-4'>
                 <div class='row'>
                     <div class='col-12'>
-                        <image src="images/fifth.png" class="placeHolderParent">
+                        <image src="
+                            <?php
+                                $sql_5 = 'SELECT profileImage FROM users ORDER BY likes DESC LIMIT 5;';
+                                $result_5 = mysqli_query($db, $sql_5);
+
+                                while ($row = mysqli_fetch_array($result_5)) {
+                                    $profileImage_5 = $row['profileImage'];
+                                }
+
+                                if ($profileImage_5 != '') {
+                                    echo "profileImages/$profileImage_5";
+                                } else {
+                                    echo "profileImages/user.png";
+                                }
+                            ?>
+                        " class="placeHolderParent">
                             <img src="images/5.png" class="placeHolder">
                         </image>
                     </div>
                 </div>
             </div>
             <div class='col-4'>
-                <p>CantGrowMore</p>
+                <p>
+                    <?php
+                        $username_5_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 5;';
+                        $username_5_result = mysqli_query($db, $username_5_sql);
+
+                        while ($row = mysqli_fetch_array($username_5_result)) {
+                            $username_5 = $row['username'];
+                        }
+
+                        echo $username_5;
+                    ?>
+                </p>
             </div>
             <div class='col-4'>
-                <p>885</p>
+                <p>
+                    <?php
+                        $sql_likes_5 = 'SELECT likes FROM users ORDER BY likes DESC LIMIT 5;';
+                        $result_likes_5 = mysqli_query($db, $sql_likes_5);
+
+                        while ($row = mysqli_fetch_array($result_likes_5)) {
+                            $likes_5 = $row['likes'];
+                        }
+
+                        echo $likes_5;
+                    ?>
+                </p>
             </div>
             <div class='col-12'>
                 <img src='images/divider.png' class='img-fluid divider'>
@@ -183,17 +409,54 @@
             <div class='col-4'>
                 <div class='row'>
                     <div class='col-12'>
-                        <image src="images/sixth.png" class="placeHolderParent">
+                        <image src="
+                            <?php
+                                $sql_6 = 'SELECT profileImage FROM users ORDER BY likes DESC LIMIT 6;';
+                                $result_6 = mysqli_query($db, $sql_6);
+
+                                while ($row = mysqli_fetch_array($result_6)) {
+                                    $profileImage_6 = $row['profileImage'];
+                                }
+
+                                if ($profileImage_6 != '') {
+                                    echo "profileImages/$profileImage_6";
+                                } else {
+                                    echo "profileImages/user.png";
+                                }
+                            ?>
+                        " class="placeHolderParent">
                             <img src="images/6.png" class="placeHolder">
                         </image>
                     </div>
                 </div>
             </div>
             <div class='col-4'>
-                <p>MiamiDreamin</p>
+                <p>
+                    <?php
+                        $username_6_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 6;';
+                        $username_6_result = mysqli_query($db, $username_6_sql);
+
+                        while ($row = mysqli_fetch_array($username_6_result)) {
+                            $username_6 = $row['username'];
+                        }
+
+                        echo $username_6;
+                    ?>
+                </p>
             </div>
             <div class='col-4'>
-                <p>738</p>
+                <p>
+                    <?php
+                        $sql_likes_6 = 'SELECT likes FROM users ORDER BY likes DESC LIMIT 6;';
+                        $result_likes_6 = mysqli_query($db, $sql_likes_6);
+
+                        while ($row = mysqli_fetch_array($result_likes_6)) {
+                            $likes_6 = $row['likes'];
+                        }
+
+                        echo $likes_6;
+                    ?>
+                </p>
             </div>
             <div class='col-12'>
                 <img src='images/divider.png' class='img-fluid divider'>
@@ -201,17 +464,54 @@
             <div class='col-4'>
                 <div class='row'>
                     <div class='col-12'>
-                        <image src="images/seventh.png" class="placeHolderParent">
+                        <image src="
+                            <?php
+                                $sql_7 = 'SELECT profileImage FROM users ORDER BY likes DESC LIMIT 7;';
+                                $result_7 = mysqli_query($db, $sql_7);
+
+                                while ($row = mysqli_fetch_array($result_7)) {
+                                    $profileImage_7 = $row['profileImage'];
+                                }
+
+                                if ($profileImage_7 != '') {
+                                    echo "profileImages/$profileImage_7";
+                                } else {
+                                    echo "profileImages/user.png";
+                                }
+                            ?>
+                        " class="placeHolderParent">
                             <img src="images/7.png" class="placeHolder">
                         </image>
                     </div>
                 </div>
             </div>
             <div class='col-4'>
-                <p>DancinDroppin</p>
+                <p>
+                    <?php
+                        $username_7_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 7;';
+                        $username_7_result = mysqli_query($db, $username_7_sql);
+
+                        while ($row = mysqli_fetch_array($username_7_result)) {
+                            $username_7 = $row['username'];
+                        }
+
+                        echo $username_7;
+                    ?>
+                </p>
             </div>
             <div class='col-4'>
-                <p>720</p>
+                <p>
+                    <?php
+                        $sql_likes_7 = 'SELECT likes FROM users ORDER BY likes DESC LIMIT 7;';
+                        $result_likes_7 = mysqli_query($db, $sql_likes_7);
+
+                        while ($row = mysqli_fetch_array($result_likes_7)) {
+                            $likes_7 = $row['likes'];
+                        }
+
+                        echo $likes_7;
+                    ?>
+                </p>
             </div>
             <div class='col-12'>
                 <img src='images/divider.png' class='img-fluid divider'>
@@ -219,17 +519,54 @@
             <div class='col-4'>
                 <div class='row'>
                     <div class='col-12'>
-                        <image src="images/eighth.png" class="placeHolderParent">
+                        <image src="
+                            <?php
+                                $sql_8 = 'SELECT profileImage FROM users ORDER BY likes DESC LIMIT 8;';
+                                $result_8 = mysqli_query($db, $sql_8);
+
+                                while ($row = mysqli_fetch_array($result_8)) {
+                                    $profileImage_8 = $row['profileImage'];
+                                }
+
+                                if ($profileImage_8 != '') {
+                                    echo "profileImages/$profileImage_8";
+                                } else {
+                                    echo "profileImages/user.png";
+                                }
+                            ?>
+                        " class="placeHolderParent">
                             <img src="images/8.png" class="placeHolder">
                         </image>
                     </div>
                 </div>
             </div>
             <div class='col-4'>
-                <p>SmellyArtist</p>
+                <p>
+                    <?php
+                        $username_8_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 8;';
+                        $username_8_result = mysqli_query($db, $username_8_sql);
+
+                        while ($row = mysqli_fetch_array($username_8_result)) {
+                            $username_8 = $row['username'];
+                        }
+
+                        echo $username_8;
+                    ?>
+                </p>
             </div>
             <div class='col-4'>
-                <p>638</p>
+                <p>
+                    <?php
+                        $sql_likes_8 = 'SELECT likes FROM users ORDER BY likes DESC LIMIT 8;';
+                        $result_likes_8 = mysqli_query($db, $sql_likes_8);
+
+                        while ($row = mysqli_fetch_array($result_likes_8)) {
+                            $likes_8 = $row['likes'];
+                        }
+
+                        echo $likes_8;
+                    ?>
+                </p>
             </div>
             <div class='col-12'>
                 <img src='images/divider.png' class='img-fluid divider'>
@@ -237,17 +574,54 @@
             <div class='col-4'>
                 <div class='row'>
                     <div class='col-12'>
-                        <image src="images/nineth.png" class="placeHolderParent">
+                        <image src="
+                            <?php
+                                $sql_9 = 'SELECT profileImage FROM users ORDER BY likes DESC LIMIT 9;';
+                                $result_9 = mysqli_query($db, $sql_9);
+
+                                while ($row = mysqli_fetch_array($result_9)) {
+                                    $profileImage_9 = $row['profileImage'];
+                                }
+
+                                if ($profileImage_9 != '') {
+                                    echo "profileImages/$profileImage_9";
+                                } else {
+                                    echo "profileImages/user.png";
+                                }
+                            ?>
+                        " class="placeHolderParent">
                             <img src="images/9.png" class="placeHolder">
                         </image>
                     </div>
                 </div>
             </div>
             <div class='col-4'>
-                <p>TopPlayer</p>
+                <p>
+                    <?php
+                        $username_9_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 9;';
+                        $username_9_result = mysqli_query($db, $username_9_sql);
+
+                        while ($row = mysqli_fetch_array($username_9_result)) {
+                            $username_9 = $row['username'];
+                        }
+
+                        echo $username_9;
+                    ?>
+                </p>
             </div>
             <div class='col-4'>
-                <p>550</p>
+                <p>
+                    <?php
+                        $sql_likes_9 = 'SELECT likes FROM users ORDER BY likes DESC LIMIT 9;';
+                        $result_likes_9 = mysqli_query($db, $sql_likes_9);
+
+                        while ($row = mysqli_fetch_array($result_likes_9)) {
+                            $likes_9 = $row['likes'];
+                        }
+
+                        echo $likes_9;
+                    ?>
+                </p>
             </div>
             <div class='col-12'>
                 <img src='images/divider.png' class='img-fluid divider'>
@@ -255,17 +629,54 @@
             <div class='col-4'>
                 <div class='row'>
                     <div class='col-12'>
-                        <image src="images/tenth.png" class="placeHolderParent">
+                        <image src="
+                            <?php
+                                $sql_10 = 'SELECT profileImage FROM users ORDER BY likes DESC LIMIT 10;';
+                                $result_10 = mysqli_query($db, $sql_10);
+
+                                while ($row = mysqli_fetch_array($result_10)) {
+                                    $profileImage_10 = $row['profileImage'];
+                                }
+
+                                if ($profileImage_10 != '') {
+                                    echo "profileImages/$profileImage_10";
+                                } else {
+                                    echo "profileImages/user.png";
+                                }
+                            ?>
+                        " class="placeHolderParent">
                             <img src="images/10.png" class="placeHolder">
                         </image>
                     </div>
                 </div>
             </div>
             <div class='col-4'>
-                <p>MonsterCookie</p>
+                <p>
+                    <?php
+                        $username_10_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 10;';
+                        $username_10_result = mysqli_query($db, $username_10_sql);
+
+                        while ($row = mysqli_fetch_array($username_10_result)) {
+                            $username_10 = $row['username'];
+                        }
+
+                        echo $username_10;
+                    ?>
+                </p>
             </div>
             <div class='col-4'>
-                <p>530</p>
+                <p>
+                    <?php
+                        $sql_likes_10 = 'SELECT likes FROM users ORDER BY likes DESC LIMIT 10;';
+                        $result_likes_10 = mysqli_query($db, $sql_likes_10);
+
+                        while ($row = mysqli_fetch_array($result_likes_10)) {
+                            $likes_10 = $row['likes'];
+                        }
+
+                        echo $likes_10;
+                    ?>
+                </p>
             </div>
         </div>
 
