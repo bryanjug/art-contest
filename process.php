@@ -28,7 +28,7 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $query = 'SELECT userID, password FROM users WHERE email = "'.$email.'";';
+        $query = 'SELECT password FROM users WHERE email = "'.$email.'";';
         $result = mysqli_query($db, $query);
 
         if(empty($email) || empty($password)) {

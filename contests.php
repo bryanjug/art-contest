@@ -9,7 +9,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src='show_width.js'></script>
 </head>
 <body>
     <div class='container-fluid'>
@@ -121,35 +120,104 @@
                         }
                     ?>
                 ' class="img-fluid userImage">
-                <form method="post" action="contestImages/contestImages.php" class='uploadButtons' enctype="multipart/form-data">
-                    <label class="contestUpload">
-                        <input type="file"/>
-                        Upload
-                    </label>
-                    <input type="submit" id='submitButton'>
-                </form>
+                <?php
+                    if (isset($_SESSION['user'])) {
+                        print "
+                            <form class='uploadButtons' action='contestImages/contestImages.php' method='post' enctype='multipart/form-data'>
+                                <label for='fileUpload' class='contestUpload'>
+                                    <input type='file' name='file' id='fileUpload'>
+                                    Upload
+                                </label>
+                                <input type='submit' id='submitButton' name='submit' value='Submit'>
+                            </form>
+                        ";
+                    } else {
+                        print "<br>Please log in to participate to the contest";
+                    }
+                ?>
             </div>
             <div class='col-12 col-sm-7'>
-                <img src='images/contestphoto.png' class="img-fluid">
-                <div class='row'>
-                    <div class='col-4'>
-                        <img class='heart' src='images/unliked.png' class="img-fluid">
-                        <p class='likes'>263</p>
-                    </div>
-                    <div class='col-8'>
-                        <p class='contestUser'>ManTheBob</p>
-                    </div>
-                </div>
-                <img src='images/contestphoto.png' class="img-fluid mt-5">
-                <div class='row'>
-                    <div class='col-4'>
-                        <img class='heart' src='images/unliked.png' class="img-fluid">
-                        <p class='likes'>100</p>
-                    </div>
-                    <div class='col-8'>
-                        <p class='contestUser'>RamenBoss</p>
-                    </div>
-                </div>
+                <?php
+                    if (isset($_SESSION['user'])) {
+                        $email = $_SESSION['user'];
+
+                        $sql_contest = "
+                        SELECT contest.id, contest.image, contest.username, 
+                        COUNT(contest_likes.id) AS likes  
+                        FROM 
+                        contest 
+                        LEFT JOIN contest_likes 
+                        ON contest_likes.contestImage = contest.id 
+                        GROUP BY contest.id 
+                        ORDER BY likes DESC;
+                        ";
+                        
+                        $result_contest = mysqli_query($db, $sql_contest);
+
+                        while ($row = mysqli_fetch_array($result_contest)) {
+                            $image = $row['image'];
+                            $likes = $row['likes'];
+                            $username = $row['username'];
+
+                            print "
+                                <img src='contestImages/$image' class='img-fluid mx-auto d-block w-100'>
+                                <div class='row pb-4'>
+                                    <div class='col-4'>
+                            ";
+                            
+                            print '     <a id="unlikedButton" href="contests.php?type=contest&id='.$row['id'].'">
+                            ';
+                            
+                            print "
+                                            <img class='unliked' src='images/unliked.png' class='img-fluid' id='unliked'>
+                                        </a>
+                                        <p class='likes'>$likes</p>
+                                    </div>
+                                    <div class='col-8'>
+                                        <p class='contestUser'>$username</p>
+                                    </div>
+                                </div>
+                            ";
+                        }
+
+                        if(isset($_GET['type'], $_GET['id'])) {
+                            $sql_user_id = 'SELECT id from users WHERE email = "'.$email.'";';
+                            $result_user_id = mysqli_query($db, $sql_user_id);
+
+                            while ($row = mysqli_fetch_array($result_user_id)) {
+                                $user_id = $row['id'];
+                            }
+
+                            $_SESSION['user_id'] = (int)$user_id;
+
+                            $type = $_GET['type'];
+                            $id = (int)$_GET['id'];
+
+                            if($type == 'contest') {
+                                $query = "
+                                INSERT INTO contest_likes (user, contestImage)
+                                SELECT {$_SESSION['user_id']}, {$id} FROM contest
+                                WHERE EXISTS (
+                                SELECT id FROM contest WHERE id = {$id})
+                                AND NOT EXISTS (
+                                SELECT id FROM contest_likes
+                                WHERE user = {$_SESSION['user_id']} AND contestImage = {$id})
+                                LIMIT 1;
+                                ";
+
+                                mysqli_query($db, $query);
+                                
+                                echo("
+                                <script>
+                                    location.href = 'contests.php';
+                                </script>
+                                ");
+                            }
+                        }
+                    } else {
+                        print "Please log in to see the contests";
+                    }
+                ?>
             </div>
         </div>
         <div class='row dotsOuter'>

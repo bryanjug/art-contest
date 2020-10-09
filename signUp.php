@@ -78,7 +78,7 @@
                             //**********************************************
                             //*
                             //*  Connect to MySQL and Database
-                            //*  userID, username, email, password, likes, posts
+                            //*  username, email, password, likes, posts
                             //**********************************************
 
                             $db = mysqli_connect('localhost','root','', 'artContest');

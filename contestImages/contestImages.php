@@ -28,15 +28,22 @@
         
         $tmp_name = $_FILES["file"]["tmp_name"];
         
-        $name = $email.".png";
+        $name = rand(0,9999).$email.".png";
 
         $uploads_dir = realpath(dirname(getcwd()))."/contestImages";
 
         move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
-        $sql = 'INSERT INTO contest (image) VALUES ("'.$name.'");'; 
-        
-        //should I allow multiple uploads from the same user?
+        $sql_username = 'SELECT username FROM users WHERE email = "'.$email.'";';
+        $result_username = mysqli_query($db, $sql_username);
+
+        while ($row = mysqli_fetch_array($result_username)) {
+            $username = $row['username'];
+        }
+        $sql = 'INSERT INTO contest (image, email, username) VALUES ("'.$name.'", "'.$email.'", "'.$username.'");'; 
+
+        $sql_add_post = 'UPDATE users SET posts = posts + 1 WHERE email = "'.$email.'";';
+        mysqli_query($db, $sql_add_post);
 
         if (mysqli_query($db, $sql)) {
             header('location:../contests.php');

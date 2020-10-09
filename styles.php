@@ -483,14 +483,19 @@ body {
     width: 120px;
 }
 
-.heart {
-    width: 30px;
+.unliked {
+    width: 25px;
+    float: left;
+}
+
+.liked {
+    width: 25px;
     float: left;
 }
 
 .likes {
     display: inline;
-    margin-left: -10px;
+    margin-left: -5px;
 }
 
 td {
@@ -721,6 +726,7 @@ table {
 
 
 @media (min-width: 1024px) {
+
     .placeHolderParent {
         width: 80px !important;
         height: 80px !important;
@@ -788,7 +794,14 @@ table {
 }
 
 @media (min-width: 1440px) {
-    
+    .unliked {
+        width: 35px;
+    }
+    .firstImage {
+        width: 200px !important;
+        height: 200px !important;
+        border: solid 8px #293b7c;
+    }
     .placeHolderParent {
         width: 100px !important;
         height: 100px !important;
@@ -807,8 +820,8 @@ table {
     }
 
     .custom-image-upload {
-        width: 250px;
-        height: 250px;
+        width: 350px !important;
+        height: 350px !important;
     }
 
     .welcomeMessage {
@@ -918,6 +931,18 @@ table {
 }
 
 @media (min-width: 2560px) {
+    .unliked {
+        width: 70px;
+    }
+    .likes {
+        margin-left: -20px;
+    }
+
+    .firstImage {
+        width: 350px !important;
+        height: 350px !important;
+    }
+
     .tryItNow p {
         font-size: 200% !important;
     }
