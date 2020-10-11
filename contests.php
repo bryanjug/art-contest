@@ -18,7 +18,6 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
                         <ul class="navbar-nav">
                             <li class="nav-item">
@@ -89,6 +88,9 @@
                 <h4 class='text-center pb-3 date'><b>
                     <?php
                         print date("m/d/Y", strtotime('-1 second',strtotime('+1 month',strtotime(date('m').'/01/'.date('Y').' 00:00:00'))));
+                        print "<br>";
+                        
+                        print date("m/d/Y", strtotime('+1 second',strtotime('+1 month',strtotime(date('m').'/01/'.date('Y').' 00:00:00'))));
                     ?>
                 </b></h4>
                 <p class='text-center pb-3'>Your goal here is to recreate the image below in any style you choose and upload it by the date indicated at the top of the page. At the end of each month, the contest image will change and so will the contest date. <b>Whoever ends up with the most likes will win the most points!</b></p>
@@ -140,6 +142,14 @@
                 <?php
                     if (isset($_SESSION['user'])) {
                         $email = $_SESSION['user'];
+                        $sql_user_id = 'SELECT id from users WHERE email = "'.$email.'";';
+                        $result_user_id = mysqli_query($db, $sql_user_id);
+
+                        while ($row = mysqli_fetch_array($result_user_id)) {
+                            $user_id = $row['id'];
+                        }
+
+                        $_SESSION['user_id'] = (int)$user_id;
 
                         $sql_contest = "
                         SELECT contest.id, contest.image, contest.username, 
@@ -164,12 +174,26 @@
                                 <div class='row pb-4'>
                                     <div class='col-4'>
                             ";
-                            
-                            print '     <a id="unlikedButton" href="contests.php?type=contest&id='.$row['id'].'">
+
+                            $sql_like_check = '
+                            SELECT contestImage, user FROM contest_likes WHERE contestImage = "'.$row['id'].'" AND user = "'.$_SESSION['user_id'].'";
                             ';
-                            
+
+                            $result_like_check = mysqli_query($db, $sql_like_check);
+
+                            if ($result_like_check->num_rows > 0) {    
+                                print "
+                                                <img class='liked' src='images/liked.png' class='img-fluid' id='liked'>
+                                ";
+                            } else {
+                                print '     <a id="unlikedButton" href="contests.php?type=contest&id='.$row['id'].'">
+                                ';
+
+                                print "
+                                                <img class='unliked' src='images/unliked.png' class='img-fluid' id='unliked'>
+                                ";
+                            }
                             print "
-                                            <img class='unliked' src='images/unliked.png' class='img-fluid' id='unliked'>
                                         </a>
                                         <p class='likes'>$likes</p>
                                     </div>
@@ -179,17 +203,8 @@
                                 </div>
                             ";
                         }
-
+                        
                         if(isset($_GET['type'], $_GET['id'])) {
-                            $sql_user_id = 'SELECT id from users WHERE email = "'.$email.'";';
-                            $result_user_id = mysqli_query($db, $sql_user_id);
-
-                            while ($row = mysqli_fetch_array($result_user_id)) {
-                                $user_id = $row['id'];
-                            }
-
-                            $_SESSION['user_id'] = (int)$user_id;
-
                             $type = $_GET['type'];
                             $id = (int)$_GET['id'];
 
@@ -204,9 +219,13 @@
                                 WHERE user = {$_SESSION['user_id']} AND contestImage = {$id})
                                 LIMIT 1;
                                 ";
-
+                                    
                                 mysqli_query($db, $query);
+
+                                $sql_insert_account = 'UPDATE users SET likes = likes + 1 WHERE id = "'.$_SESSION['user_id'].'";';
                                 
+                                mysqli_query($db, $sql_insert_account);
+
                                 echo("
                                 <script>
                                     location.href = 'contests.php';

@@ -1,4 +1,6 @@
-<?php header("Content-type: text/css"); ?>
+<?php
+    header("Content-type: text/css; charset: UTF-8");
+?>
 .contestUser {
     text-align: right;
 }
@@ -489,7 +491,7 @@ body {
 }
 
 .liked {
-    width: 25px;
+    width: 30px;
     float: left;
 }
 
@@ -797,6 +799,11 @@ table {
     .unliked {
         width: 35px;
     }
+
+    .liked {
+        width: 40px;
+        float: left;
+    }
     .firstImage {
         width: 200px !important;
         height: 200px !important;
@@ -933,6 +940,11 @@ table {
 @media (min-width: 2560px) {
     .unliked {
         width: 70px;
+    }
+
+    .liked {
+        width: 75px;
+        float: left;
     }
     .likes {
         margin-left: -20px;
