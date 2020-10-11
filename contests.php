@@ -87,10 +87,42 @@
                 <h5 class='text-center pb-3 date currentContest'><b>Current Contest Ends:</b></h5>
                 <h4 class='text-center pb-3 date'><b>
                     <?php
-                        print date("m/d/Y", strtotime('-1 second',strtotime('+1 month',strtotime(date('m').'/01/'.date('Y').' 00:00:00'))));
+                        $date = date("m/d/Y", strtotime('-1 second',strtotime('+1 month',strtotime(date('m').'/01/'.date('Y').' 00:00:00'))));
+                        print $date;
                         print "<br>";
                         
-                        print date("m/d/Y", strtotime('+1 second',strtotime('+1 month',strtotime(date('m').'/01/'.date('Y').' 00:00:00'))));
+                        if (date("m/d/Y") == date("m/d/Y", strtotime('+1 second',strtotime('+1 month',strtotime(date('m').'/01/'.date('Y').' 00:00:00'))))) {
+                            $sql_delete_contest = 'DELETE FROM contest;';
+                            $sql_delete_likes = 'DELETE FROM contest_likes;';
+
+                            mysqli_query($db, $sql_delete_contest);
+                            mysqli_query($db, $sql_delete_likes);
+
+                            $path = 'contestImages/';
+
+                            $filesToKeep = array(
+                                $path . "contestImages.php"
+                            );
+                            $extensionsToKeep = array(
+                                "php"
+                            );
+
+                            $dirList = glob($path . '*');
+                            
+                            foreach ($dirList as $file) {
+                                if (!in_array($file, $filesToKeep)) {
+                                    if (is_dir($file)) {
+                                        rmdir($file);
+                                    } else {
+                                        $fileExtArr = explode('.', $file);
+                                        $fileExt = $fileExtArr[count($fileExtArr)-1];
+                                        if(!in_array($fileExt, $extensionsToKeep)){
+                                            unlink($file);
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     ?>
                 </b></h4>
                 <p class='text-center pb-3'>Your goal here is to recreate the image below in any style you choose and upload it by the date indicated at the top of the page. At the end of each month, the contest image will change and so will the contest date. <b>Whoever ends up with the most likes will win the most points!</b></p>
@@ -101,7 +133,6 @@
             <div class='col-12 col-sm-5 upload'>
                 <img src='
                     <?php
-
                         if (isset($_SESSION['user'])) {
                             $email = $_SESSION['user'];
 
@@ -134,7 +165,7 @@
                             </form>
                         ";
                     } else {
-                        print "<br>Please log in to participate to the contest";
+                        print "<br><p class='pleaseLogIn'>Please log in to participate in the contest.</p>";
                     }
                 ?>
             </div>
@@ -180,7 +211,7 @@
                             ';
 
                             $result_like_check = mysqli_query($db, $sql_like_check);
-
+                            
                             if ($result_like_check->num_rows > 0) {    
                                 print "
                                                 <img class='liked' src='images/liked.png' class='img-fluid' id='liked'>
@@ -234,7 +265,7 @@
                             }
                         }
                     } else {
-                        print "Please log in to see the contests";
+                        print "<p class='pleaseLogIn'>Please log in to see the contest images!</p>";
                     }
                 ?>
             </div>

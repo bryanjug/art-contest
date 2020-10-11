@@ -1,6 +1,10 @@
 <?php
     header("Content-type: text/css; charset: UTF-8");
 ?>
+.pleaseLogIn {
+    text-align: center !important;
+}
+
 .contestUser {
     text-align: right;
 }
