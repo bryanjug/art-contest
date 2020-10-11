@@ -24,6 +24,7 @@
 .wallet {
     color: green;
     text-align: center;
+    font-size: 120% !important;
 }
 
 .userEmail {

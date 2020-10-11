@@ -253,9 +253,13 @@
                                     
                                 mysqli_query($db, $query);
 
-                                $sql_insert_account = 'UPDATE users SET likes = likes + 1 WHERE id = "'.$_SESSION['user_id'].'";';
+                                $sql_like_account = 'UPDATE users SET likes = likes + 1 WHERE id = "'.$_SESSION['user_id'].'";';
                                 
-                                mysqli_query($db, $sql_insert_account);
+                                mysqli_query($db, $sql_like_account);
+
+                                $sql_wallet_account = 'UPDATE users SET wallet = wallet + .10 WHERE id = "'.$_SESSION['user_id'].'";';
+
+                                mysqli_query($db, $sql_wallet_account);
 
                                 echo("
                                 <script>
