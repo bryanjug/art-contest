@@ -62,31 +62,30 @@
                 </nav>
             </div>
         </div>
+        <?php
+            //**********************************************
+            //*
+            //*  Detect Server
+            //*
+            //**********************************************
+            $server = $_SERVER['SERVER_NAME'];
+
+            $server = 'localhost';
+
+            //**********************************************
+            //*
+            //*  Connect to MySQL and Database
+            //*  
+            //**********************************************
+
+            $db = mysqli_connect('localhost','root','', 'artContest');
+
+            if (!$db)
+            {
+                print "<h1 style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Unable to Connect to MySQL</h1>";
+            }
+        ?>
         <div class='row pt-5 mt-5 shop'>
-            <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
-                <img src='images/giftCard.png' class="card img-fluid">
-                <h4>Gift Card</h4>
-                <section class='reviews'>
-                    <img src='images/stars.png' class="stars img-fluid">
-                    <p>55 Reviews</p>
-                </section>
-                <p>$5</p>
-                <form method='get' action='#'>
-                    <input type='submit' name='purchase' value='Add to Cart' class='purchase'>
-                </form>
-            </div>
-            <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
-                <img src='images/bitcoin.png' class="card img-fluid bitcoin">
-                <h4>Bitcoin</h4>
-                <section class='reviews'>
-                    <img src='images/stars.png' class="stars img-fluid">
-                    <p>55 Reviews</p>
-                </section>
-                <p>$5</p>
-                <form method='get' action='#'>
-                    <input type='submit' name='purchase' value='Add to Cart' class='purchase'>
-                </form>
-            </div>
             <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
                 <img src='https://images-na.ssl-images-amazon.com/images/I/613Yd40N1zL._AC_UL200_SR200,200_.jpg' class="card img-fluid">
                 <h4>Parblo PR-01 Two-Finger Glove for Graphics Drawing Tablet Light Box Tracing Light Pad</h4>
@@ -95,8 +94,8 @@
                     <p>25 Reviews</p>
                 </section>
                 <p>$6.99</p>
-                <form method='get' action='#'>
-                    <input type='submit' name='purchase' value='Add to Cart' class='purchase'>
+                <form method='get' action='https://amzn.to/2GPd3n3' target="_blank">
+                    <input type='submit' name='purchase' value='Purchase' class='purchase'>
                 </form>
             </div>
             <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
@@ -107,8 +106,8 @@
                     <p>31 Reviews</p>
                 </section>
                 <p>$29.99</p>
-                <form method='get' action='#'>
-                    <input type='submit' name='purchase' value='Add to Cart' class='purchase'>
+                <form method='get' action='https://amzn.to/34Ka1ZE' target="_blank">
+                    <input type='submit' name='purchase' value='Purchase' class='purchase'>
                 </form>
             </div>
             <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
@@ -119,8 +118,8 @@
                     <p>25 Reviews</p>
                 </section>
                 <p>$49.99</p>
-                <form method='get' action='#'>
-                    <input type='submit' name='purchase' value='Add to Cart' class='purchase'>
+                <form method='get' action='https://amzn.to/3djM7b3' target="_blank">
+                    <input type='submit' name='purchase' value='Purchase' class='purchase'>
                 </form>
             </div>
             <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
@@ -131,8 +130,8 @@
                     <p>27 Reviews</p>
                 </section>
                 <p>$65.99</p>
-                <form method='get' action='#'>
-                    <input type='submit' name='purchase' value='Add to Cart' class='purchase'>
+                <form method='get' action='https://amzn.to/34K9Nlg' target="_blank">
+                    <input type='submit' name='purchase' value='Purchase' class='purchase'>
                 </form>
             </div>
             <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
@@ -143,8 +142,8 @@
                     <p>22 Reviews</p>
                 </section>
                 <p>$79.95</p>
-                <form method='get' action='#'>
-                    <input type='submit' name='purchase' value='Add to Cart' class='purchase'>
+                <form method='get' action='https://amzn.to/30Uxjec' target="_blank">
+                    <input type='submit' name='purchase' value='Purchase' class='purchase'>
                 </form>
             </div>
             <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
@@ -155,8 +154,8 @@
                     <p>42 Reviews</p>
                 </section>
                 <p>$99.95</p>
-                <form method='get' action='#'>
-                    <input type='submit' name='purchase' value='Add to Cart' class='purchase'>
+                <form method='get' action='https://amzn.to/3dlLIVF' target="_blank">
+                    <input type='submit' name='purchase' value='Purchase' class='purchase'>
                 </form>
             </div>
             <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
@@ -167,8 +166,8 @@
                     <p>56 Reviews</p>
                 </section>
                 <p>$249.99</p>
-                <form method='get' action='#'>
-                    <input type='submit' name='purchase' value='Add to Cart' class='purchase'>
+                <form method='get' action='https://amzn.to/2IaVz58' target="_blank">
+                    <input type='submit' name='purchase' value='Purchase' class='purchase'>
                 </form>
             </div>
             <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
@@ -179,8 +178,8 @@
                     <p>80 Reviews</p>
                 </section>
                 <p>$399.99</p>
-                <form method='get' action='#'>
-                    <input type='submit' name='purchase' value='Add to Cart' class='purchase'>
+                <form method='get' action='https://amzn.to/3dfNmrO' target="_blank">
+                    <input type='submit' name='purchase' value='Purchase' class='purchase'>
                 </form>
             </div>
             <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
@@ -191,8 +190,8 @@
                     <p>59 Reviews</p>
                 </section>
                 <p>$499.99</p>
-                <form method='get' action='#'>
-                    <input type='submit' name='purchase' value='Add to Cart' class='purchase'>
+                <form method='get' action='https://amzn.to/3lCkIV4' target="_blank">
+                    <input type='submit' name='purchase' value='Purchase' class='purchase'>
                 </form>
             </div>
             <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
@@ -203,8 +202,20 @@
                     <p>44 Reviews</p>
                 </section>
                 <p>$679.00</p>
-                <form method='get' action='#'>
-                    <input type='submit' name='purchase' value='Add to Cart' class='purchase'>
+                <form method='get' action='https://amzn.to/3jSpk8T' target="_blank">
+                    <input type='submit' name='purchase' value='Purchase' class='purchase'>
+                </form>
+            </div>
+            <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
+                <img src='https://m.media-amazon.com/images/I/51kQ0vMmH4L._AC_UY327_QL65_.jpg' class="card img-fluid">
+                <h4>XP-PEN Artist24 Pro Drawing Pen Display 2K Resolution Graphics Tablet 23.8 Inch Screen Supports a USB-C to USB-C Connection（20 Customizable Shortcut Keys and Tilt Function）</h4>
+                <section class='reviews'>
+                    <img src='images/stars.png' class="stars img-fluid">
+                    <p>6 Reviews</p>
+                </section>
+                <p>$899.99</p>
+                <form method='get' action='https://amzn.to/30U1nX8' target="_blank">
+                    <input type='submit' name='purchase' value='Purchase' class='purchase'>
                 </form>
             </div>
             <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
@@ -215,20 +226,8 @@
                     <p>38 Reviews</p>
                 </section>
                 <p>$1,279.94</p>
-                <form method='get' action='#'>
-                    <input type='submit' name='purchase' value='Add to Cart' class='purchase'>
-                </form>
-            </div>
-            <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
-                <img src='https://m.media-amazon.com/images/I/51kQ0vMmH4L._AC_UY327_QL65_.jpg' class="card img-fluid">
-                <h4>Wacom MobileStudioPro 13” Drawing Tablet Graphics Computer for Drawing, Art, Animation/Graphics and Image Editing; Windows 10, Intel Core i7, 512GB SSD: Second Generation</h4>
-                <section class='reviews'>
-                    <img src='images/stars.png' class="stars img-fluid">
-                    <p>6 Reviews</p>
-                </section>
-                <p>$2,599.95</p>
-                <form method='get' action='#'>
-                    <input type='submit' name='purchase' value='Add to Cart' class='purchase'>
+                <form method='get' action='https://amzn.to/3iLHckp' target="_blank">
+                    <input type='submit' name='purchase' value='Purchase' class='purchase'>
                 </form>
             </div>
         </div>
@@ -252,30 +251,78 @@
             <div class='col-12 col-sm-3'>
                 <ul>
                     <li><b><a href='contests.php'>Contests</a></b></li>
-                    <li>5-10</li>
-                    <li>5-1</li>
-                    <li>4-21</li>
-                    <li>4-11</li>
+                    <li><?php print date("m/d/Y", strtotime('-1 second',strtotime('+1 month',strtotime(date('m').'/01/'.date('Y').' 00:00:00')))); ?></li>
+                    <li><?php print date("m/d/Y", strtotime('-1 second',strtotime('+2 month',strtotime(date('m').'/01/'.date('Y').' 00:00:00')))); ?></li>
+                    <li><?php print date("m/d/Y", strtotime('-1 second',strtotime('+3 month',strtotime(date('m').'/01/'.date('Y').' 00:00:00')))); ?></li>
+                    <li><?php print date("m/d/Y", strtotime('-1 second',strtotime('+4 month',strtotime(date('m').'/01/'.date('Y').' 00:00:00')))); ?></li>
                 </ul>
             </div>
             <div class='col-12 col-sm-3'>
                 <ul>
                     <li><b><a href='leaderboards.php'>Leaderboards</a></b></li>
-                    <li>User #1</li>
-                    <li>User #2</li>
-                    <li>User #3</li>
+                    <li>
+                        <?php
+                            $username_1_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 1;';
+                            $username_1_result = mysqli_query($db, $username_1_sql);
+
+                            while ($row = mysqli_fetch_array($username_1_result)) {
+                                $username_1 = $row['username'];
+                            }
+
+                            echo $username_1;
+                        ?>
+                    </li>
+                    <li>
+                        <?php
+                            $username_2_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 2;';
+                            $username_2_result = mysqli_query($db, $username_2_sql);
+
+                            while ($row = mysqli_fetch_array($username_2_result)) {
+                                $username_2 = $row['username'];
+                            }
+
+                            echo $username_2;
+                        ?>
+                    </li>
+                    <li>
+                        <?php
+                            $username_3_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 3;';
+                            $username_3_result = mysqli_query($db, $username_3_sql);
+
+                            while ($row = mysqli_fetch_array($username_3_result)) {
+                                $username_3 = $row['username'];
+                            }
+
+                            echo $username_3;
+                        ?>
+                    </li>
+                    <li>
+                        <?php
+                            $username_4_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 4;';
+                            $username_4_result = mysqli_query($db, $username_4_sql);
+
+                            while ($row = mysqli_fetch_array($username_4_result)) {
+                                $username_4 = $row['username'];
+                            }
+
+                            echo $username_4;
+                        ?>
+                    </li>
                 </ul>
             </div>
             <div class='col-12 col-sm-6'>
                 <ul>
                     <li><b><a href='shop.php'>Shop</a></b></li>
-                    <li>Shop Item #1</li>
-                    <li>Shop Item #2</li>
+                    <li>Parblo PR-01 Two-Finger Glove</li>
+                    <li>XP-Pen G430S OSU Tablet</li>
+                    <li>Huion H610 Pro V2</li>
                 </ul>
             </div>
             <div class='col-12 col-sm-6'>
                 <ul>
                     <li><b><a href='about.php'>About</a></b></li>
+                    <li>Contact</li>
+                    <li>Information</li>
                 </ul>
             </div>
             <div class='col-12 privacy'>

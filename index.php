@@ -61,7 +61,29 @@
                 </nav>
             </div>
         </div>
+        <?php
+            //**********************************************
+            //*
+            //*  Detect Server
+            //*
+            //**********************************************
+            $server = $_SERVER['SERVER_NAME'];
 
+            $server = 'localhost';
+
+            //**********************************************
+            //*
+            //*  Connect to MySQL and Database
+            //*  
+            //**********************************************
+
+            $db = mysqli_connect('localhost','root','', 'artContest');
+
+            if (!$db)
+            {
+                print "<h1 style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>Unable to Connect to MySQL</h1>";
+            }
+        ?>
         <div class='row curved'>
             <div class='col-6 welcome'>
                 <h1>Welcome to <span id='title'>The Art Contest!</span></h1>
@@ -160,30 +182,78 @@
             <div class='col-12 col-sm-3'>
                 <ul>
                     <li><b><a href='contests.php'>Contests</a></b></li>
-                    <li>5-10</li>
-                    <li>5-1</li>
-                    <li>4-21</li>
-                    <li>4-11</li>
+                    <li><?php print date("m/d/Y", strtotime('-1 second',strtotime('+1 month',strtotime(date('m').'/01/'.date('Y').' 00:00:00')))); ?></li>
+                    <li><?php print date("m/d/Y", strtotime('-1 second',strtotime('+2 month',strtotime(date('m').'/01/'.date('Y').' 00:00:00')))); ?></li>
+                    <li><?php print date("m/d/Y", strtotime('-1 second',strtotime('+3 month',strtotime(date('m').'/01/'.date('Y').' 00:00:00')))); ?></li>
+                    <li><?php print date("m/d/Y", strtotime('-1 second',strtotime('+4 month',strtotime(date('m').'/01/'.date('Y').' 00:00:00')))); ?></li>
                 </ul>
             </div>
             <div class='col-12 col-sm-3'>
                 <ul>
                     <li><b><a href='leaderboards.php'>Leaderboards</a></b></li>
-                    <li>User #1</li>
-                    <li>User #2</li>
-                    <li>User #3</li>
+                    <li>
+                        <?php
+                            $username_1_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 1;';
+                            $username_1_result = mysqli_query($db, $username_1_sql);
+
+                            while ($row = mysqli_fetch_array($username_1_result)) {
+                                $username_1 = $row['username'];
+                            }
+
+                            echo $username_1;
+                        ?>
+                    </li>
+                    <li>
+                        <?php
+                            $username_2_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 2;';
+                            $username_2_result = mysqli_query($db, $username_2_sql);
+
+                            while ($row = mysqli_fetch_array($username_2_result)) {
+                                $username_2 = $row['username'];
+                            }
+
+                            echo $username_2;
+                        ?>
+                    </li>
+                    <li>
+                        <?php
+                            $username_3_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 3;';
+                            $username_3_result = mysqli_query($db, $username_3_sql);
+
+                            while ($row = mysqli_fetch_array($username_3_result)) {
+                                $username_3 = $row['username'];
+                            }
+
+                            echo $username_3;
+                        ?>
+                    </li>
+                    <li>
+                        <?php
+                            $username_4_sql = 'SELECT username FROM users ORDER BY likes DESC LIMIT 4;';
+                            $username_4_result = mysqli_query($db, $username_4_sql);
+
+                            while ($row = mysqli_fetch_array($username_4_result)) {
+                                $username_4 = $row['username'];
+                            }
+
+                            echo $username_4;
+                        ?>
+                    </li>
                 </ul>
             </div>
             <div class='col-12 col-sm-6'>
                 <ul>
                     <li><b><a href='shop.php'>Shop</a></b></li>
-                    <li>Shop Item #1</li>
-                    <li>Shop Item #2</li>
+                    <li>Parblo PR-01 Two-Finger Glove</li>
+                    <li>XP-Pen G430S OSU Tablet</li>
+                    <li>Huion H610 Pro V2</li>
                 </ul>
             </div>
             <div class='col-12 col-sm-6'>
                 <ul>
                     <li><b><a href='about.php'>About</a></b></li>
+                    <li>Contact</li>
+                    <li>Information</li>
                 </ul>
             </div>
             <div class='col-12 privacy'>
