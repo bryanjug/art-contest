@@ -157,6 +157,7 @@
 
 .getStarted {
     margin-left: 10% !important;
+    width: 90% !important;
 }
 
 .forgotLink {
@@ -364,7 +365,7 @@ th {
 
 .curved {
     background: rgb(0,95,205);
-background: linear-gradient(0deg, rgba(0,95,205,1) 0%, rgba(6,121,251,1) 8%, rgba(54,144,218,1) 35%, rgba(0,181,228,1) 66%, rgba(141,236,255,1) 100%);
+    background: linear-gradient(0deg, rgba(0,95,205,1) 0%, rgba(6,121,251,1) 8%, rgba(54,144,218,1) 35%, rgba(0,181,228,1) 66%, rgba(141,236,255,1) 100%);
     color: white;
     padding-top: 25%;
 }
@@ -588,7 +589,7 @@ table {
     }
 
     .loginBottom {
-        padding-top: 40% !important;
+        padding-top: 30% !important;
     }
 }
 
@@ -779,18 +780,8 @@ table {
         padding-top: 40% !important;
     }
 
-    .loginBottom {
-        padding-top: 40% !important;
-    }
-
     .login input, .login label, .login small, .login button, .login p {
         font-size: 130% !important;
-    }
-}
-
-@media (min-width: 1128px) {
-    .welcome {
-        margin-top: 5%;
     }
 }
 
@@ -931,10 +922,6 @@ table {
         margin: auto;
         margin-bottom: 30%;
         margin-top: 30%;
-    }
-
-    .loginBottom {
-        padding-top: 30% !important;
     }
 
     .login input, .login label, .login small, .login button, .login p {
@@ -1107,9 +1094,6 @@ table {
         margin-top: 30%;
     }
 
-    .loginBottom {
-        padding-top: 30% !important;
-    }
 
     .login input, .login label, .login small, .login button, .login p {
         font-size: 280% !important;
