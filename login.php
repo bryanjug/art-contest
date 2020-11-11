@@ -93,7 +93,7 @@
                         if(@$_GET['Empty'] == true) {
                     ?>
 
-                    <div style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>
+                    <div class="error" style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>
                         <?php
                             echo $_GET['Empty']
                         ?>
@@ -107,7 +107,7 @@
                         if(@$_GET['Invalid'] == true) {
                     ?>
 
-                    <div style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>
+                    <div class="error" style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(255, 0, 0, 0.7);'>
                         <?php
                             echo $_GET['Invalid']
                         ?>

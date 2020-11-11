@@ -10,7 +10,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src='show_width.js'></script>
 </head>
 <body>
     <div class='container-fluid'>
@@ -106,7 +105,7 @@
                     <p>31 Reviews</p>
                 </section>
                 <p>$29.99</p>
-                <form method='get' action='https://amzn.to/34Ka1ZE' target="_blank">
+                <form class="purchaseContainer" method='get' action='https://amzn.to/34Ka1ZE' target="_blank">
                     <input type='submit' name='purchase' value='Purchase' class='purchase'>
                 </form>
             </div>
@@ -207,7 +206,7 @@
                 </form>
             </div>
             <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
-                <img src='https://m.media-amazon.com/images/I/51kQ0vMmH4L._AC_UY327_QL65_.jpg' class="card img-fluid">
+                <img src='https://images-na.ssl-images-amazon.com/images/I/51Bx2XKIgaL._AC_.jpg' class="card img-fluid" style="width:200px;height:200px;">
                 <h4>XP-PEN Artist24 Pro Drawing Pen Display 2K Resolution Graphics Tablet 23.8 Inch Screen Supports a USB-C to USB-C Connection（20 Customizable Shortcut Keys and Tilt Function）</h4>
                 <section class='reviews'>
                     <img src='images/stars.png' class="stars img-fluid">
@@ -219,7 +218,7 @@
                 </form>
             </div>
             <div class='col-12 col-sm-6 col-lg-4 col-xl-3 shopItem'>
-                <img src='https://m.media-amazon.com/images/I/61b2tHFaUcL._AC_UY327_QL65_.jpg' class="card img-fluid">
+                <img src='https://images-na.ssl-images-amazon.com/images/I/61Fp2RHWSCL._AC_SL1000_.jpg' class="card img-fluid" style="width:200px;height:200px;">
                 <h4>Wacom Cintiq 22 Drawing Tablet with HD Screen, Graphic Monitor, 8192 Pressure-Levels 2019 Version Bundle with Wacom Cintiq Adjustable Stand</h4>
                 <section class='reviews'>
                     <img src='images/stars.png' class="stars img-fluid">

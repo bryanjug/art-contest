@@ -283,6 +283,15 @@
 
 .shopItem {
     margin-bottom: 10%;
+    height: auto;
+}
+
+.shopItem h4 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .shopItem img {
@@ -593,8 +602,6 @@ table {
     }
 }
 
-
-
 @media (max-width: 768px) {
     .navbar li {
         display: inline-block;
@@ -607,7 +614,7 @@ table {
         background: inherit !important;
         text-align: left !important;
     }
-     
+    
     #brand {
         font-size: 100% !important;
         font-weight: normal !important;
@@ -665,6 +672,10 @@ table {
 }
 
 @media (min-width: 768px) {
+    .error {
+        font-size: 120%;
+    }
+    
     .navBreak {
         display: none;
     }
@@ -734,7 +745,9 @@ table {
 
 
 @media (min-width: 1024px) {
-
+    .error {
+        font-size: 130%;
+    }
     .placeHolderParent {
         width: 80px !important;
         height: 80px !important;
@@ -792,6 +805,9 @@ table {
 }
 
 @media (min-width: 1440px) {
+    .error {
+        font-size: 150%;
+    }
     .unliked {
         width: 35px;
     }
@@ -930,6 +946,10 @@ table {
 }
 
 @media (min-width: 2560px) {
+    .error {
+        font-size: 200%;
+    }
+    
     .unliked {
         width: 70px;
     }
@@ -960,12 +980,6 @@ table {
         width: 55px !important;
         height: 55px !important;
         margin-top: 100px !important;
-    }
-    
-    .nav-item {
-        font-size: 120% !important;
-        margin-left: 50px !important;
-        margin-right: 50px !important;
     }
     
     .custom-image-upload {
@@ -1101,7 +1115,7 @@ table {
 
     .navbar {
         padding-top: 20px !important;
-        padding-bottom: 30px !important;
+        padding-bottom: 20px !important;
     }
 
 }

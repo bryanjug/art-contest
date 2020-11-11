@@ -152,7 +152,7 @@
 
                             $data = $result_wallet->fetch_array();
 
-                            echo "<p class='wallet'><b>$".$data['wallet']."</b></p>";
+                            echo "<p class='wallet accountCounts'><b>$".$data['wallet']."</b></p>";
                         ?>
                         <p class='accountCounts'>Wallet</p>
                     </div>
