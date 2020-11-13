@@ -27,7 +27,7 @@
         $email = $_SESSION['user'];
         
         $tmp_name = $_FILES["file"]["tmp_name"];
-        
+
         $name = rand(0,9999).$email.".png";
 
         $uploads_dir = realpath(dirname(getcwd()))."/contestImages";

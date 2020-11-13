@@ -158,14 +158,14 @@
                         print "
                             <form class='uploadButtons' action='contestImages/contestImages.php' method='post' enctype='multipart/form-data'>
                                 <label for='fileUpload' class='contestUpload'>
-                                    <input type='file' name='file' id='fileUpload'>
+                                    <input type='file' name='file' id='fileUpload' required>
                                     Upload
                                 </label>
                                 <input type='submit' id='submitButton' name='submit' value='Submit'>
                             </form>
                         ";
                     } else {
-                        print "<br><p class='pleaseLogIn'>Please log in to participate in the contest.</p>";
+                        print "<br>You can upload and see the current contest images once you log in.";
                     }
                 ?>
             </div>
@@ -269,8 +269,6 @@
                                 ");
                             }
                         }
-                    } else {
-                        print "<p class='pleaseLogIn'>Please log in to see the contest images!</p>";
                     }
                 ?>
             </div>
