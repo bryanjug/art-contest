@@ -106,7 +106,7 @@
                     ">
                     <div class='parent'>
                         <label for="fileUpload" class="custom-file-upload">
-                            <input type="file" name='file' class="fileUpload" id="fileUpload">
+                            <input type="file" name='file' class="fileUpload" id="fileUpload" required>
                             Change Profile Picture
                         </label>
                     </div>
