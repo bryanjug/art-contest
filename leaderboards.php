@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,8 +41,6 @@
                             </li>
                             <li class="nav-item">
                                 <?php
-                                    session_start();
-
                                     if (isset($_SESSION['user'])) {
                                         echo '<a href="account.php" class="account">
                                             <svg width="3em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -61,14 +62,6 @@
             </div>
         </div>
         <?php
-            //**********************************************
-            //*
-            //*  Detect Server
-            //*
-            //**********************************************
-            $server = $_SERVER['SERVER_NAME'];
-
-            $server = 'localhost';
 
             //**********************************************
             //*
@@ -76,7 +69,7 @@
             //*  
             //**********************************************
 
-            $db = mysqli_connect('localhost','root','', 'artContest');
+            $db = mysqli_connect('localhost:3306','elegance_admin','xBBTtk^iLLR2B2hiVXQ3Q$1*DFJT7qW&E*UAUg$K', 'elegance_artcontest');
 
             if (!$db)
             {
@@ -691,7 +684,7 @@
             </div>
             <div class='col-12 col-sm-6'>
                 <p><b>Spread your artistic skills </b>for a chance at some real prizes!</p>
-                <a href='contests.php'>
+                <a href='signUp.php'>
                     <button type="button" class="btn btn-primary btn-sm btn-block">Get Started</button>
                 </a>
             </div>

@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +41,6 @@
                             </li>
                             <li class="nav-item">
                                 <?php
-                                    session_start();
 
                                     if (isset($_SESSION['user'])) {
                                         echo '<a href="account.php" class="account">
@@ -66,14 +68,6 @@
                 <form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
                     <section id='results'>
                         <?php
-                            //**********************************************
-                            //*
-                            //*  Detect Server
-                            //*
-                            //**********************************************
-                            $server = $_SERVER['SERVER_NAME'];
-
-                            $server = 'localhost';
 
                             //**********************************************
                             //*
@@ -81,7 +75,7 @@
                             //*  find the user's email address in the db and send a confirmation email to it
                             //**********************************************
 
-                            $db = mysqli_connect('localhost','root','', 'artContest');
+                            $db = mysqli_connect('localhost:3306','elegance_admin','xBBTtk^iLLR2B2hiVXQ3Q$1*DFJT7qW&E*UAUg$K', 'elegance_artcontest');
 
                             if (!$db)
                             {
@@ -336,11 +330,9 @@
                     ";
 
                 // Always set content-type when sending HTML email
-                $headers = "MIME-Version: 1.0" . "\r\n";
-                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-                // More headers
-                $headers .= 'From: BryanDJug@gmail.com' . "\r\n";
+                $headers = 'From: The Art Contest <BryanDJug@gmail.com>' . "\r\n";
+                $headers .= "Reply-To: BryanDJug@gmail.com" . "\r\n";
+                $headers .= "Content-type:text/html" . "\r\n";
 
                 mail($to, $subject, $message, $headers);
             }

@@ -1,12 +1,4 @@
 <?php
-    //**********************************************
-    //*
-    //*  Detect Server
-    //*
-    //**********************************************
-    $server = $_SERVER['SERVER_NAME'];
-
-    $server = 'localhost';
 
     //**********************************************
     //*
@@ -14,7 +6,7 @@
     //*  
     //**********************************************
 
-    $db = mysqli_connect('localhost','root','', 'artContest');
+    $db = mysqli_connect('localhost:3306','elegance_admin','xBBTtk^iLLR2B2hiVXQ3Q$1*DFJT7qW&E*UAUg$K', 'elegance_artcontest');
 
     if (!$db)
     {
@@ -28,7 +20,7 @@
         
         $tmp_name = $_FILES["file"]["tmp_name"];
         
-        $name = $email.".png";
+        $name = $email.time().".png";
 
         $uploads_dir = realpath(dirname(getcwd()))."/profileImages";
 

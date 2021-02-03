@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +39,6 @@
                             </li>
                             <li class="nav-item">
                                 <?php
-                                    session_start();
 
                                     if (isset($_SESSION['user'])) {
                                         echo '<a href="account.php" class="account">
@@ -61,14 +61,6 @@
             </div>
         </div>
         <?php
-            //**********************************************
-            //*
-            //*  Detect Server
-            //*
-            //**********************************************
-            $server = $_SERVER['SERVER_NAME'];
-
-            $server = 'localhost';
 
             //**********************************************
             //*
@@ -76,7 +68,9 @@
             //*  
             //**********************************************
 
-            $db = mysqli_connect('localhost','root','', 'artContest');
+            //mysql://b2320df08eb072:fa89c2f6@us-cdbr-east-02.cleardb.com/heroku_71c5e5f594a5ee3?reconnect=true
+
+            $db = mysqli_connect('localhost:3306','elegance_admin','xBBTtk^iLLR2B2hiVXQ3Q$1*DFJT7qW&E*UAUg$K', 'elegance_artcontest');
 
             if (!$db)
             {
@@ -87,7 +81,7 @@
             <div class='col-6 welcome'>
                 <h1>Welcome to <span id='title'>The Art Contest!</span></h1>
                 <p class='homeMessage'>Want to earn money while showing off and practicing your skills? Compete with others in a timed, online art competition!</p>
-                <a href='contests.php'>
+                <a href='signUp.php'>
                     <button type="button" class="btn btn-primary btn-md btn-block getStarted">Get Started</button>
                 </a>
             </div>
@@ -101,11 +95,11 @@
         
         <div class='jumbotron mt-5'>
             <div class='row'>
-                <div class='col-12 col-sm-12 col-md-6 m-auto pt-4'>
+                <div class='col-12 col-sm-12 col-md-6 pt-4 homeDescription'>
                     <img src='images/leaderboards.png' class="img-fluid homeInfoImage1">
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <h3 class='text-center pt-3'>Find out where you rank against others!</h3>
+                <div class='col-12 col-sm-12 col-md-6 homeDescription'>
+                    <h3 class='text-center'>Find out where you rank against others!</h3>
                     <p class='text-center'>Ever wondered where you rank in the world in terms of your artistic skills? 
                         With the Art Contest, you'll be able to find other users who are close to your level of expertise! 
                     </p>
@@ -115,25 +109,25 @@
         
         <div class='jumbotron mt-5'>
             <div class='row'>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-12 col-sm-12 col-md-6 homeDescription'>
                     <h3 class='text-center'>Check out our current contests and user submitted images!</h3>
-                    <p class='text-center mb-5 pb-3'>Join a contest, but before you sign up for one, make sure you check the 
+                    <p class='text-center'>Join a contest, but before you sign up for one, make sure you check the 
                         end date for submissions! You wouldn't want to start working on your art piece to 
                         find out later that you could've been participating for a chance at some points.
                     </p>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6 m-auto'>
+                <div class='col-12 col-sm-12 col-md-6 homeDescription pt-4'>
                     <img src='images/contests.png' class="img-fluid homeInfoImage2">
                 </div>
             </div>
         </div>
         <div class='jumbotron mt-5'>
             <div class='row'>
-                <div class='col-12 col-sm-12 col-md-6 m-auto'>
+                <div class='col-12 col-sm-12 col-md-6 homeDescription pt-4'>
                     <img src='images/shop.png' class="img-fluid homeInfoImage3">
                 </div>
-                <div class='col-12 col-sm-12 col-md-6'>
-                    <h3 class='text-center pt-3'>Use your points to purchase gift cards and currencies!</h3>
+                <div class='col-12 col-sm-12 col-md-6 homeDescription'>
+                    <h3 class='text-center'>Use your points to purchase gift cards and currencies!</h3>
                     <p class='text-center'>
                         At the Art Contest, we make sure that your time here is worth while. We know it can be difficult as an up-coming artist to make ends meet, 
                         and that's why we're here to provide our service! Finally there's a way to showcase your artistry while making money.
@@ -143,20 +137,20 @@
         </div>
         <div class='jumbotron mt-5'>
             <div class='row'>
-                <div class='col-12 col-sm-12 col-md-6'>
+                <div class='col-12 col-sm-12 col-md-6 homeDescription'>
                     <h3 class='text-center'>Connect with our team to get help</h3>
-                    <p class='text-center mb-5 pb-3'>
+                    <p class='text-center'>
                         If you have any specific questions or need technical help, please navigate to the 'about' tab at the top or bottom of the page in order to email us directly.
                     </p>
                 </div>
-                <div class='col-12 col-sm-12 col-md-6 m-auto'>
+                <div class='col-12 col-sm-12 col-md-6 homeDescription pt-4'>
                     <img src='images/help.png' class="img-fluid homeInfoImage4">
                 </div>
             </div>
         </div>
         <div class='row'>
             <div class='col-12 tryItNow'>
-                <a href='contests.php'>
+                <a href='signUp.php'>
                     <button type="button" class="btn btn-primary btn-lg btn-block">Try it out now!</button>
                 </a>
                 <p class='text-center mt-4 pb-3'>* We ensure that your information is private and secure!</p>
@@ -174,7 +168,7 @@
             </div>
             <div class='col-12 col-sm-6'>
                 <p><b>Spread your artistic skills </b>for a chance at some real prizes!</p>
-                <a href='contests.php'>
+                <a href='signUp.php'>
                     <button type="button" class="btn btn-primary btn-sm btn-block">Get Started</button>
                 </a>
             </div>

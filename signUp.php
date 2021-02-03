@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +39,6 @@
                             </li>
                             <li class="nav-item">
                                 <?php
-                                    session_start();
 
                                     if (isset($_SESSION['user'])) {
                                         echo '<a href="account.php" class="account">
@@ -66,14 +66,6 @@
                 <form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
                     <section id='results'>
                         <?php
-                            //**********************************************
-                            //*
-                            //*  Detect Server
-                            //*
-                            //**********************************************
-                            $server = $_SERVER['SERVER_NAME'];
-
-                            $server = 'localhost';
 
                             //**********************************************
                             //*
@@ -81,7 +73,7 @@
                             //*  username, email, password, likes, posts
                             //**********************************************
 
-                            $db = mysqli_connect('localhost','root','', 'artContest');
+                            $db = mysqli_connect('localhost:3306','elegance_admin','xBBTtk^iLLR2B2hiVXQ3Q$1*DFJT7qW&E*UAUg$K', 'elegance_artcontest');
 
                             if (!$db)
                             {
@@ -144,7 +136,7 @@
             </div>
             <div class='col-12 col-sm-6'>
                 <p><b>Spread your artistic skills </b>for a chance at some real prizes!</p>
-                <a href='contests.php'>
+                <a href='signUp.php'>
                     <button type="button" class="btn btn-primary btn-sm btn-block">Get Started</button>
                 </a>
             </div>
@@ -248,9 +240,9 @@
             
             if ($numresults == 0) //if no email in user list = insert a email, username, & password
             {
-                $sql_statement_INSERT = 'INSERT INTO users (username, email, password) VALUES ("'.$username.'", "'.$email.'", "'.$hash.'");';
+                $sql_statement_INSERT = ("INSERT INTO users (username, email, password, likes, posts, profileImage, wallet) VALUES ('$username', '$email', '$hash', '0', '0', '', '0')");
                 
-                $result_INSERT = mysqli_query($db, $sql_statement_INSERT);
+                $result_INSERT = mysqli_query($db, $sql_statement_INSERT) or die(mysqli_error($db));
                 
                 $outputDisplay = "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(0, 181, 0, 0.7);'>Account created! Try logging in now.</p>";
             } else { //if user exists = tell user that email already has an account

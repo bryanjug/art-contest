@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +38,6 @@
                             </li>
                             <li class="nav-item">
                                 <?php
-                                    session_start();
 
                                     if (isset($_SESSION['user'])) {
                                         echo '<a href="account.php" class="account">
@@ -60,22 +60,7 @@
             </div>
         </div>
         <?php
-            //**********************************************
-            //*
-            //*  Detect Server
-            //*
-            //**********************************************
-            $server = $_SERVER['SERVER_NAME'];
-
-            $server = 'localhost';
-
-            //**********************************************
-            //*
-            //*  Connect to MySQL and Database
-            //*  
-            //**********************************************
-
-            $db = mysqli_connect('localhost','root','', 'artContest');
+            $db = mysqli_connect('localhost:3306','elegance_admin','xBBTtk^iLLR2B2hiVXQ3Q$1*DFJT7qW&E*UAUg$K', 'elegance_artcontest');
 
             if (!$db)
             {
@@ -125,7 +110,7 @@
                         }
                     ?>
                 </b></h4>
-                <p class='text-center pb-3'>Your goal here is to recreate the image below in any style you choose and upload it by the date indicated at the top of the page. At the end of each month, the contest image will change and so will the contest date. <b>Whoever ends up with the most likes will win the most points!</b></p>
+                <p class='text-center pb-3'>Your goal here is to recreate the image below in any style you choose and upload it by the date indicated at the top of the page. At the end of each month, the contest image will change and so will the contest date. <b>Whoever ends up with the most likes will win the most money!</b></p>
                 <img src='images/contestphoto.png' class="img-fluid contestPhoto">
             </div>
         </div>
@@ -144,7 +129,7 @@
                             }
 
                             if ($profileImage != '') {
-                                echo "profileImages/$email.png";
+                                echo "profileImages/$profileImage";
                             } else {
                                 echo "profileImages/user.png";
                             }

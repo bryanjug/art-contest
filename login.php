@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +39,6 @@
                             </li>
                             <li class="nav-item">
                                 <?php
-                                    session_start();
 
                                     if (isset($_SESSION['user'])) {
                                         echo '<a href="account.php" class="account">
@@ -66,14 +66,6 @@
                 <form method='post' action='process.php'>
                     <section id='results'>
                         <?php
-                            //**********************************************
-                            //*
-                            //*  Detect Server
-                            //*
-                            //**********************************************
-                            $server = $_SERVER['SERVER_NAME'];
-
-                            $server = 'localhost';
 
                             //**********************************************
                             //*
@@ -81,7 +73,7 @@
                             //*  username, email, password, likes, posts
                             //**********************************************
 
-                            $db = mysqli_connect('localhost','root','', 'artContest');
+                            $db = mysqli_connect('localhost:3306','elegance_admin','xBBTtk^iLLR2B2hiVXQ3Q$1*DFJT7qW&E*UAUg$K', 'elegance_artcontest');
 
                             if (!$db)
                             {
@@ -120,12 +112,16 @@
                     <div class="form-group">
                       <label class='form-control-lg' for="exampleInputEmail1">Email address</label>
                       <input type="text" name='email' class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="userHelp" placeholder="Email address">
+
                       <small id="forgotEmail" class="form-text forgotLink"><a href='forgotEmail.php'>Forgot Email?</a></small>
+                      
                     </div>
                     <div class="form-group">
                       <label class='form-control-lg' for="exampleInputPassword1">Password</label>
                       <input type="password" name='password' class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+
                       <small id="forgotPassword" class="form-text forgotLink"><a href='forgotPassword.php'>Forgot password?</a></small>
+                      
                     </div>
                     <button type="submit" class="btn-lg btn-primary loginButton" name='login'>Login</button>
                     <p>Don't have an account? <b><a href='signUp.php'>Sign up</a></b></p>    
@@ -148,7 +144,7 @@
             </div>
             <div class='col-12 col-sm-6'>
                 <p><b>Spread your artistic skills </b>for a chance at some real prizes!</p>
-                <a href='contests.php'>
+                <a href='signUp.php'>
                     <button type="button" class="btn btn-primary btn-sm btn-block">Get Started</button>
                 </a>
             </div>

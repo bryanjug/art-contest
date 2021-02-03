@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +41,6 @@
                             </li>
                             <li class="nav-item">
                                 <?php
-                                    session_start();
 
                                     if (isset($_SESSION['user'])) {
                                         echo '<a href="account.php" class="account">
@@ -61,14 +63,6 @@
             </div>
         </div>
         <?php
-            //**********************************************
-            //*
-            //*  Detect Server
-            //*
-            //**********************************************
-            $server = $_SERVER['SERVER_NAME'];
-
-            $server = 'localhost';
 
             //**********************************************
             //*
@@ -76,7 +70,7 @@
             //*  
             //**********************************************
 
-            $db = mysqli_connect('localhost','root','', 'artContest');
+            $db = mysqli_connect('localhost:3306','elegance_admin','xBBTtk^iLLR2B2hiVXQ3Q$1*DFJT7qW&E*UAUg$K', 'elegance_artcontest');
 
             if (!$db)
             {
@@ -104,7 +98,7 @@
                 <p>The Art Contest is a web application that allows people from all around the world to participate in a timed and friendly competition. You can sign up in one of our art competitions today!</p>
 
                 <h4>How can I contact the owner?</h4>
-                <p>You can send an Email to me and I'll try to get back to you as soon as possible. Email me at: <a href="mailto:bryandjug@gmail.com">BryanDJug@gmail.com</a></p>
+                <p>You can send an Email to me and I'll try to get back to you as soon as possible. Email me at: <a href="mailto:dev@bryanjug.tech">Dev@bryanjug.tech</a></p>
             </div>
         </div>
         <div class='row dotsOuter'>
@@ -119,7 +113,7 @@
             </div>
             <div class='col-12 col-sm-6'>
                 <p><b>Spread your artistic skills </b>for a chance at some real prizes!</p>
-                <a href='contests.php'>
+                <a href='signUp.php'>
                     <button type="button" class="btn btn-primary btn-sm btn-block">Get Started</button>
                 </a>
             </div>

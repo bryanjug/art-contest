@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +41,6 @@
                             </li>
                             <li class="nav-item">
                                 <?php
-                                    session_start();
 
                                     if (isset($_SESSION['user'])) {
                                         echo '<a href="account.php" class="account">
@@ -66,14 +68,6 @@
                 <form method='post'>
                     <section id='results'>
                         <?php
-                            //**********************************************
-                            //*
-                            //*  Detect Server
-                            //*
-                            //**********************************************
-                            $server = $_SERVER['SERVER_NAME'];
-
-                            $server = 'localhost';
 
                             //**********************************************
                             //*
@@ -81,7 +75,7 @@
                             //*  
                             //**********************************************
 
-                            $db = mysqli_connect('localhost','root','', 'artContest');
+                            $db = mysqli_connect('localhost:3306','elegance_admin','xBBTtk^iLLR2B2hiVXQ3Q$1*DFJT7qW&E*UAUg$K', 'elegance_artcontest');
 
                             if (!$db)
                             {
@@ -226,7 +220,7 @@
 
 <?php
     function doCheckLogin($db, $code, $hash) {
-        $sql_statement = 'SELECT email FROM resetPasswords WHERE code = "'.$code.'";';
+        $sql_statement = 'SELECT email FROM resetpasswords WHERE code = "'.$code.'";';
         $result = mysqli_query($db, $sql_statement);  // Run SELECT
 
         if (!$result) {
@@ -249,7 +243,7 @@
                 $result_password = mysqli_query($db, $sql_statement_password);
 
                 if ($result_password) {
-                    $sql_statement = 'DELETE FROM resetPasswords WHERE code = "'.$code.'";';
+                    $sql_statement = 'DELETE FROM resetpasswords WHERE code = "'.$code.'";';
                     $result = mysqli_query($db, $sql_statement);
 
                     print "<p style='color: white;padding-top: 5%;padding-bottom: 5%;background-color: rgba(0, 181, 0, 0.7);'>Password Changed.</p>";

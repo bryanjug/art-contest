@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +17,7 @@
     <div class='container-fluid'>
         <div class='row'>
             <div class='col-12'>
-                <nav class='navbar fixed-top navbar-expand-md navbar-dark'>
+                <nav class='navbar fixed-top navbar-expand-md'>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -38,7 +41,6 @@
                             </li>
                             <li class="nav-item">
                                 <?php
-                                    session_start();
 
                                     if (isset($_SESSION['user'])) {
                                         echo '<a href="account.php" class="account">
@@ -66,14 +68,6 @@
                 <form method='post' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
                     <section id='results'>
                         <?php
-                            //**********************************************
-                            //*
-                            //*  Detect Server
-                            //*
-                            //**********************************************
-                            $server = $_SERVER['SERVER_NAME'];
-
-                            $server = 'localhost';
 
                             //**********************************************
                             //*
@@ -81,7 +75,7 @@
                             //*  
                             //**********************************************
 
-                            $db = mysqli_connect('localhost','root','', 'artContest');
+                            $db = mysqli_connect('localhost:3306','elegance_admin','xBBTtk^iLLR2B2hiVXQ3Q$1*DFJT7qW&E*UAUg$K', 'elegance_artcontest');
 
                             if (!$db)
                             {
@@ -218,7 +212,7 @@
 
 <?php
     function doCheckLogin($db, $email, $code) {
-        $sql_statement_code = 'INSERT INTO resetPasswords(code, email) VALUES ("'.$code.'", "'.$email.'");';
+        $sql_statement_code = ("INSERT INTO resetpasswords(code, email) VALUES ('$code', '$email')");
         $sql_statement = 'SELECT email FROM users WHERE email = "'.$email.'";';
 
         $result = mysqli_query($db, $sql_statement);  // Run SELECT

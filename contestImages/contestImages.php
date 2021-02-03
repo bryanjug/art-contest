@@ -1,20 +1,12 @@
 <?php
-    //**********************************************
-    //*
-    //*  Detect Server
-    //*
-    //**********************************************
-    $server = $_SERVER['SERVER_NAME'];
-
-    $server = 'localhost';
-
+    session_start();
     //**********************************************
     //*
     //*  Connect to MySQL and Database
     //*  
     //**********************************************
 
-    $db = mysqli_connect('localhost','root','', 'artContest');
+    $db = mysqli_connect('localhost:3306','elegance_admin','xBBTtk^iLLR2B2hiVXQ3Q$1*DFJT7qW&E*UAUg$K', 'elegance_artcontest');
 
     if (!$db)
     {
@@ -22,7 +14,6 @@
     }
 
     if (isset($_POST['submit'])) {
-        session_start();
         
         $email = $_SESSION['user'];
         
@@ -40,13 +31,17 @@
         while ($row = mysqli_fetch_array($result_username)) {
             $username = $row['username'];
         }
-        $sql = 'INSERT INTO contest (image, email, username) VALUES ("'.$name.'", "'.$email.'", "'.$username.'");'; 
+        $sql = ("INSERT INTO contest (image, email, username) VALUES ('$name', '$email', '$username')"); 
 
-        $sql_add_post = 'UPDATE users SET posts = posts + 1 WHERE email = "'.$email.'";';
+        $sql_add_post = ("UPDATE users SET posts = posts + 1 WHERE email = '$email'");
         mysqli_query($db, $sql_add_post);
 
         if (mysqli_query($db, $sql)) {
-            header('location:../contests.php');
+            echo("
+                <script>
+                    location.href = '../contests.php';
+                </script>
+            ");
         } else {
             echo "error";
         }
