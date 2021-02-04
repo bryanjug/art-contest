@@ -75,7 +75,7 @@
                             //*  find the user's email address in the db and send a confirmation email to it
                             //**********************************************
 
-                            $db = mysqli_connect('localhost:3306','elegance_admin','xBBTtk^iLLR2B2hiVXQ3Q$1*DFJT7qW&E*UAUg$K', 'elegance_artcontest');
+                            $db = mysqli_connect('','','', '');
 
                             if (!$db)
                             {

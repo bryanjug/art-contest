@@ -68,9 +68,8 @@
             //*  
             //**********************************************
 
-            //mysql://b2320df08eb072:fa89c2f6@us-cdbr-east-02.cleardb.com/heroku_71c5e5f594a5ee3?reconnect=true
 
-            $db = mysqli_connect('localhost:3306','elegance_admin','xBBTtk^iLLR2B2hiVXQ3Q$1*DFJT7qW&E*UAUg$K', 'elegance_artcontest');
+            $db = mysqli_connect('','','', '');
 
             if (!$db)
             {
